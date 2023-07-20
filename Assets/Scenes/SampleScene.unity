@@ -266,6 +266,8 @@ MonoBehaviour:
   gravityMultiplyer: 1
   jumpPower: 4
   maxNumberOfJumps: 2
+  dashSpeed: 10
+  dashTime: 0.25
 --- !u!143 &100755669
 CharacterController:
   m_ObjectHideFlags: 0
@@ -455,6 +457,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 8eeba032-cc82-41dc-a164-64ec819544c5
     m_ActionName: Gameplay/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 100755668}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Dash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6c8a2be3-0781-446f-99e9-ce45c6fc19a8
+    m_ActionName: Gameplay/Dash[/Mouse/middleButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
