@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 _input;   //player key input
     private CharacterController _characterController;
     private Vector3 _direction;   //character facing direction
-
+	
+	
     //character movement
     [SerializeField] private float speed;
 
@@ -119,3 +120,4 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
+
