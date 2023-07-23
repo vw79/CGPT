@@ -44,4 +44,18 @@ public class HealthSystem : MonoBehaviour
             current_health = max_health;
         }
     }
+
+    public void GradHeal(float hp, int seconds)
+    {
+        StartCoroutine(Regen(hp,seconds));
+    }
+
+    public IEnumerator Regen(float hp, int seconds)
+    {
+        for(int i = 0; i < seconds; i++)
+        {
+            yield return new WaitForSeconds(1);
+            Heal(hp/seconds);
+        }
+    }
 }
