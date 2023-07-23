@@ -14,6 +14,14 @@ public class HealthSystem : MonoBehaviour
         current_health = max_health;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            TakeDamage(40f);
+        }
+    }
+
     public float GetHealth()
     {
         return current_health;

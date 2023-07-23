@@ -119,5 +119,16 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
     }
+
+    public void AddSpeed()
+    {
+        speed = 50f;
+        Invoke("ResetSpeed", 3);
+    }
+
+    public void ResetSpeed()
+    {
+        speed = 10f;
+    }
 }
 
