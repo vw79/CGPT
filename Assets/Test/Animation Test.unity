@@ -392,9 +392,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   smoothTime: 0.05
-  gravityMultiplyer: 1
+  gravityMultiplier: 3
   jumpPower: 4
   maxNumberOfJumps: 2
+  secondJumpPower: 0
   dashSpeed: 10
   dashTime: 0.25
 --- !u!143 &100755669
@@ -1079,12 +1080,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f682660abe69b4588656c2d197b129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 5
   smoothTime: 0.05
-  gravityMultiplyer: 1
+  gravityMultiplier: 1
   jumpPower: 4
   maxNumberOfJumps: 2
-  dashSpeed: 10
+  secondJumpPower: 5
+  dashSpeed: 3
   dashTime: 0.25
 --- !u!143 &254252654
 CharacterController:
@@ -1143,7 +1145,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254252652}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
