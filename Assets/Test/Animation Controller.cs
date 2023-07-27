@@ -11,6 +11,7 @@ public class AnimationController : MonoBehaviour
 	int isGroundedHash;
 	int isFallingHash;
 	int isAttackHash;
+	int isStopHash;
 		
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class AnimationController : MonoBehaviour
 		isGroundedHash = Animator.StringToHash("IsGrounded");
 		isFallingHash = Animator.StringToHash("IsFalling");
 		isAttackHash = Animator.StringToHash("IsAttack");
+		isStopHash = Animator.StringToHash("IsStop");
     }
 
 	// Update is called once per frame
@@ -31,12 +33,16 @@ public class AnimationController : MonoBehaviour
 		bool isGrounded = animator.GetBool(isGroundedHash);
 		bool isFalling = animator.GetBool(isFallingHash);
 		bool isAttack = animator.GetBool(isAttackHash);
+		bool isStop = animator.GetBool(isStopHash);
 		
 		// Run
 		bool forwardPressed = Input.GetKey("d") || Input.GetKey("a");
 		
 		// Jump
 		bool jumpPressed = Input.GetKey(KeyCode.Space);
+		
+		//Dash
+		bool stopPressed = Input.GetKey("s");
 	
 		if (!isRunning && !forwardPressed && !jumpPressed)
 		{
@@ -121,5 +127,16 @@ public class AnimationController : MonoBehaviour
 		{
 			animator.SetBool(isAttackHash, false);
 		}
+		
+		if (isJumping && isStop)
+		{
+			animator.SetBool(isStopHash, true);
+		}
+		
+		if (!isStop)
+		{
+			animator.SetBool(isStopHash, false);
+		}
+		
 	}
 }
