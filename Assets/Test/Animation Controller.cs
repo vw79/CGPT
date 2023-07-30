@@ -1,142 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
+    private Animator animator;
+    private PlayerStateMachine playerStateMachine;
+    private PlayerState previousState;
 
-    Animator animator;
-    int isRunningHash;
-    int isJumpingHash;
-	int isGroundedHash;
-	int isFallingHash;
-	int isAttackHash;
-	int isStopHash;
-		
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
-        isRunningHash = Animator.StringToHash("IsRunning");
-        isJumpingHash = Animator.StringToHash("IsJumping");
-		isGroundedHash = Animator.StringToHash("IsGrounded");
-		isFallingHash = Animator.StringToHash("IsFalling");
-		isAttackHash = Animator.StringToHash("IsAttack");
-		isStopHash = Animator.StringToHash("IsStop");
+        playerStateMachine = GetComponent<PlayerStateMachine>();
     }
 
-	// Update is called once per frame
-	void Update()
-	{
-		bool isRunning = animator.GetBool(isRunningHash);
-		bool isJumping = animator.GetBool(isJumpingHash);
-		bool isGrounded = animator.GetBool(isGroundedHash);
-		bool isFalling = animator.GetBool(isFallingHash);
-		bool isAttack = animator.GetBool(isAttackHash);
-		bool isStop = animator.GetBool(isStopHash);
-		
-		// Run
-		bool forwardPressed = Input.GetKey("d") || Input.GetKey("a");
-		
-		// Jump
-		bool jumpPressed = Input.GetKey(KeyCode.Space);
-		
-		//Dash
-		bool stopPressed = Input.GetKey("s");
-	
-		if (!isRunning && !forwardPressed && !jumpPressed)
-		{
-			animator.SetBool(isRunningHash, false);
-			animator.SetBool(isJumpingHash, false);
-			animator.SetBool(isGroundedHash, true);
-			animator.SetBool(isFallingHash, true);
-		}
-		
-		if (isRunning && forwardPressed && jumpPressed)
-		{
-			animator.SetBool(isRunningHash, true);
-			animator.SetBool(isJumpingHash, true);
-			animator.SetBool(isGroundedHash, false);
-			animator.SetBool(isFallingHash, false);
-		}
-		
-		if (isRunning && !forwardPressed && !jumpPressed)
-		{
-			animator.SetBool(isRunningHash, false);
-			animator.SetBool(isJumpingHash, false);
-			animator.SetBool(isGroundedHash, true);
-			animator.SetBool(isFallingHash, true);
-		}
+    private void Update()
+    {
+        PlayerState currentState = playerStateMachine.GetCurrentState();
 
-		if (isRunning && forwardPressed && !jumpPressed)
-		{
-			animator.SetBool(isRunningHash, true);
-			animator.SetBool(isJumpingHash, false);
-			animator.SetBool(isGroundedHash, true);
-			animator.SetBool(isFallingHash, true);
-		}
-		
-		if (!isRunning && forwardPressed && !jumpPressed)
-		{
-			animator.SetBool(isRunningHash, true);
-			animator.SetBool(isJumpingHash, false);
-			animator.SetBool(isGroundedHash, true);
-			animator.SetBool(isFallingHash, true);
-		}
-		
-		if (!isRunning && forwardPressed && jumpPressed)
-		{
-			animator.SetBool(isRunningHash, true);
-			animator.SetBool(isJumpingHash, true);
-			animator.SetBool(isGroundedHash, false);
-			animator.SetBool(isFallingHash, false);
-		}
-		
-		if (!isRunning && !forwardPressed && jumpPressed)
-		{
-			animator.SetBool(isRunningHash, false);
-			animator.SetBool(isJumpingHash, true);
-			animator.SetBool(isGroundedHash, false);
-			animator.SetBool(isFallingHash, false);
-		}
+        if (previousState != currentState)
+        {
+            SetAnimation(currentState);
+            previousState = currentState;
+        }
+    }
 
-		if (isRunning && !forwardPressed && jumpPressed)
-		{
-			animator.SetBool(isRunningHash, true);
-			animator.SetBool(isJumpingHash, true);
-			animator.SetBool(isGroundedHash, false);
-			animator.SetBool(isFallingHash, false);
-		}
-		
-		if (isRunning && !forwardPressed && jumpPressed)
-		{
-			animator.SetBool(isRunningHash, true);
-			animator.SetBool(isJumpingHash, true);
-			animator.SetBool(isGroundedHash, false);
-			animator.SetBool(isFallingHash, false);
-		}
-		
-		//Attack
-		bool attackPressed = Input.GetKey("j");
-		
-		if (attackPressed)
-		{
-			animator.SetBool(isAttackHash, true);
-		}
-		else
-		{
-			animator.SetBool(isAttackHash, false);
-		}
-		
-		if (isJumping && isStop)
-		{
-			animator.SetBool(isStopHash, true);
-		}
-		
-		if (!isStop)
-		{
-			animator.SetBool(isStopHash, false);
-		}
-		
-	}
+    private void SetAnimation(PlayerState state)
+    {
+        switch (state)
+        {
+            case PlayerState.Idle:
+                animator.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
+                break;
+            case PlayerState.Running:
+                animator.SetFloat("Speed", 1);
+                break;
+            case PlayerState.Jumping:
+                break;
+            default:
+                break;
+        }
+    }
 }

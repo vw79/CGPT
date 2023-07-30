@@ -12,7 +12,15 @@ public class EnemyFollow : MonoBehaviour
 
     //speed
     private float speed;
-
+	
+	[SerializeField] private int maxHealth = 100; // Maximum health of the enemy
+    private int currentHealth; // Current health of the enemy
+	
+	void Start()
+    {
+        currentHealth = maxHealth; // Initialize current health to maximum health at the start
+    }
+	
     void Update()
     {
         float distance = Vector3.Distance(transform.position, _targetedObject.position);
@@ -34,5 +42,23 @@ public class EnemyFollow : MonoBehaviour
     private void AI_follow()
     {
         _enemy.SetDestination(_targetedObject.position);
+    }
+	
+	public void TakeDamage(int damageAmount)
+    {
+        // Reduce the enemy's health by the damageAmount
+        currentHealth -= damageAmount;
+
+        // Check if the enemy's health is below or equal to 0
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        // Perform any death logic here (e.g., play death animation, spawn particles, etc.)
+        Destroy(gameObject); // Destroy the enemy object when it dies
     }
 }

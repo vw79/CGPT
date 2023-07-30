@@ -391,6 +391,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  boostedSpeed: 50
+  boostedSpeedDuration: 3
   smoothTime: 0.05
   gravityMultiplier: 3
   jumpPower: 4
@@ -398,6 +400,7 @@ MonoBehaviour:
   secondJumpPower: 0
   dashSpeed: 10
   dashTime: 0.25
+  dashCooldown: 2
 --- !u!143 &100755669
 CharacterController:
   m_ObjectHideFlags: 0
@@ -528,6 +531,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5724886013932824958, guid: b0fbdb49b998fc743bea0eddec140218, type: 3}
   m_PrefabInstance: {fileID: 4154218}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &147225730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1051571768989249988, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+  m_PrefabInstance: {fileID: 1241279070}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &147225733
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147225730}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3003723, y: 0.09195961, z: 1.0142063}
+  m_Center: {x: 0.7962851, y: 1.4112254, z: 0.2454784}
 --- !u!1001 &169701198
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -656,7 +685,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
     m_ActionId: 912c6032-1817-4a3a-a11e-3ed6d45197a0
     m_ActionName: Gameplay/Move[/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
@@ -672,7 +701,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
     m_ActionId: 8eeba032-cc82-41dc-a164-64ec819544c5
     m_ActionName: Gameplay/Jump[/Keyboard/space]
   - m_PersistentCalls:
@@ -688,11 +717,23 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
     m_ActionId: 6c8a2be3-0781-446f-99e9-ce45c6fc19a8
     m_ActionName: Gameplay/Dash[/Mouse/middleButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1857535777}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_ActionId: 973df9db-d187-4abc-acf9-957d6a7c3bb5
     m_ActionName: Gameplay/Attack[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
@@ -840,6 +881,7 @@ MonoBehaviour:
   _enemy: {fileID: 197138232}
   detectionRange: 10
   attackRange: 5
+  maxHealth: 100
 --- !u!54 &197138231
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1701,6 +1743,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Full Outer Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 2683352683810000966, guid: 55ab15d86f8e2874aa5d4e30d181045b, type: 3}
+      propertyPath: m_TagString
+      value: TrapDoor
+      objectReference: {fileID: 0}
     - target: {fileID: 3348144436178995964, guid: 55ab15d86f8e2874aa5d4e30d181045b, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -1761,6 +1807,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5757c2d3a8d24d244aac7f2e33a58c32, type: 2}
+    - target: {fileID: 6930322561535139984, guid: 55ab15d86f8e2874aa5d4e30d181045b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2027,6 +2077,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7764487651825262745, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_Name
+      value: Paladin_J_Nordstrom_Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: -3685692520585564748, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_Name
+      value: Paladin_J_Nordstrom_Helmet
+      objectReference: {fileID: 0}
+    - target: {fileID: -1283408554089789195, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_Name
+      value: Paladin_J_Nordstrom
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_Name
       value: Paladin WProp J Nordstrom
@@ -2034,6 +2096,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051571768989249988, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_Name
+      value: Paladin_J_Nordstrom_Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051571768989249988, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_TagString
+      value: Sword
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_Controller
@@ -2049,6 +2119,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1857535776}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1857535779}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       insertIndex: -1
@@ -2058,10 +2131,13 @@ PrefabInstance:
       addedObject: {fileID: 1857535777}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1857535776}
+      addedObject: {fileID: 1857535775}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1857535775}
+      addedObject: {fileID: 1857535781}
+    - targetCorrespondingSourceObject: {fileID: 1051571768989249988, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 147225733}
   m_SourcePrefab: {fileID: 100100000, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
 --- !u!1 &1249270645
 GameObject:
@@ -2322,13 +2398,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  boostedSpeed: 50
+  boostedSpeedDuration: 3
   smoothTime: 0.05
   gravityMultiplier: 1
   jumpPower: 4
   maxNumberOfJumps: 2
   secondJumpPower: 5
-  dashSpeed: 3
+  dashSpeed: 5
   dashTime: 0.25
+  dashCooldown: 2
 --- !u!143 &1857535778
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2378,6 +2457,18 @@ CapsuleCollider:
   m_Height: 1.7731862
   m_Direction: 1
   m_Center: {x: 1.7519786e-16, y: 0.8482058, z: 0.043578446}
+--- !u!114 &1857535781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857535773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb9fde3e14e9f745ae51ebe04b685e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1872421176
 GameObject:
   m_ObjectHideFlags: 0
