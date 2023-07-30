@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _input;
     private CharacterController _characterController;
     private Vector3 _direction;
+	private Vector3 _lastValidDirection;
 
     [SerializeField] private float speed = 10f;
     [SerializeField] private float boostedSpeed = 50f;
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+		Debug.Log("Current Direction: " + _direction);
         ApplyRotation();
         ApplyMovement();
         ApplyGravity();
@@ -56,19 +58,32 @@ Movement
 ========*/
     private void ApplyMovement()
     {
-		if (isAttacking) return;
-        _characterController.Move(_direction * speed * Time.deltaTime);
+		//if (isAttacking) return;
+        //_characterController.Move(_direction * speed * Time.deltaTime);
+		Vector3 moveDirection = new Vector3(_direction.x, _velocity, _direction.z);
+		_characterController.Move(moveDirection * speed * Time.deltaTime);
     }
 
     private void ApplyRotation()
     {
 		if (!canRotate) return;
-		
-        if (_input.sqrMagnitude == 0) return;
-        var targetAngle = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg;
-        var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _currentVelocity, smoothTime);
-        transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
-    }
+
+		float targetAngle;
+
+		// Update target angle only when there's input
+		if (_input.sqrMagnitude != 0)
+		{
+			targetAngle = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg;
+		}
+		else
+		{
+			targetAngle = transform.eulerAngles.y;  // Use the current rotation angle
+		}
+
+		var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _currentVelocity, smoothTime);
+		transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
+	}
+
 
     private void ApplyGravity()
     {
@@ -80,16 +95,31 @@ Movement
         {
             _velocity += _gravity * gravityMultiplier * Time.deltaTime;
         }
-
-        _direction.y = _velocity;
     }
 
     public void Move(InputAction.CallbackContext context)
-    {
-        _input = context.ReadValue<Vector2>();
-        _direction = new Vector3(_input.x, 0f, 0f);
-		playerStateMachine.Running();
-    }
+	{
+		_input = context.ReadValue<Vector2>();
+
+		if (context.canceled)
+		{
+			_direction = Vector3.zero;
+			playerStateMachine.Idle();
+		}
+		else
+		{
+			_direction = new Vector3(_input.x, 0f, _input.y);  // Assuming you want to use _input.y for the Z-axis
+
+			// Update _lastValidDirection when there's valid input
+			if (_input != Vector2.zero)
+			{
+				_lastValidDirection = _direction;  // Use the current _direction as the last valid direction
+			}
+
+			playerStateMachine.Running();
+		}
+	}
+
 
 /*========
 Jump

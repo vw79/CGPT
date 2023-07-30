@@ -28,7 +28,7 @@ public class AnimationController : MonoBehaviour
         switch (state)
         {
             case PlayerState.Idle:
-                animator.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
+                animator.SetFloat("Speed", 0);
                 break;
             case PlayerState.Running:
                 animator.SetFloat("Speed", 1);

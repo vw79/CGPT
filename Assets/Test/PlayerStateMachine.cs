@@ -25,6 +25,12 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     // Call this method when the player attacks
+    public void Idle()
+    {
+        ChangeState(PlayerState.Idle);
+    }
+	
+    // Call this method when the player attacks
     public void Running()
     {
         ChangeState(PlayerState.Running);
