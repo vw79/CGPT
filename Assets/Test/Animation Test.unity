@@ -401,6 +401,17 @@ MonoBehaviour:
   dashSpeed: 10
   dashTime: 0.25
   dashCooldown: 2
+  attackAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  comboCount: 0
+  comboWindow: 1
 --- !u!143 &100755669
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2111,7 +2122,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: c3dd44bb1634194458f24517d989ef25, type: 2}
     - target: {fileID: 5866666021909216657, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_UpdateMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_ApplyRootMotion
@@ -2412,6 +2423,17 @@ MonoBehaviour:
   dashSpeed: 5
   dashTime: 0.25
   dashCooldown: 2
+  attackAction:
+    m_Name: Attack
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c357dfa5-7d5b-4b38-aac7-617afd9fcda3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  comboCount: 0
+  comboWindow: 1
 --- !u!143 &1857535778
 CharacterController:
   m_ObjectHideFlags: 0

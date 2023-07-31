@@ -7,6 +7,10 @@ public enum PlayerState
     Idle,
     Running,
     Jumping,
+	Attacking,
+	AttackingCombo1,
+	AttackingCombo2,
+	AttackingCombo3,
 }
 
 public class PlayerStateMachine : MonoBehaviour
@@ -22,6 +26,8 @@ public class PlayerStateMachine : MonoBehaviour
 
         // Enter the new state
         currentState = newState;
+		Debug.Log("State changed to: " + currentState);
+
     }
 
     // Call this method when the player attacks
@@ -43,9 +49,20 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     // Call this method when the player attacks
-    public void Attack()
+    public void Attack(int comboCount)
     {
-        return;
+        switch (comboCount)
+		{
+			case 1:
+				ChangeState(PlayerState.AttackingCombo1);
+				break;
+			case 2:
+				ChangeState(PlayerState.AttackingCombo2);
+				break;
+			case 3:
+				ChangeState(PlayerState.AttackingCombo3);
+				break;
+		}
     }
 	
     public PlayerState GetCurrentState()

@@ -14,14 +14,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 10f;
     [SerializeField] private float boostedSpeed = 50f;
     [SerializeField] private float boostedSpeedDuration = 3f;
-
+	
     [SerializeField] private float smoothTime = 0.05f;
     private float _currentVelocity;
 
     private float _gravity = -9.81f;
     [SerializeField] private float gravityMultiplier = 3.0f;
     private float _velocity;
-
+	
     private bool IsGrounded() => _characterController.isGrounded;
 
     [SerializeField] private float jumpPower;
@@ -34,11 +34,22 @@ public class PlayerController : MonoBehaviour
 	private bool canDash = true;
     [SerializeField] private float dashCooldown = 2.0f;
 
-    private bool isAttacking = false;
-    private bool canRotate = true;
+	private bool isAttacking = false;
+    [SerializeField] private InputAction attackAction;
+	public int comboCount = 0;
+	private float comboResetTime = 1f;  // Time after which the combo count resets if no subsequent attacks are made.
+	private float lastAttackTime;
+	[SerializeField] private float comboWindow = 1f; // The time within which next attack should be registered for combo.
+	private bool inComboWindow = false;
 
     private PlayerStateMachine playerStateMachine;
+	
+	private Vector3 _pendingDirection = Vector3.zero;
+	private bool _directionChanged = false;
+	private Vector3 _lastDirectionBeforeAttack = Vector3.zero;
+	private Vector3 _intendedDirectionAfterAttack = Vector3.zero;
 
+	
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -47,27 +58,33 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-		Debug.Log("Current Direction: " + _direction);
-        ApplyRotation();
-        ApplyMovement();
         ApplyGravity();
+		ApplyRotation();
+		if (!isAttacking)
+		{
+			
+			ApplyMovement();
+		}
+		
+		if (Time.time - lastAttackTime > comboResetTime && comboCount > 0)
+		{
+			comboCount = 0;
+		}
     }
 
 /*========
 Movement
 ========*/
     private void ApplyMovement()
+	
     {
-		//if (isAttacking) return;
-        //_characterController.Move(_direction * speed * Time.deltaTime);
 		Vector3 moveDirection = new Vector3(_direction.x, _velocity, _direction.z);
 		_characterController.Move(moveDirection * speed * Time.deltaTime);
     }
 
     private void ApplyRotation()
-    {
-		if (!canRotate) return;
-
+	{
+		if (isAttacking) return;  // Skip rotation if attacking
 		float targetAngle;
 
 		// Update target angle only when there's input
@@ -80,8 +97,16 @@ Movement
 			targetAngle = transform.eulerAngles.y;  // Use the current rotation angle
 		}
 
-		var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _currentVelocity, smoothTime);
-		transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
+		if (_directionChanged)
+		{
+			transform.rotation = Quaternion.Euler(0.0f, targetAngle, 0.0f);
+			_directionChanged = false;
+		}
+		else
+		{
+			var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _currentVelocity, smoothTime);
+			transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
+		}
 	}
 
 
@@ -99,7 +124,22 @@ Movement
 
     public void Move(InputAction.CallbackContext context)
 	{
-		_input = context.ReadValue<Vector2>();
+		
+		Vector2 newInput = context.ReadValue<Vector2>();
+
+		if (isAttacking)
+		{
+			// Store the intended direction but don't apply it
+			_intendedDirectionAfterAttack = new Vector3(newInput.x, 0f, newInput.y);
+			return;
+		}
+
+		if (_input != newInput)
+		{
+			_directionChanged = true;
+		}
+
+		_input = newInput;
 
 		if (context.canceled)
 		{
@@ -115,9 +155,14 @@ Movement
 			{
 				_lastValidDirection = _direction;  // Use the current _direction as the last valid direction
 			}
+			else
+			{
+				_direction = Vector3.zero;  // Reset direction when there's no current input
+			}
 
 			playerStateMachine.Running();
 		}
+		//Debug.Log("Move function called with direction: " + _direction);
 	}
 
 
@@ -184,20 +229,59 @@ Attack
 ========*/
 	public void Attack(InputAction.CallbackContext context)
 	{
-	    if (!context.started) return;
-		if (!isAttacking)
-		{
+		if (!context.started) return;
+		
+		if (!isAttacking || comboCount < 3)
+		{	
+	Debug.Log(comboCount.ToString());
 			isAttacking = true;
-			canRotate = false;
-			StartCoroutine(EndAttack());
-			playerStateMachine.Attack();
+			_lastDirectionBeforeAttack = _direction;  // Store the current direction
+			
+			comboCount++;
+			if (comboCount > 3) // If combo count exceeds the max combos, reset.
+			{
+				comboCount = 1;
+			}
+
+			lastAttackTime = Time.time;
+			playerStateMachine.Attack(comboCount);
+
+			if (!inComboWindow)
+			{
+				StartCoroutine(ComboTimer());
+			}
+
+			// Start the EndAttack coroutine after a delay.
+			// Here, I'm using 1 second as an example, but you should replace this with the duration of your attack animation.
+			StartCoroutine(EndAttack()); // Replace 1.0f with your attack animation duration
+			//Debug.Log("Move function called with direction: " + _direction);
 		}
 	}
 	
 	private IEnumerator EndAttack()
 	{
-		yield return new WaitForSeconds(2.5f);
-		isAttacking = false;
-		canRotate = true;
+		// Adjust this value to control how long the player must wait before initiating the next attack.
+		yield return new WaitForSeconds(1.0f); // Replace with your desired attack duration or a bit less.
+
+		if (_intendedDirectionAfterAttack != Vector3.zero) 
+		{
+			_direction = _intendedDirectionAfterAttack; // Apply the intended direction
+			_intendedDirectionAfterAttack = Vector3.zero;  // Reset the intended direction
+		}
+		else if (_direction == Vector3.zero)
+		{
+			playerStateMachine.Idle();  // Set state to Idle if no movement input
+		}
+
+		isAttacking = false;  // Reset the flag when the attack ends
+		//Debug.Log("Move function called with direction: " + _direction);
+	}
+	
+	private IEnumerator ComboTimer()
+	{
+		inComboWindow = true;
+		yield return new WaitForSeconds(comboWindow);
+		comboCount = 0;
+		inComboWindow = false;
 	}
 }
