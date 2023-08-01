@@ -59,10 +59,9 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         ApplyGravity();
-		ApplyRotation();
 		if (!isAttacking)
 		{
-			
+			ApplyRotation();
 			ApplyMovement();
 		}
 		
@@ -127,10 +126,19 @@ Movement
 		
 		Vector2 newInput = context.ReadValue<Vector2>();
 
-		if (isAttacking)
+        if (context.canceled)
+        {
+            _direction = Vector3.zero;
+			_intendedDirectionAfterAttack = Vector3.zero;
+            playerStateMachine.Idle();
+            return;
+        }
+
+        if (isAttacking)
 		{
 			// Store the intended direction but don't apply it
 			_intendedDirectionAfterAttack = new Vector3(newInput.x, 0f, newInput.y);
+			_direction = new Vector3(_input.x, 0f, _input.y);
 			return;
 		}
 
@@ -141,27 +149,20 @@ Movement
 
 		_input = newInput;
 
-		if (context.canceled)
+
+		_direction = new Vector3(_input.x, 0f, _input.y);  // Assuming you want to use _input.y for the Z-axis
+
+		// Update _lastValidDirection when there's valid input
+		if (_input != Vector2.zero)
 		{
-			_direction = Vector3.zero;
-			playerStateMachine.Idle();
+			_lastValidDirection = _direction;  // Use the current _direction as the last valid direction
 		}
 		else
 		{
-			_direction = new Vector3(_input.x, 0f, _input.y);  // Assuming you want to use _input.y for the Z-axis
-
-			// Update _lastValidDirection when there's valid input
-			if (_input != Vector2.zero)
-			{
-				_lastValidDirection = _direction;  // Use the current _direction as the last valid direction
-			}
-			else
-			{
-				_direction = Vector3.zero;  // Reset direction when there's no current input
-			}
-
-			playerStateMachine.Running();
+			_direction = Vector3.zero;  // Reset direction when there's no current input
 		}
+
+		playerStateMachine.Running();
 		//Debug.Log("Move function called with direction: " + _direction);
 	}
 
@@ -233,7 +234,6 @@ Attack
 		
 		if (!isAttacking || comboCount < 3)
 		{	
-	Debug.Log(comboCount.ToString());
 			isAttacking = true;
 			_lastDirectionBeforeAttack = _direction;  // Store the current direction
 			
@@ -267,7 +267,8 @@ Attack
 		{
 			_direction = _intendedDirectionAfterAttack; // Apply the intended direction
 			_intendedDirectionAfterAttack = Vector3.zero;  // Reset the intended direction
-		}
+			playerStateMachine.Running();
+        }
 		else if (_direction == Vector3.zero)
 		{
 			playerStateMachine.Idle();  // Set state to Idle if no movement input

@@ -63,12 +63,20 @@ public class AnimationController : MonoBehaviour
 			case PlayerState.Running:
 				StopAllCoroutines();
 				StartCoroutine(SmoothSetSpeed(1, 0.1f));
-				break;
+                break;
 			case PlayerState.Jumping:
-				break;
+                break;
 			case PlayerState.AttackingCombo1:
-			case PlayerState.AttackingCombo2:
-			case PlayerState.AttackingCombo3:
+                StopAllCoroutines();
+                animator.SetInteger("ComboCount", playerController.comboCount);
+                animator.SetBool("Attack",true);
+				break;
+            case PlayerState.AttackingCombo2:
+                StopAllCoroutines();
+                animator.SetInteger("ComboCount", playerController.comboCount);
+                animator.SetTrigger("Attack");
+                break;
+            case PlayerState.AttackingCombo3:
 				StopAllCoroutines();
 				animator.SetInteger("ComboCount", playerController.comboCount);
 				animator.SetTrigger("Attack");

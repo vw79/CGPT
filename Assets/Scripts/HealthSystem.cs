@@ -47,15 +47,17 @@ public class HealthSystem : MonoBehaviour
 
     public void GradHeal(float hp, int seconds)
     {
-        StartCoroutine(Regen(hp,seconds));
+        float hps = hp / seconds;
+        Heal(hps);
+        StartCoroutine(Regen(hps,seconds - 1));
     }
 
-    public IEnumerator Regen(float hp, int seconds)
+    public IEnumerator Regen(float hps, int seconds)
     {
         for(int i = 0; i < seconds; i++)
         {
             yield return new WaitForSeconds(1);
-            Heal(hp/seconds);
+            Heal(hps);
         }
     }
 }

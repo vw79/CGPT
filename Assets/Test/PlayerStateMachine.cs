@@ -26,7 +26,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         // Enter the new state
         currentState = newState;
-		Debug.Log("State changed to: " + currentState);
+		//Debug.Log("State changed to: " + currentState);
 
     }
 
