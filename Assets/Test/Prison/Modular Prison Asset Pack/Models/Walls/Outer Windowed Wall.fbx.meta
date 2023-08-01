@@ -1,19 +1,19 @@
 fileFormatVersion: 2
 guid: ce4d3f7d3900a3b45983e494dfd1d7b8
 ModelImporter:
-  serializedVersion: 21300
+  serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Bars
-    second: {fileID: 2100000, guid: 745bd829de7127e41be93ee5117f805a, type: 2}
+    second: {fileID: 2100000, guid: 7eba6333130e4d543b484729b90bae25, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wall
-    second: {fileID: 2100000, guid: 7ea89303b5e4d9646b1b18a154bf02ed, type: 2}
+    second: {fileID: 2100000, guid: 336ee842d08569e459bad15232def07b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -50,6 +50,7 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -77,6 +78,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -109,6 +111,7 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 0
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
