@@ -7,6 +7,8 @@ public enum PlayerState
     Idle,
     Running,
     Jumping,
+    Jumping2,
+    ForwardJumping,
 	Attacking,
 	AttackingCombo1,
 	AttackingCombo2,
@@ -48,11 +50,22 @@ public class PlayerStateMachine : MonoBehaviour
         ChangeState(PlayerState.Jumping);
     }
 
-    // Call this method when the player attacks
-    public void Attack(int comboCount)
+    public void Jump2()
     {
-        switch (comboCount)
-		{
+        ChangeState(PlayerState.Jumping2);
+    }
+
+    public void ForwardJump()
+    {
+
+        ChangeState(PlayerState.ForwardJumping);
+    }
+
+    // Call this method when the player attacks
+    public void Attack(int comboC)
+    {
+        switch (comboC)
+		{           
 			case 1:
 				ChangeState(PlayerState.AttackingCombo1);
 				break;
