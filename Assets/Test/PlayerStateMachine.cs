@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum PlayerState
@@ -9,10 +7,10 @@ public enum PlayerState
     Jumping,
     Jumping2,
     ForwardJumping,
-	Attacking,
-	AttackingCombo1,
-	AttackingCombo2,
-	AttackingCombo3,
+    Attacking,
+    AttackingCombo1,
+    AttackingCombo2,
+    AttackingCombo3,
 }
 
 public class PlayerStateMachine : MonoBehaviour
@@ -22,29 +20,19 @@ public class PlayerStateMachine : MonoBehaviour
     public void ChangeState(PlayerState newState)
     {
         if (currentState == newState) return;
-
-        // Exit the current state (if needed)
-        // No exit behavior for now, but can be added if needed in the future.
-
-        // Enter the new state
         currentState = newState;
-		//Debug.Log("State changed to: " + currentState);
-
     }
 
-    // Call this method when the player attacks
     public void Idle()
     {
         ChangeState(PlayerState.Idle);
     }
-	
-    // Call this method when the player attacks
+
     public void Running()
     {
         ChangeState(PlayerState.Running);
     }
-	
-    // Call this method when the player jumps
+
     public void Jump()
     {
         ChangeState(PlayerState.Jumping);
@@ -57,27 +45,24 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void ForwardJump()
     {
-
         ChangeState(PlayerState.ForwardJumping);
     }
 
-    // Call this method when the player attacks
-    public void Attack(int comboC)
+    public void Attack1()
     {
-        switch (comboC)
-		{           
-			case 1:
-				ChangeState(PlayerState.AttackingCombo1);
-				break;
-			case 2:
-				ChangeState(PlayerState.AttackingCombo2);
-				break;
-			case 3:
-				ChangeState(PlayerState.AttackingCombo3);
-				break;
-		}
+        ChangeState(PlayerState.AttackingCombo1);
     }
-	
+
+    public void Attack2()
+    {
+        ChangeState(PlayerState.AttackingCombo2);
+    }
+
+    public void Attack3()
+    {
+        ChangeState(PlayerState.AttackingCombo3);
+    }
+
     public PlayerState GetCurrentState()
     {
         return currentState;

@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerCon : MonoBehaviour
 {
     public CharacterController controller;
     private PlayerStateMachine playerStateMachine;
-    private Animator animator;
 
+    private float lastDirection = 1f; // 1 for right, -1 for left
     public float speed = 12f;
 
     public float gravity = -30f;
@@ -26,78 +25,69 @@ public class PlayerCon : MonoBehaviour
     private float dashEndTime; // Time when the current dash will end
     public float dashCooldown = 2f; // Time player has to wait after a dash to dash again
     private float nextDashTime; // Time when the player can next dash
-    private bool isDashing = false;// To check if the player is currently dashing
+    private bool isDashing = false; // To check if the player is currently dashing
 
-    public bool IsAttacking { get; private set; } = false;
-    
-
-    public int comboC = 0; // To keep track of combo attacks
-    private float comboResetTime = 0.8f; // Time after which the combo resets if no subsequent attack is made
-    private float lastAttackTime; // Time the last attack was made
+    private Queue<int> attackQueue = new Queue<int>(); // To store the attack sequence
+    public float attackRate = 5f; // Time player has to wait after an attack to attack again
+    private float nextAttackTime; // Time when the player can next attack
+    private bool isAttacking = false; // To check if the player is currently attacking
+    private int attackComboCount = 0; // To track the combo sequence
+    public float comboResetTime = 2f; // Time after which the combo sequence resets
+    private float lastAttackTime; // Time of the last attack
 
     private void Awake()
     {
         playerStateMachine = GetComponent<PlayerStateMachine>();
-        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        // Get input and move player
-        MovePlayer();
-
-        // Apply gravity
         ApplyGravity();
-
-        HandleAttack();
-
-        // Handle jumping
+        MovePlayer();
         HandleJump();
-
         HandleDash();
+        HandleAttack();
     }
 
     private void MovePlayer()
     {
-        bool isJumpPressed = Input.GetButtonDown("Jump");
+        float x = Input.GetAxisRaw("Horizontal");
+        Vector3 direction = new Vector3(x, 0f, 0f);
+        RotatePlayer(direction);
 
-        if (Input.GetKey(KeyCode.A))
+        controller.Move(direction * speed * Time.deltaTime);
+
+        if (direction.x != 0)
         {
-            Vector3 direction = new Vector3(-1, 0f, 0f);
-            RotatePlayer(direction);
-            controller.Move(direction * speed * Time.deltaTime);
-            if (isJumpPressed)
+            ResetComboCounter();
+            if (Input.GetButtonDown("Jump"))
                 playerStateMachine.ForwardJump();
             else
-                playerStateMachine.Running(); // Change state to running
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            Vector3 direction = new Vector3(1, 0f, 0f);
-            RotatePlayer(direction);
-            controller.Move(direction * speed * Time.deltaTime);
-            if (isJumpPressed)
-                playerStateMachine.ForwardJump();
-            else
-                playerStateMachine.Running(); // Change state to running
+                playerStateMachine.Running();
         }
         else
         {
-            if (isJumpPressed)
+            if (Input.GetButtonDown("Jump"))
                 playerStateMachine.Jump();
             else
-                playerStateMachine.Idle(); // Change state to idle
+                playerStateMachine.Idle();
         }
     }
 
     private void RotatePlayer(Vector3 direction)
     {
-        if (IsAttacking) return; // Don't rotate if player is attacking
+        if (direction.x < 0)
+        {
+            lastDirection = -1f;
+        }
+        else if (direction.x > 0)
+        {
+            lastDirection = 1f;
+        }
 
-        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+        float targetAngle = lastDirection == 1f ? 90f : -90f;
         transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
     }
-
 
     private void ApplyGravity()
     {
@@ -120,66 +110,23 @@ public class PlayerCon : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && jumpCount < maxJumpCount)
         {
+            ResetComboCounter();
             jumpCount++;
+            float jumpPower = jumpCount == 1 ? firstJumpPower : secondJumpPower;
+            verticalVelocity = Mathf.Sqrt(jumpPower * -2f * gravity);
 
             if (jumpCount == 1)
-            {
-                verticalVelocity = Mathf.Sqrt(firstJumpPower * -2f * gravity);
-                playerStateMachine.Jump(); // Change state to jumping for the first jump
-            }
-            else if (jumpCount == 2)
-            {
-                verticalVelocity = Mathf.Sqrt(secondJumpPower * -2f * gravity);
-                playerStateMachine.Jump2(); // Change state to Jump2 for the second jump
-            }
+                playerStateMachine.Jump();
+            else
+                playerStateMachine.Jump2();
         }
     }
-
-    private void HandleAttack()
-    {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            // If enough time has passed since the last attack, reset combo
-            if (Time.time - lastAttackTime > comboResetTime)
-            {
-                comboC = 0;
-                Debug.Log("hi");
-            }
-
-            if (comboC < 3) // Assuming max 3 combo attacks
-            {
-                comboC++;
-            }
-
-            //Debug.Log("Combo: " + comboC);
-
-            playerStateMachine.Attack(comboC);
-            lastAttackTime = Time.time;
-
-            // Set IsAttacking to true when player starts attacking
-            IsAttacking = true;
-
-
-            // Get the duration of the current attack animation
-            float animationDuration = animator.GetCurrentAnimatorStateInfo(0).length;
-            StartCoroutine(ResetAttackStatus(animationDuration));
-        }
-    }
-
-    private IEnumerator ResetAttackStatus(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        IsAttacking = false;
-        Debug.Log("Attack ended");
-    }
-
-
 
     private void HandleDash()
     {
         if (Input.GetKeyDown(KeyCode.K) && Time.time > nextDashTime)
         {
+            ResetComboCounter();
             StartDash();
         }
 
@@ -205,11 +152,8 @@ public class PlayerCon : MonoBehaviour
 
     private void DashMovement()
     {
-        // Here, I'm assuming you dash in the direction the player is currently moving.
-        // Adjust as needed based on your game's mechanics.
         float x = Input.GetAxisRaw("Horizontal");
         Vector3 dashDirection = new Vector3(x, 0f, 0f).normalized;
-
         controller.Move(dashDirection * dashSpeed * Time.deltaTime);
     }
 
@@ -218,4 +162,78 @@ public class PlayerCon : MonoBehaviour
         isDashing = false;
     }
 
+
+    private void HandleAttack()
+    {
+        if (Time.time > nextAttackTime && Input.GetKeyDown(KeyCode.J))
+        {
+            // Check if we need to reset the combo based on the last attack time
+            if (Time.time - lastAttackTime > comboResetTime && attackQueue.Count == 0)
+            {
+                ResetComboCounter();
+            }
+
+            // Enqueue the attack if we're below the maximum combo count
+            if (attackComboCount < 3)  // Assuming a 3-attack combo
+            {
+                attackComboCount++;
+                attackQueue.Enqueue(attackComboCount);
+            }
+
+            // If not currently attacking, handle the next attack in the queue
+            if (!isAttacking)
+            {
+                HandleNextAttackInQueue();
+            }
+
+            lastAttackTime = Time.time;
+
+            // Start the combo reset timer
+            StartCoroutine(ComboResetTimer());
+        }
+    }
+
+    private IEnumerator ComboResetTimer()
+    {
+        yield return new WaitForSeconds(comboResetTime);
+        if (Time.time - lastAttackTime >= comboResetTime)
+        {
+            ResetComboCounter();
+        }
+    }
+
+    private void ResetComboCounter()
+    {
+        attackComboCount = 0;
+        attackQueue.Clear();
+    }
+
+    public void HandleNextAttackInQueue()
+    {
+        if (attackQueue.Count > 0)
+        {
+            int nextAttack = attackQueue.Dequeue();
+
+            switch (nextAttack)
+            {
+                case 1:
+                    playerStateMachine.Attack1();
+                    break;
+                case 2:
+                    playerStateMachine.Attack2();
+                    break;
+                case 3:
+                    playerStateMachine.Attack3();
+                    ResetComboCounter(); // Reset after third combo
+                    break;
+            }
+
+            isAttacking = true;
+            nextAttackTime = Time.time + 1f / attackRate;
+        }
+        else
+        {
+            isAttacking = false;
+        }
+    }
 }

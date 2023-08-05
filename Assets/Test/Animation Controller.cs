@@ -1,9 +1,7 @@
-using System.Collections;
 using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
-	private PlayerCon playerController;
     private Animator animator;
     private PlayerStateMachine playerStateMachine;
     private PlayerState previousState;
@@ -12,7 +10,11 @@ public class AnimationController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         playerStateMachine = GetComponent<PlayerStateMachine>();
-		playerController = GetComponent<PlayerCon>();
+    }
+
+    public void OnAttackAnimationFinished()
+    {
+        GetComponent<PlayerCon>().HandleNextAttackInQueue();
     }
 
     private void Update()
@@ -24,42 +26,45 @@ public class AnimationController : MonoBehaviour
             SetAnimation(currentState);
             previousState = currentState;
         }
+
+        // If the attack animation is finished, return player to Idle state
+        if (previousState == PlayerState.AttackingCombo1 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            playerStateMachine.Idle();
+        }
     }
-		
+
+
     private void SetAnimation(PlayerState state)
     {
         switch (state)
-		{
-			case PlayerState.Idle:
-                float randomSpeed = Random.Range(0f, 0.25f);
-                animator.SetFloat("Speed", randomSpeed);
+        {
+            case PlayerState.Idle:
+                animator.SetFloat("Speed", Time.frameCount % 2 == 0 ? 0f : 0.25f);
                 break;
-			case PlayerState.Running:
+            case PlayerState.Running:
                 animator.SetFloat("Speed", 0.5f);
                 break;
-			case PlayerState.Jumping:
-                animator.Play("JumpUp");
+            case PlayerState.Jumping:
+                animator.CrossFade("JumpUp", 0.1f);
                 break;
             case PlayerState.Jumping2:
-                animator.Play("JumpUp2");
+                animator.CrossFade("JumpUp2", 0.1f);
                 break;
             case PlayerState.ForwardJumping:
-                animator.Play("JumpForward");
+                animator.CrossFade("JumpForward", 0.1f);
                 break;
             case PlayerState.AttackingCombo1:
-                animator.SetInteger("ComboCount", playerController.comboC);
-                animator.SetBool("Attack",true);
-				break;
+                animator.CrossFade("Combo1",0.1f);
+                break;
             case PlayerState.AttackingCombo2:
-                animator.SetInteger("ComboCount", playerController.comboC);
-                animator.SetTrigger("Attack");
+                animator.CrossFade("Combo2", 0.1f);
                 break;
             case PlayerState.AttackingCombo3:
-				animator.SetInteger("ComboCount", playerController.comboC);
-				animator.SetTrigger("Attack");
-				break;
-			default:
-				break;
-		}
+                animator.CrossFade("Combo3", 0.1f);
+                break;
+            default:
+                break;
+        }
     }
 }
