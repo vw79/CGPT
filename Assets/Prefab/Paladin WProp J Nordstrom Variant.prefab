@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6551560379840599035
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7764487651825262745, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_Name
+      value: Paladin_J_Nordstrom_Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: -3685692520585564748, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_Name
+      value: Paladin_J_Nordstrom_Helmet
+      objectReference: {fileID: 0}
+    - target: {fileID: -1283408554089789195, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_Name
+      value: Paladin_J_Nordstrom
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_Name
+      value: Paladin WProp J Nordstrom Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051571768989249988, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_Name
+      value: Paladin_J_Nordstrom_Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e59e354a365d2b741ae66fc915ddb4b3, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2827032767178963378}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1145143131709338715}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8006755705233351002}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2957521995142397470}
+  m_SourcePrefab: {fileID: 100100000, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+--- !u!1 &6208978058462965418 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+  m_PrefabInstance: {fileID: 6551560379840599035}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &2827032767178963378
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208978058462965418}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.79
+  m_Radius: 0.38
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.91, z: 0}
+--- !u!114 &1145143131709338715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208978058462965418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0268fcda8936e9a44b46f1439f1ae406, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8006755705233351002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208978058462965418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474527161ab1a9246b961414710374ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 2827032767178963378}
+  speed: 12
+  gravity: -30
+  terminalVelocity: -50
+  maxJumpCount: 2
+  firstJumpPower: 2
+  secondJumpPower: 1.5
+  dashSpeed: 20
+  dashTime: 0.2
+  dashCooldown: 2
+  attackRate: 5
+  comboResetTime: 2
+--- !u!114 &2957521995142397470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208978058462965418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb9fde3e14e9f745ae51ebe04b685e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
