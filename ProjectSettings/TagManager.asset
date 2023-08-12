@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Sword
   - TrapDoor
+  - enemy
+  - groundDestroy
   layers:
   - Default
   - TransparentFX

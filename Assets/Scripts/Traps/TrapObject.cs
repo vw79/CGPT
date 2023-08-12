@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 // PRECONDITION
 // trap object must have "boxcollider" property to use this script.
-[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(SphereCollider))]
 
 public class TrapObject : MonoBehaviour
 {
@@ -14,18 +14,32 @@ public class TrapObject : MonoBehaviour
     private void Reset()
     {
         // its box collider's "istrigger" will be automatically set to true.
-        GetComponent<BoxCollider>().isTrigger = true;
+        GetComponent<SphereCollider>().isTrigger = true;
     }
 
     [SerializeField] private float trap_DamageMade = 50f;
     private HealthSystem playerHealth;
 
+    [SerializeField] bool groundDestroy = true;
+
+
 
     // FUNCTION
     private void OnTriggerEnter(Collider other)
     {
-        // if player touched the trap object, ...
-        if(other.tag == "Player")
+        // Check if the other collider is not a trigger
+        if (!other.isTrigger)
+        {
+            // Prevent the other collider from passing through
+            Rigidbody rb = other.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.velocity = Vector3.zero;
+            }
+        }
+
+            // if player touched the trap object, ...
+            if (other.tag == "Player")
         {
             Debug.Log($"{name} Triggered");
 
@@ -34,6 +48,11 @@ public class TrapObject : MonoBehaviour
 
             // player return back to the checkpoint
             //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (other.tag == "groundDestroy" && groundDestroy == true)
+        {
+            Destroy(gameObject);
         }
     }
 }

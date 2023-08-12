@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -32,8 +33,10 @@ public class HealthSystem : MonoBehaviour
         current_health -= damage;
         if (current_health <= 0)
         {
-          //  gameObject.SetActive(false);
-           // DisableComponents();
+            //  gameObject.SetActive(false);
+            // DisableComponents();
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // (xiu zhen added) return back to checkpoint
         }
     }
 
