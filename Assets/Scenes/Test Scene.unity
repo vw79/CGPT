@@ -507,22 +507,40 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 129449534137096666, guid: 0d7654b3e2e4d9f4597d8640e1072dae, type: 3}
   m_PrefabInstance: {fileID: 1839474069055573755}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &664329585 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2395861917981431470, guid: 0d7654b3e2e4d9f4597d8640e1072dae, type: 3}
-  m_PrefabInstance: {fileID: 1839474069055573755}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 664329583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3f682660abe69b4588656c2d197b129, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &664329590 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8934157547224130399, guid: 0d7654b3e2e4d9f4597d8640e1072dae, type: 3}
   m_PrefabInstance: {fileID: 1839474069055573755}
   m_PrefabAsset: {fileID: 0}
+--- !u!143 &664329592 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 1742167636256060231, guid: 0d7654b3e2e4d9f4597d8640e1072dae, type: 3}
+  m_PrefabInstance: {fileID: 1839474069055573755}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &664329596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664329583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474527161ab1a9246b961414710374ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 664329592}
+  speed: 12
+  gravity: -30
+  terminalVelocity: -50
+  maxJumpCount: 2
+  firstJumpPower: 2
+  secondJumpPower: 1.5
+  dashSpeed: 50
+  dashTime: 0.2
+  dashCooldown: 2
+  attackRate: 5
+  comboResetTime: 2
 --- !u!1 &692918635
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,7 +971,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 664329585}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: Move
         m_Mode: 0
@@ -969,7 +987,7 @@ MonoBehaviour:
     m_ActionName: Gameplay/Move[/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 664329585}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 0
@@ -985,7 +1003,7 @@ MonoBehaviour:
     m_ActionName: Gameplay/Jump[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 664329585}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: Dash
         m_Mode: 0
@@ -1136,10 +1154,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2395861917981431470, guid: 0d7654b3e2e4d9f4597d8640e1072dae, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 129449534137096666, guid: 0d7654b3e2e4d9f4597d8640e1072dae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 664329596}
   m_SourcePrefab: {fileID: 100100000, guid: 0d7654b3e2e4d9f4597d8640e1072dae, type: 3}
 --- !u!1001 &2773555477981335506
 PrefabInstance:
