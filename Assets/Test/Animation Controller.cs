@@ -63,6 +63,9 @@ public class AnimationController : MonoBehaviour
             case PlayerState.AttackingCombo3:
                 animator.CrossFade("Combo3", 0.1f);
                 break;
+            case PlayerState.Dead:
+                animator.SetTrigger("IsDead");
+                break;
             default:
                 break;
         }

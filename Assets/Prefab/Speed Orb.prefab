@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7015049118955387441}
   - component: {fileID: 6078426291267881203}
   - component: {fileID: 4250712574052974743}
-  - component: {fileID: 3947316660507715045}
+  - component: {fileID: 8036593805568183606}
   m_Layer: 0
   m_Name: Speed Orb
   m_TagString: Untagged
@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3898738786066757671
 MeshFilter:
@@ -156,7 +156,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3947316660507715045
+--- !u!114 &8036593805568183606
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,6 +165,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1123881558746940397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f884f68d877866a4dbc194d054df006a, type: 3}
+  m_Script: {fileID: 11500000, guid: 916c2da11120e0841b6ffd286424cb64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

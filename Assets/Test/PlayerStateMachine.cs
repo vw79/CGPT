@@ -11,6 +11,7 @@ public enum PlayerState
     AttackingCombo1,
     AttackingCombo2,
     AttackingCombo3,
+    Dead,
 }
 
 public class PlayerStateMachine : MonoBehaviour
@@ -61,6 +62,11 @@ public class PlayerStateMachine : MonoBehaviour
     public void Attack3()
     {
         ChangeState(PlayerState.AttackingCombo3);
+    }
+
+    public void Death()
+    {
+        ChangeState(PlayerState.Dead);
     }
 
     public PlayerState GetCurrentState()

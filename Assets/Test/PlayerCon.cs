@@ -6,6 +6,7 @@ public class PlayerCon : MonoBehaviour
 {
     public CharacterController controller;
     private PlayerStateMachine playerStateMachine;
+    public HealthSystem healthSystem;
 
     private float lastDirection = 1f; // 1 for right, -1 for left
     public float speed = 12f;
@@ -38,6 +39,7 @@ public class PlayerCon : MonoBehaviour
     private void Awake()
     {
         playerStateMachine = GetComponent<PlayerStateMachine>();
+        healthSystem = GetComponent<HealthSystem>();
     }
 
     void Update()
@@ -47,6 +49,7 @@ public class PlayerCon : MonoBehaviour
         HandleJump();
         HandleDash();
         HandleAttack();
+        CheckDeath();
     }
 
     private void MovePlayer()
@@ -162,6 +165,25 @@ public class PlayerCon : MonoBehaviour
         isDashing = false;
     }
 
+    public void AddSpeed()
+    {
+        speed *= 5f; // Increase speed by 50% as an example.
+        StartCoroutine(ResetSpeedAfterDuration(2f)); // Reset speed after 5 seconds.
+    }
+
+    private IEnumerator ResetSpeedAfterDuration(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        speed /= 5f; // Return speed to original value.
+    }
+
+    private void CheckDeath()
+    {
+        if (healthSystem.GetHealth() <= 0)
+        {
+            playerStateMachine.Death(); 
+        }
+    }
 
     private void HandleAttack()
     {

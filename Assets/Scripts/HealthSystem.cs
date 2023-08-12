@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -31,10 +30,10 @@ public class HealthSystem : MonoBehaviour
     public void TakeDamage(float damage)
     {
         current_health -= damage;
-        if(current_health <= 0)
+        if (current_health <= 0)
         {
-            gameObject.SetActive(false);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);  //(xiu zhen added) player return back to checkpoint
+          //  gameObject.SetActive(false);
+           // DisableComponents();
         }
     }
 
@@ -62,4 +61,18 @@ public class HealthSystem : MonoBehaviour
             Heal(hps);
         }
     }
+
+    private void DisableComponents()
+    {
+        // Disable the PlayerCon script
+        PlayerCon playerCon = GetComponent<PlayerCon>();
+        if (playerCon != null)
+        {
+            playerCon.enabled = false;
+        }
+
+        // Disable the HealthSystem script
+        this.enabled = false;
+    }
+
 }

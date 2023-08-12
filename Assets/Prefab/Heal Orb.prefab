@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2956519268902762488}
   - component: {fileID: 585278106296974386}
   - component: {fileID: 6349330511084521376}
-  - component: {fileID: 3201056148896106696}
   - component: {fileID: 2031661985333253958}
+  - component: {fileID: 6840716231440427491}
   m_Layer: 0
   m_Name: Heal Orb
   m_TagString: Untagged
@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3341864285810177410
 MeshFilter:
@@ -135,18 +135,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3201056148896106696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170008310647992030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02aa91998b8199f4d89f9aca3624299e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &2031661985333253958
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -168,3 +156,15 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.13
   m_Center: {x: 0, y: -0.43, z: 0}
+--- !u!114 &6840716231440427491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170008310647992030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a051f1812fc91e46908355316a95e9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
