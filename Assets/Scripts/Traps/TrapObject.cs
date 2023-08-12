@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +17,8 @@ public class TrapObject : MonoBehaviour
         GetComponent<BoxCollider>().isTrigger = true;
     }
 
+    [SerializeField] private float trap_DamageMade = 50f;
+    private HealthSystem playerHealth;
 
 
     // FUNCTION
@@ -26,8 +29,11 @@ public class TrapObject : MonoBehaviour
         {
             Debug.Log($"{name} Triggered");
 
+            playerHealth = other.GetComponent<HealthSystem>();
+            playerHealth.TakeDamage(trap_DamageMade);
+
             // player return back to the checkpoint
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
