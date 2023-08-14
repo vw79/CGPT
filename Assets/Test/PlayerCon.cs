@@ -7,6 +7,7 @@ public class PlayerCon : MonoBehaviour
     public CharacterController controller;
     private PlayerStateMachine playerStateMachine;
     public HealthSystem healthSystem;
+    public GameObject hitbox;
 
     private float lastDirection = 1f; // 1 for right, -1 for left
     public float speed = 12f;
@@ -21,6 +22,8 @@ public class PlayerCon : MonoBehaviour
     public float firstJumpPower = 2f;
     public float secondJumpPower = 1.5f;
 
+    public float damage = 20f;
+
     public float dashSpeed = 50f; // Speed of the dash
     public float dashTime = 0.2f; // Duration of the dash
     private float dashEndTime; // Time when the current dash will end
@@ -29,7 +32,7 @@ public class PlayerCon : MonoBehaviour
     private bool isDashing = false; // To check if the player is currently dashing
 
     private Queue<int> attackQueue = new Queue<int>(); // To store the attack sequence
-    public float attackRate = 5f; // Time player has to wait after an attack to attack again
+    public float attackRate = 3f; // Time player has to wait after an attack to attack again
     private float nextAttackTime; // Time when the player can next attack
     private bool isAttacking = false; // To check if the player is currently attacking
     private int attackComboCount = 0; // To track the combo sequence
@@ -50,6 +53,7 @@ public class PlayerCon : MonoBehaviour
         HandleDash();
         HandleAttack();
         CheckDeath();
+        hitbox.GetComponent<HitboxManager>().SetUpDamage(damage);
     }
 
     private void MovePlayer()
@@ -189,11 +193,13 @@ public class PlayerCon : MonoBehaviour
     {
         if (Time.time > nextAttackTime && Input.GetKeyDown(KeyCode.J))
         {
+            //Debug.Log(attackComboCount);
             // Check if we need to reset the combo based on the last attack time
-            if (Time.time - lastAttackTime > comboResetTime && attackQueue.Count == 0)
+            if (Time.time - lastAttackTime > comboResetTime || attackComboCount == 3)
             {
                 ResetComboCounter();
             }
+            
 
             // Enqueue the attack if we're below the maximum combo count
             if (attackComboCount < 3)  // Assuming a 3-attack combo
@@ -203,15 +209,19 @@ public class PlayerCon : MonoBehaviour
             }
 
             // If not currently attacking, handle the next attack in the queue
+            /*
             if (!isAttacking)
             {
                 HandleNextAttackInQueue();
             }
+            */
+            HandleNextAttackInQueue();
 
             lastAttackTime = Time.time;
 
             // Start the combo reset timer
-            StartCoroutine(ComboResetTimer());
+            // (Eon) Deleted bc this can be replaced by the code above
+            //StartCoroutine(ComboResetTimer());
         }
     }
 
@@ -234,6 +244,7 @@ public class PlayerCon : MonoBehaviour
     {
         if (attackQueue.Count > 0)
         {
+            hitbox.SetActive(true);
             int nextAttack = attackQueue.Dequeue();
 
             switch (nextAttack)
@@ -246,11 +257,11 @@ public class PlayerCon : MonoBehaviour
                     break;
                 case 3:
                     playerStateMachine.Attack3();
-                    ResetComboCounter(); // Reset after third combo
                     break;
             }
 
             isAttacking = true;
+
             nextAttackTime = Time.time + 1f / attackRate;
         }
         else

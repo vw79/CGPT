@@ -1,5 +1,99 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &416160243062786550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7574823448376293843}
+  - component: {fileID: 4235835514848928035}
+  - component: {fileID: 5038665057203899491}
+  - component: {fileID: 1429817093392024754}
+  m_Layer: 0
+  m_Name: SwordHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7574823448376293843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416160243062786550}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 1.22, z: 0.837}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6728773707513295888}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &4235835514848928035
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416160243062786550}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &5038665057203899491
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416160243062786550}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.2, z: 0.88}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1429817093392024754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416160243062786550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a82206b15f42b459684fe2637118ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6551560379840599035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10,19 +104,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.1400001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.42
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -68,6 +162,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Paladin WProp J Nordstrom Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1051571768989249988, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_Name
       value: Paladin_J_Nordstrom_Sword
@@ -78,7 +176,10 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: e59e354a365d2b741ae66fc915ddb4b3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7574823448376293843}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       insertIndex: -1
@@ -92,6 +193,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2957521995142397470}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7480192531434751941}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2858049368276501959}
   m_SourcePrefab: {fileID: 100100000, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
 --- !u!1 &6208978058462965418 stripped
 GameObject:
@@ -149,16 +256,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 2827032767178963378}
+  healthSystem: {fileID: 7480192531434751941}
+  hitbox: {fileID: 416160243062786550}
   speed: 12
   gravity: -30
   terminalVelocity: -50
   maxJumpCount: 2
   firstJumpPower: 2
   secondJumpPower: 1.5
+  damage: 20
   dashSpeed: 20
   dashTime: 0.2
   dashCooldown: 2
-  attackRate: 5
+  attackRate: 1
   comboResetTime: 2
 --- !u!114 &2957521995142397470
 MonoBehaviour:
@@ -172,3 +282,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb9fde3e14e9f745ae51ebe04b685e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7480192531434751941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208978058462965418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e392fc0d02ef54d9f282799b02b5f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_health: 100
+--- !u!136 &2858049368276501959
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208978058462965418}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.38
+  m_Height: 1.79
+  m_Direction: 1
+  m_Center: {x: -0, y: 0.91, z: 0}
+--- !u!4 &6728773707513295888 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+  m_PrefabInstance: {fileID: 6551560379840599035}
+  m_PrefabAsset: {fileID: 0}
