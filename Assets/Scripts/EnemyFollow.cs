@@ -43,22 +43,11 @@ public class EnemyFollow : MonoBehaviour
     {
         _enemy.SetDestination(_targetedObject.position);
     }
-	
-	public void TakeDamage(int damageAmount)
-    {
-        // Reduce the enemy's health by the damageAmount
-        currentHealth -= damageAmount;
 
-        // Check if the enemy's health is below or equal to 0
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-    }
-
-    private void Die()
+    public void Die()
     {
         // Perform any death logic here (e.g., play death animation, spawn particles, etc.)
         Destroy(gameObject); // Destroy the enemy object when it dies
+        Debug.Log("Dead");
     }
 }

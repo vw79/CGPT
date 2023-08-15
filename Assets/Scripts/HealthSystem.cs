@@ -1,14 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+
 
 public class HealthSystem : MonoBehaviour
 {
     //Give health system for the entity which is damagable
 
     [SerializeField] private float max_health;
+    [SerializeField] private float current_shield = 0f;
     private float current_health;
+
+    public UnityEvent OnDeath;
 
     private void Awake()
     {
@@ -21,6 +27,10 @@ public class HealthSystem : MonoBehaviour
         {
             TakeDamage(40f);
         }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            AddShield(30f);
+        }
     }
 
     public float GetHealth()
@@ -28,16 +38,36 @@ public class HealthSystem : MonoBehaviour
         return current_health;
     }
 
+    public float GetShield()
+    {
+        return current_shield;
+    }
+
     public void TakeDamage(float damage)
     {
-        current_health -= damage;
+        // If shield can block whole damage
+        if(current_shield >= damage)
+        {
+            current_shield -= damage;
+        }
+        // If shield can't block damage or shield is 0
+        else
+        {
+            current_health -= damage - current_shield;
+            current_shield = 0;
+        }
+
         if (current_health <= 0)
         {
-            //  gameObject.SetActive(false);
-            // DisableComponents();
-
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // (xiu zhen added) return back to checkpoint
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name); // (xiu zhen added) return back to checkpoint
+            //cannot do like this. this health system is for every entity
+            OnDeath.Invoke();
         }
+    }
+
+    public void AddShield(float shieldPoint)
+    {
+        current_shield += shieldPoint;
     }
 
     public void Heal(float damage)
@@ -65,17 +95,5 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
-    private void DisableComponents()
-    {
-        // Disable the PlayerCon script
-        PlayerCon playerCon = GetComponent<PlayerCon>();
-        if (playerCon != null)
-        {
-            playerCon.enabled = false;
-        }
-
-        // Disable the HealthSystem script
-        this.enabled = false;
-    }
 
 }

@@ -35,6 +35,7 @@ public class HitboxManager : MonoBehaviour
         HealthSystem enemy;
         if(other.TryGetComponent<HealthSystem>(out enemy))
         {
+            Debug.Log(other);
             enemy.TakeDamage(20);
         }
     }

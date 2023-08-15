@@ -8,7 +8,7 @@ public class HealthUI : MonoBehaviour
     [SerializeField] private Slider healthBar;
     [SerializeField] private GameObject player;
     [SerializeField] private Image fill;
-    public Gradient gradient;
+    [SerializeField] private Gradient gradient;
     private HealthSystem playerHealth;
 
     void Start()

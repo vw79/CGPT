@@ -34,10 +34,11 @@ public class PlayerCon : MonoBehaviour
     private Queue<int> attackQueue = new Queue<int>(); // To store the attack sequence
     public float attackRate = 3f; // Time player has to wait after an attack to attack again
     private float nextAttackTime; // Time when the player can next attack
-    private bool isAttacking = false; // To check if the player is currently attacking
     private int attackComboCount = 0; // To track the combo sequence
     public float comboResetTime = 2f; // Time after which the combo sequence resets
     private float lastAttackTime; // Time of the last attack
+
+    private bool isDead = false;
 
     private void Awake()
     {
@@ -48,11 +49,15 @@ public class PlayerCon : MonoBehaviour
     void Update()
     {
         ApplyGravity();
-        MovePlayer();
-        HandleJump();
-        HandleDash();
-        HandleAttack();
-        CheckDeath();
+
+        if(!isDead)
+        {
+            MovePlayer();
+            HandleJump();
+            HandleDash();
+            HandleAttack();
+        }
+
         hitbox.GetComponent<HitboxManager>().SetUpDamage(damage);
     }
 
@@ -181,12 +186,11 @@ public class PlayerCon : MonoBehaviour
         speed /= 5f; // Return speed to original value.
     }
 
-    private void CheckDeath()
+    public void OnDeath()
     {
-        if (healthSystem.GetHealth() <= 0)
-        {
-            playerStateMachine.Death(); 
-        }
+        Debug.Log("You Dead");
+        isDead = true;
+        playerStateMachine.Death();
     }
 
     private void HandleAttack()
@@ -260,13 +264,11 @@ public class PlayerCon : MonoBehaviour
                     break;
             }
 
-            isAttacking = true;
-
             nextAttackTime = Time.time + 1f / attackRate;
         }
         else
         {
-            isAttacking = false;
+
         }
     }
 }
