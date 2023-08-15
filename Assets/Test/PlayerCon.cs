@@ -1,49 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerCon : MonoBehaviour
 {
-    public CharacterController controller;
+    private CharacterController controller;
     private PlayerStateMachine playerStateMachine;
-    public HealthSystem healthSystem;
+    private HealthSystem healthSystem;
     public GameObject hitbox;
 
     private float lastDirection = 1f; // 1 for right, -1 for left
-    public float speed = 12f;
+    private float speed = 12f;
 
-    public float gravity = -30f;
+    private float gravity = -30f;
     private float verticalVelocity;
-    public float terminalVelocity = -50f;
+    private float terminalVelocity = -50f;
 
     private int jumpCount = 0;
-    public int maxJumpCount = 2;
+    private int maxJumpCount = 2;
 
-    public float firstJumpPower = 2f;
-    public float secondJumpPower = 1.5f;
+    private float firstJumpPower = 2f;
+    private float secondJumpPower = 1.5f;
 
-    public float damage = 20f;
-
-    public float dashSpeed = 50f; // Speed of the dash
-    public float dashTime = 0.2f; // Duration of the dash
+    private float dashSpeed = 50f; // Speed of the dash
+    private float dashTime = 0.2f; // Duration of the dash
     private float dashEndTime; // Time when the current dash will end
-    public float dashCooldown = 2f; // Time player has to wait after a dash to dash again
+    private float dashCooldown = 2f; // Time player has to wait after a dash to dash again
     private float nextDashTime; // Time when the player can next dash
     private bool isDashing = false; // To check if the player is currently dashing
 
     private Queue<int> attackQueue = new Queue<int>(); // To store the attack sequence
-    public float attackRate = 3f; // Time player has to wait after an attack to attack again
+    private float attackRate = 1f; // Time player has to wait after an attack to attack again
     private float nextAttackTime; // Time when the player can next attack
     private int attackComboCount = 0; // To track the combo sequence
-    public float comboResetTime = 2f; // Time after which the combo sequence resets
+    private float comboResetTime = 2f; // Time after which the combo sequence resets
     private float lastAttackTime; // Time of the last attack
 
     private bool isDead = false;
+    
+    [SerializeField] private float damage = 20f;
+
 
     private void Awake()
     {
         playerStateMachine = GetComponent<PlayerStateMachine>();
         healthSystem = GetComponent<HealthSystem>();
+        controller = GetComponent<CharacterController>();
+    }
+
+    private void Start()
+    {
+        hitbox.GetComponent<HitboxManager>().SetUpDamage(damage);
     }
 
     void Update()
@@ -57,8 +65,6 @@ public class PlayerCon : MonoBehaviour
             HandleDash();
             HandleAttack();
         }
-
-        hitbox.GetComponent<HitboxManager>().SetUpDamage(damage);
     }
 
     private void MovePlayer()
