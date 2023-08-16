@@ -11,7 +11,7 @@ public class PlayerCon : MonoBehaviour
     public GameObject hitbox;
 
     private float lastDirection = 1f; // 1 for right, -1 for left
-    private float speed = 12f;
+    private float speed;
 
     private float gravity = -30f;
     private float verticalVelocity;
@@ -39,7 +39,7 @@ public class PlayerCon : MonoBehaviour
 
     private bool isDead = false;
     
-    [SerializeField] private float damage = 20f;
+    private float damage;
 
 
     private void Awake()
@@ -51,12 +51,13 @@ public class PlayerCon : MonoBehaviour
 
     private void Start()
     {
-        hitbox.GetComponent<HitboxManager>().SetUpDamage(damage);
+        
     }
 
     void Update()
     {
         ApplyGravity();
+        GetStat();
 
         if(!isDead)
         {
@@ -65,6 +66,14 @@ public class PlayerCon : MonoBehaviour
             HandleDash();
             HandleAttack();
         }
+    }
+
+    private void GetStat()
+    {
+        speed = GetComponent<CharacterStat>().GetMovementSpeed();
+        damage = GetComponent<CharacterStat>().GetAttackDamage();
+        hitbox.GetComponent<HitboxManager>().SetUpDamage(damage);
+        //Debug.Log(speed);
     }
 
     private void MovePlayer()

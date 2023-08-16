@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4235835514848928035}
   - component: {fileID: 5038665057203899491}
   - component: {fileID: 1429817093392024754}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SwordHitbox
   m_TagString: Untagged
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
@@ -104,7 +104,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -150,17 +150,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: Paladin_J_Nordstrom_Shield
       objectReference: {fileID: 0}
+    - target: {fileID: -7764487651825262745, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: -3685692520585564748, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_Name
       value: Paladin_J_Nordstrom_Helmet
+      objectReference: {fileID: 0}
+    - target: {fileID: -3685692520585564748, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -1283408554089789195, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_Name
       value: Paladin_J_Nordstrom
       objectReference: {fileID: 0}
+    - target: {fileID: -1283408554089789195, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_Name
       value: Paladin WProp J Nordstrom Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_TagString
@@ -169,6 +185,10 @@ PrefabInstance:
     - target: {fileID: 1051571768989249988, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_Name
       value: Paladin_J_Nordstrom_Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051571768989249988, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_Controller
@@ -183,10 +203,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2827032767178963378}
+      addedObject: {fileID: 2858049368276501959}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1145143131709338715}
+      addedObject: {fileID: 2827032767178963378}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8006755705233351002}
@@ -195,16 +215,45 @@ PrefabInstance:
       addedObject: {fileID: 2957521995142397470}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1145143131709338715}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 7480192531434751941}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2858049368276501959}
+      addedObject: {fileID: 4275629769863519991}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8936435139470382503}
   m_SourcePrefab: {fileID: 100100000, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
 --- !u!1 &6208978058462965418 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
   m_PrefabInstance: {fileID: 6551560379840599035}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &2858049368276501959
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208978058462965418}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.38
+  m_Height: 1.79
+  m_Direction: 1
+  m_Center: {x: -0, y: 0.91, z: 0}
 --- !u!143 &2827032767178963378
 CharacterController:
   m_ObjectHideFlags: 0
@@ -231,18 +280,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.91, z: 0}
---- !u!114 &1145143131709338715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6208978058462965418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0268fcda8936e9a44b46f1439f1ae406, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8006755705233351002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,21 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474527161ab1a9246b961414710374ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 2827032767178963378}
-  healthSystem: {fileID: 7480192531434751941}
   hitbox: {fileID: 416160243062786550}
-  speed: 12
-  gravity: -30
-  terminalVelocity: -50
-  maxJumpCount: 2
-  firstJumpPower: 2
-  secondJumpPower: 1.5
-  damage: 20
-  dashSpeed: 20
-  dashTime: 0.2
-  dashCooldown: 2
-  attackRate: 1
-  comboResetTime: 2
 --- !u!114 &2957521995142397470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +303,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: efb9fde3e14e9f745ae51ebe04b685e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1145143131709338715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208978058462965418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0268fcda8936e9a44b46f1439f1ae406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &7480192531434751941
@@ -295,29 +330,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   max_health: 100
---- !u!136 &2858049368276501959
-CapsuleCollider:
+  current_shield: 0
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8006755705233351002}
+        m_TargetAssemblyTypeName: PlayerCon, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4275629769863519991
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6208978058462965418}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.38
-  m_Height: 1.79
-  m_Direction: 1
-  m_Center: {x: -0, y: 0.91, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fba96192db53534dbe6d603ee3f4d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  base_attack: 20
+  movement_speed: 12
+--- !u!114 &8936435139470382503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208978058462965418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6baa37d47ec177d4492a5676265b973d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: 
 --- !u!4 &6728773707513295888 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
