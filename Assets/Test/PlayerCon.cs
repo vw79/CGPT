@@ -189,18 +189,6 @@ public class PlayerCon : MonoBehaviour
         isDashing = false;
     }
 
-    public void AddSpeed()
-    {
-        speed *= 5f; // Increase speed by 50% as an example.
-        StartCoroutine(ResetSpeedAfterDuration(2f)); // Reset speed after 5 seconds.
-    }
-
-    private IEnumerator ResetSpeedAfterDuration(float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        speed /= 5f; // Return speed to original value.
-    }
-
     public void OnDeath()
     {
         Debug.Log("You Dead");
