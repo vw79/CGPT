@@ -332,7 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 50
+  trap_DamageMade: 0
   groundDestroy: 1
 --- !u!1 &68347782
 GameObject:
@@ -426,6 +426,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e659ebd79ad8c5408cd18c2a0e534eb, type: 3}
+--- !u!1 &90460140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6208978058462965418, guid: 83cde4bab40de3e40808964a659c2218, type: 3}
+  m_PrefabInstance: {fileID: 1063172405}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &108089651 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000013520451200, guid: 3f77420e3ad8b0e46afcc1d8a07e9a9e, type: 3}
@@ -541,7 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 50
+  trap_DamageMade: 0
   groundDestroy: 1
 --- !u!1 &157374242 stripped
 GameObject:
@@ -658,7 +663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 50
+  trap_DamageMade: 0
   groundDestroy: 1
 --- !u!1 &171465553 stripped
 GameObject:
@@ -874,7 +879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 50
+  trap_DamageMade: 0
   groundDestroy: 1
 --- !u!1001 &231844632
 PrefabInstance:
@@ -887,6 +892,10 @@ PrefabInstance:
     - target: {fileID: 1000011859241944, guid: 2f11a19ee587ed44ca4a72f6d3986f99, type: 3}
       propertyPath: m_Name
       value: Desert_Temple_Entrance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011859241944, guid: 2f11a19ee587ed44ca4a72f6d3986f99, type: 3}
+      propertyPath: m_TagString
+      value: TeleportationObject
       objectReference: {fileID: 0}
     - target: {fileID: 4000011147253788, guid: 2f11a19ee587ed44ca4a72f6d3986f99, type: 3}
       propertyPath: m_RootOrder
@@ -906,7 +915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011147253788, guid: 2f11a19ee587ed44ca4a72f6d3986f99, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 46.21
+      value: 46.5
       objectReference: {fileID: 0}
     - target: {fileID: 4000011147253788, guid: 2f11a19ee587ed44ca4a72f6d3986f99, type: 3}
       propertyPath: m_LocalPosition.y
@@ -951,6 +960,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1000011859241944, guid: 2f11a19ee587ed44ca4a72f6d3986f99, type: 3}
       insertIndex: -1
       addedObject: {fileID: 649735886}
+    - targetCorrespondingSourceObject: {fileID: 1000011859241944, guid: 2f11a19ee587ed44ca4a72f6d3986f99, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 649735891}
   m_SourcePrefab: {fileID: 100100000, guid: 2f11a19ee587ed44ca4a72f6d3986f99, type: 3}
 --- !u!1001 &242863043
 PrefabInstance:
@@ -1573,7 +1585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 50
+  trap_DamageMade: 0
   groundDestroy: 1
 --- !u!1001 &494914523
 PrefabInstance:
@@ -1766,7 +1778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 50
+  trap_DamageMade: 0
   groundDestroy: 1
 --- !u!1 &579187102 stripped
 GameObject:
@@ -1883,7 +1895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 50
+  trap_DamageMade: 0
   groundDestroy: 1
 --- !u!1001 &594453270
 PrefabInstance:
@@ -2358,12 +2370,26 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.2796451, y: 2.0666578, z: 1.2276404}
   m_Center: {x: -0.00000008940699, y: 1.0333289, z: 0}
+--- !u!114 &649735891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649735885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9958ffa0479e4074d85b3cf68b8fb7ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScene: 13
+  spawnPosition: {x: 46.5, y: 14.5, z: 0}
 --- !u!1001 &689999356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3048,7 +3074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 50
+  trap_DamageMade: 0
   groundDestroy: 1
 --- !u!1001 &926051417
 PrefabInstance:
@@ -3347,7 +3373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6728773707513295888, guid: 83cde4bab40de3e40808964a659c2218, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2970324
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6728773707513295888, guid: 83cde4bab40de3e40808964a659c2218, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3384,7 +3410,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6208978058462965418, guid: 83cde4bab40de3e40808964a659c2218, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2052776825}
   m_SourcePrefab: {fileID: 100100000, guid: 83cde4bab40de3e40808964a659c2218, type: 3}
 --- !u!1 &1088405392
 GameObject:
@@ -3532,7 +3561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 50
+  trap_DamageMade: 0
   groundDestroy: 1
 --- !u!1 &1128467139 stripped
 GameObject:
@@ -3649,7 +3678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 50
+  trap_DamageMade: 0
   groundDestroy: 1
 --- !u!1 &1164845550 stripped
 GameObject:
@@ -3956,7 +3985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 50
+  trap_DamageMade: 0
   groundDestroy: 1
 --- !u!1001 &1328380607
 PrefabInstance:
@@ -4328,7 +4357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 50
+  trap_DamageMade: 0
   groundDestroy: 1
 --- !u!1 &1461308181 stripped
 GameObject:
@@ -4445,7 +4474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 50
+  trap_DamageMade: 0
   groundDestroy: 1
 --- !u!1 &1529715591 stripped
 GameObject:
@@ -4550,7 +4579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 50
+  trap_DamageMade: 0
   groundDestroy: 1
 --- !u!1001 &1545221878
 PrefabInstance:
@@ -4938,7 +4967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8dbece02a317a4eba7aedbf1b05027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 2052776815}
 --- !u!1001 &1806002760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5336,6 +5365,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.22812498, z: 0.5}
   m_Center: {x: 0, y: 0.1140625, z: 1.01307854e-16}
+--- !u!4 &2052776815 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6728773707513295888, guid: 83cde4bab40de3e40808964a659c2218, type: 3}
+  m_PrefabInstance: {fileID: 1063172405}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2052776825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90460140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9070b567482cb468d205fc4404fa35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2104310817
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -62,6 +62,8 @@ public class HealthSystem : MonoBehaviour
             //SceneManager.LoadScene(SceneManager.GetActiveScene().name); // (xiu zhen added) return back to checkpoint
             //cannot do like this. this health system is for every entity
             OnDeath.Invoke();
+            //Show End Scene when it die
+            //SceneManager.LoadScene("EndScene");
         }
     }
 

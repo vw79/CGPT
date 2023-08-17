@@ -9,6 +9,7 @@ TagManager:
   - TrapDoor
   - enemy
   - groundDestroy
+  - TeleportationObject
   layers:
   - Default
   - TransparentFX
