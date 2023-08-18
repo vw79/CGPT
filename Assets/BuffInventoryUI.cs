@@ -8,14 +8,18 @@ public class BuffInventoryUI : MonoBehaviour
     [SerializeField] private Image image1;
     [SerializeField] private Image image2;
     private Image[] images;
+    private PlayerStat inventory;
 
-    private void Start()
+
+    public void Setup(GameObject player)
     {
         images = new Image[] { image1, image2 };
+        inventory = player.GetComponent<PlayerStat>();
     }
 
-    public void UpdateUI(IBuff[] buffs)
+    public void UpdateInventoryUI()
     {
+        IBuff[] buffs = inventory.inventory;
         for (int i = 0; i < buffs.Length; i++)
         {
             if (buffs[i] != null)

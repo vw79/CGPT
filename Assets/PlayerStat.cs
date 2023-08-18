@@ -12,7 +12,6 @@ public class PlayerStat : MonoBehaviour
     private int coin;
 
     [SerializeField] public IBuff[] inventory = new IBuff[2];
-    [SerializeField] private BuffInventoryUI inventoryUI;
 
     private void Update()
     {
@@ -22,7 +21,6 @@ public class PlayerStat : MonoBehaviour
             {
                 inventory[0].UseBuff();
                 inventory[0] = null;
-                inventoryUI.UpdateUI(inventory);
             }
         }
 
@@ -32,21 +30,20 @@ public class PlayerStat : MonoBehaviour
             {
                 inventory[1].UseBuff();
                 inventory[1] = null;
-                inventoryUI.UpdateUI(inventory);
             }
         }
     }
 
-    public void AddBuff(IBuff buff)
+    public bool AddBuff(IBuff buff)
     {
         for(int i = 0; i < inventory.Length; i++)
         {
             if (inventory[i] == null)
             {
                 inventory[i] = buff;
-                break;
+                return true;
             }
         }
-        inventoryUI.UpdateUI(inventory);
+        return false;
     }
 }

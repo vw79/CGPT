@@ -104,7 +104,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -334,7 +334,7 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8006755705233351002}
+      - m_Target: {fileID: 6208978058462965418}
         m_TargetAssemblyTypeName: PlayerCon, Assembly-CSharp
         m_MethodName: OnDeath
         m_Mode: 1
@@ -372,7 +372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6baa37d47ec177d4492a5676265b973d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: 
 --- !u!4 &6728773707513295888 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}

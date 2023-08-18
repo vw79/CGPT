@@ -6,16 +6,15 @@ using UnityEngine.UI;
 public class ShieldUI : MonoBehaviour
 {
     [SerializeField] private Slider shieldBar;
-    [SerializeField] private GameObject player;
-    [SerializeField] private Image fill;
     private HealthSystem playerShield;
 
-    void Start()
+    public void Setup(GameObject player)
     {
-        playerShield = player.GetComponent<HealthSystem>();
+        HealthSystem health = player.GetComponent<HealthSystem>();
+        playerShield = health;
     }
 
-    void Update()
+    public void UpdateShieldUI()
     {
         shieldBar.value = playerShield.GetShield() / 100f;
     }

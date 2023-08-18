@@ -17,8 +17,14 @@ public class SpeedBuff : MonoBehaviour , IBuff
         {
             playerstat = other.GetComponent<CharacterStat>();
             PlayerStat playerInventory = other.GetComponent<PlayerStat>();
-            playerInventory.AddBuff(this);
-            DisableExistance();
+            if (playerInventory.AddBuff(this))
+            {
+                DisableExistance();
+            }
+            else
+            {
+                UseBuff();
+            }
         }
         else if (other.CompareTag("Enemy"))
         {

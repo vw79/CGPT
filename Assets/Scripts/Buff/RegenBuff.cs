@@ -16,8 +16,14 @@ public class RegenBuff : MonoBehaviour , IBuff
         {
             playerhealth = other.GetComponent<HealthSystem>();
             PlayerStat playerInventory = other.GetComponent<PlayerStat>();
-            playerInventory.AddBuff(this);
-            DisableExistance();
+            if (playerInventory.AddBuff(this))
+            {
+                DisableExistance();
+            }
+            else
+            {
+                UseBuff();
+            }
         }
         else if (other.CompareTag("Enemy"))
         {

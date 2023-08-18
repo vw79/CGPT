@@ -1,24 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthUI : MonoBehaviour
 {
     [SerializeField] private Slider healthBar;
-    [SerializeField] private GameObject player;
     [SerializeField] private Image fill;
     [SerializeField] private Gradient gradient;
     private HealthSystem playerHealth;
 
-    void Start()
+    public void Setup(GameObject player)
     {
-        playerHealth = player.GetComponent<HealthSystem>();
+        HealthSystem health = player.GetComponent<HealthSystem>();
+        playerHealth = health;
     }
 
-    void Update()
+    public void UpdateHealthUI()
     {
-        healthBar.value = playerHealth.GetHealth()/100f;
+        healthBar.value = playerHealth.GetHealth() / 100f;
         fill.color = gradient.Evaluate(healthBar.value);
     }
 }
