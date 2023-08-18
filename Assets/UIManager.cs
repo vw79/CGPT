@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private ShieldUI shieldUI;
     [SerializeField] private HealthUI healthUI;
     [SerializeField] private BuffInventoryUI buffInventoryUI;
+    [SerializeField] private CoinUI coinUI;
 
 
     private void Start()
@@ -16,6 +17,7 @@ public class UIManager : MonoBehaviour
         healthUI.Setup(player);
         shieldUI.Setup(player);
         buffInventoryUI.Setup(player);
+        coinUI.Setup(player);
     }
 
     private void Update()
@@ -23,5 +25,6 @@ public class UIManager : MonoBehaviour
         healthUI.UpdateHealthUI();
         shieldUI.UpdateShieldUI();
         buffInventoryUI.UpdateInventoryUI();
+        coinUI.UpdateCoinUI();
     }
 }

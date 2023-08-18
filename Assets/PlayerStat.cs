@@ -13,6 +13,7 @@ public class PlayerStat : MonoBehaviour
 
     [SerializeField] public IBuff[] inventory = new IBuff[2];
 
+    #region Buff Inventory
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
@@ -46,4 +47,23 @@ public class PlayerStat : MonoBehaviour
         }
         return false;
     }
+    #endregion
+
+    #region Coin System
+    public int GetCoin()
+    {
+        return coin;
+    }
+
+    public void AddCoin(int amount)
+    {
+        coin += amount;
+    }
+
+    public void LoseCoin(int amount)
+    {
+        coin -= amount;
+    }
+    #endregion
+
 }
