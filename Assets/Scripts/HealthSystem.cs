@@ -102,5 +102,12 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
-
+    private void OnTriggerEnter(Collider other)
+    {
+        // Check if this game object has collided with an enemy
+        if (gameObject.CompareTag("Player") && other.CompareTag("Enemy"))
+        {
+            TakeDamage(20f);
+        }
+    }
 }

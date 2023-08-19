@@ -10,11 +10,15 @@ public class TrapDoor : MonoBehaviour
         // Check if the colliding object has the tag "Player"
         if (collision.gameObject.tag == "Sword")
         {
-            Debug.Log("Trapdoor hit by sword");
+            // Find the GameObject named "Block" and destroy it
+            GameObject block = GameObject.Find("Block");
+            if (block)
+            {
+                Destroy(block);
+            }
+
             // Destroy the trapdoor (this game object)
             Destroy(gameObject);
         }
     }
 }
-
-
