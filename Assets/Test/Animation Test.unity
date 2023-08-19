@@ -594,7 +594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &444508647
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -623,7 +623,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444508646}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1579,7 +1579,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249270645}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1988,7 +1988,6 @@ MonoBehaviour:
   maxSightDistance: 5
   attackDistance: 5
   patrolThreshold: 1
-  initialHealth: 100
 --- !u!54 &1764767951
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2059,11 +2058,66 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1764767956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764767948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e392fc0d02ef54d9f282799b02b5f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_health: 100
+  current_shield: 0
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1764767950}
+        m_TargetAssemblyTypeName: EnemyChase, Assembly-CSharp
+        m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHurt:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1764767950}
+        m_TargetAssemblyTypeName: EnemyChase, Assembly-CSharp
+        m_MethodName: TakeDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1785254059 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6728773707513295888, guid: 83cde4bab40de3e40808964a659c2218, type: 3}
   m_PrefabInstance: {fileID: 4053665461983336457}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1785254065 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8006755705233351002, guid: 83cde4bab40de3e40808964a659c2218, type: 3}
+  m_PrefabInstance: {fileID: 4053665461983336457}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985153849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474527161ab1a9246b961414710374ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1800166930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2406,6 +2460,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 453aafb9cf782e74698b3a7d2a1f3ad1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1764767954}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 453aafb9cf782e74698b3a7d2a1f3ad1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1764767956}
   m_SourcePrefab: {fileID: 100100000, guid: 453aafb9cf782e74698b3a7d2a1f3ad1, type: 3}
 --- !u!1001 &2041077331
 PrefabInstance:
@@ -2548,6 +2605,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7480192531434751941, guid: 83cde4bab40de3e40808964a659c2218, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1785254065}
     - target: {fileID: 7574823448376293843, guid: 83cde4bab40de3e40808964a659c2218, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.8875

@@ -22,10 +22,7 @@ public class EnemyChase : MonoBehaviour
     public float patrolThreshold = 1f;
     private GameObject hitbox;
 
-    public float initialHealth = 100f;  // Initial health of the enemy
-    private float currentHealth;
     private bool isDead = false;  // To track if the enemy is already dead
-    private bool isTakingDamage = false;  // To track if the enemy is currently taking damage
 
     private Transform target;
     private Transform currentTarget;
@@ -40,15 +37,12 @@ public class EnemyChase : MonoBehaviour
         navAgent.speed = patrolSpeed;  // Set initial speed to patrol speed
         currentTarget = pointB;
         currentState = EnemyState.Patrol;
-        currentHealth = initialHealth;
     }
 
     void Update()
     {
         if (!isDead)
         {
-            Debug.Log(currentHealth);
-
             float distanceToPlayer = Vector3.Distance(target.position, transform.position);
             float distanceToA = Vector3.Distance(target.position, pointA.position);
             float distanceToB = Vector3.Distance(target.position, pointB.position);
@@ -133,36 +127,21 @@ public class EnemyChase : MonoBehaviour
 
     void Attack()
     {
+        Debug.Log("IsAtacking");
         navAgent.isStopped = true;
         //hitbox.SetActive(true);
 
         animator.Play("Warrok Attack");  // Play the Attack animation
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        // Check if the enemy collided with a sword and isn't already taking damage
-        if (other.gameObject.CompareTag("Sword") && !isTakingDamage)
-        {
-            TakeDamage(10f);  // Example damage amount, you can adjust as needed
-        }
-    }
 
-    void TakeDamage(float damage)
+    public void TakeDamage()
     {
-        currentHealth -= damage;
-
         // Switch the state to Hurt when taking damage
         currentState = EnemyState.Hurt;
 
         // Play the damage animation or go to idle state for a short period of time
         StartCoroutine(DamageReaction());
-
-        // Check if the enemy is dead
-        if (currentHealth <= 0 && !isDead)
-        {
-            Die();
-        }
     }
 
     IEnumerator DamageReaction()
@@ -185,7 +164,7 @@ public class EnemyChase : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
         isDead = true;
         animator.Play("Warrok Dead");

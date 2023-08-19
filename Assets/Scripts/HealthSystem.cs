@@ -10,11 +10,12 @@ public class HealthSystem : MonoBehaviour
 {
     //Give health system for the entity which is damagable
 
-    [SerializeField] private float max_health;
+    [SerializeField] private float max_health = 100f;
     [SerializeField] private float current_shield = 0f;
     private float current_health;
 
     public UnityEvent OnDeath;
+    public UnityEvent OnHurt;
 
     private void Awake()
     {
@@ -64,6 +65,10 @@ public class HealthSystem : MonoBehaviour
             OnDeath.Invoke();
             //Show End Scene when it die
             //SceneManager.LoadScene("EndScene");
+        }
+        else
+        {
+            OnHurt.Invoke();
         }
     }
 
