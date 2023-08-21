@@ -7,10 +7,10 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Test/Animation Test.unity
-    guid: 2ddd062326129fa48ad5d5bcd7e40de0
+    guid: b3f2672a315789240b03705b9c275bdf
   - enabled: 1
-    path: Assets/Test/Scene 2.unity
-    guid: 9168b1d201c65824caa9129d85739d34
+    path: Assets/Test/Scene 1.unity
+    guid: 9e0a7a7d32b4c1b47a96e8e77516a241
   - enabled: 1
     path: Assets/Scenes/Underground/12.unity
     guid: aac29828166e0954b8d817704ec662ce

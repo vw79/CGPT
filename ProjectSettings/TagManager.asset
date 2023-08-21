@@ -10,6 +10,7 @@ TagManager:
   - enemy
   - groundDestroy
   - TeleportationObject
+  - Spawn
   layers:
   - Default
   - TransparentFX
