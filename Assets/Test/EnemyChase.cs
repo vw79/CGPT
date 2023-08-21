@@ -30,13 +30,9 @@ public class EnemyChase : MonoBehaviour
      
     private float fieldOfViewAngle = 90.0f;
     private float patrolThreshold = 1f;
-    [SerializeField] private GameObject hitbox;
+    private GameObject hitbox;
     [SerializeField] private float deathAnimationDuration = 3.0f;  
     private bool isDead = false;  // To track if the enemy is already dead
-    private bool isAttacking = false;
-
-    [SerializeField] private GameObject coinPrefab;
-    [SerializeField] private int coinAmount = 1;
 
     private Transform target;
     private Transform currentTarget;
@@ -62,14 +58,12 @@ public class EnemyChase : MonoBehaviour
             float distanceToB = Vector3.Distance(target.position, pointB.position);
 
             // Check if player is out of range of both points A and B
-            if ((distanceToA > maxSightDistance && distanceToB > maxSightDistance))
+            if (distanceToA > maxSightDistance && distanceToB > maxSightDistance)
             {
-                Debug.Log("Player out of range");
                 currentState = EnemyState.Patrol;
             }
-            else if (distanceToPlayer > attackDistance && distanceToPlayer < maxSightDistance && IsPlayerInFieldOfView() && currentState != EnemyState.Hurt)
+            else if (distanceToPlayer < maxSightDistance && IsPlayerInFieldOfView() && currentState != EnemyState.Hurt)
             {
-                Debug.Log("Player in sight");
                 currentState = EnemyState.Chase;
             }
 
@@ -82,15 +76,11 @@ public class EnemyChase : MonoBehaviour
                     Chase();
                     break;
                 case EnemyState.Attack:
-                    if (!isAttacking)
-                    {
-                        Attack();
-                    }
+                    Attack();
                     break;
                 case EnemyState.Hurt:
                     // No movement code during Hurt state
                     break;
-
             }
         }
     }
@@ -98,7 +88,7 @@ public class EnemyChase : MonoBehaviour
 
     bool IsPlayerInFieldOfView()
     {
-        Vector3 directionToPlayer = (target.position - transform.position).normalized;
+        Vector3 directionToPlayer = target.position - transform.position;
         float angle = Vector3.Angle(directionToPlayer, transform.forward);
         return angle < fieldOfViewAngle * 0.5f;
     }
@@ -127,8 +117,6 @@ public class EnemyChase : MonoBehaviour
 
     void Chase()
     {
-        //Debug.Log("Chasing");
-        //Debug.Log(Vector3.Distance(transform.position, target.position));
         navAgent.speed = patrolSpeed * 2;  // Double the patrol speed for chasing
         navAgent.isStopped = false;
         navAgent.SetDestination(target.position);
@@ -143,36 +131,18 @@ public class EnemyChase : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.position) < attackDistance)
         {
-            Debug.Log("Attack");
             currentState = EnemyState.Attack;
         }
     }
 
     void Attack()
     {
-        //Debug.Log("Attacking");
         navAgent.isStopped = true;
-        hitbox.SetActive(true);
+        //hitbox.SetActive(true);
 
         animator.Play(attackAnimation);  // Play the Attack animation
-        StartCoroutine(AttackAnim());
     }
 
-    IEnumerator AttackAnim()
-    {
-        isAttacking = true;
-        yield return new WaitForSeconds(2f);
-        float distanceToPlayer = Vector3.Distance(target.position, transform.position);
-        if (distanceToPlayer < maxSightDistance)
-        {
-            currentState = EnemyState.Chase;
-        }
-        else
-        {
-            currentState = EnemyState.Patrol;
-        }
-        isAttacking = false;
-    }
 
     public void TakeDamage()
     {
@@ -205,12 +175,7 @@ public class EnemyChase : MonoBehaviour
 
     public void Die()
     {
-        if(!isDead)
-        {
-            BlowCoin();
-        }
         isDead = true;
-        GetComponent<Collider>().excludeLayers += LayerMask.GetMask("Player");
         animator.Play(deadAnimation);
 
         // Wait for the death animation to finish and then destroy the game object
@@ -222,14 +187,5 @@ public class EnemyChase : MonoBehaviour
         // Wait for the duration of the death animation + 1 second
         yield return new WaitForSeconds(deathAnimationDuration);
         Destroy(gameObject);
-    }
-
-    private void BlowCoin()
-    {
-        GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
-        coin.GetComponent<Coin>().SetCoinAmount(coinAmount);
-        coin.transform.position += Vector3.up;
-        //coin.GetComponent<Rigidbody>().AddForce(new Vector3(10,10,10));
-        //Random.Range(0, 1), Random.Range(8, 10), Random.Range(0, 1)
     }
 }
