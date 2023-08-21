@@ -13,15 +13,25 @@ public class EnemyChase : MonoBehaviour
         Hurt,
     }
 
-    private EnemyState currentState;
-    public Transform pointA, pointB;  // Patrol points
-    private float patrolSpeed = 3.0f;
-    public float maxSightDistance = 5.0f;
-    private float fieldOfViewAngle = 90.0f;
-    public float attackDistance = 2.0f;
-    public float patrolThreshold = 1f;
-    private GameObject hitbox;
+    [Header("Animation State Names")]
+    [SerializeField] private string walkAnimation = "Warrok Walk";
+    [SerializeField] private string runAnimation = "Warrok Run";
+    [SerializeField] private string attackAnimation = "Warrok Attack";
+    [SerializeField] private string hurtAnimation = "Warrok Hurt";
+    [SerializeField] private string deadAnimation = "Warrok Dead";
 
+    [Header("Enemy Parameters")]
+    [SerializeField] private float patrolSpeed = 3.0f;
+    [SerializeField] private float maxSightDistance = 5.0f;
+    [SerializeField] private float attackDistance = 2.0f;
+    public Transform pointA, pointB;
+
+    private EnemyState currentState;
+     
+    private float fieldOfViewAngle = 90.0f;
+    private float patrolThreshold = 1f;
+    private GameObject hitbox;
+    [SerializeField] private float deathAnimationDuration = 3.0f;  
     private bool isDead = false;  // To track if the enemy is already dead
 
     private Transform target;
@@ -92,7 +102,7 @@ public class EnemyChase : MonoBehaviour
         transform.LookAt(currentTarget);
 
         navAgent.SetDestination(currentTarget.position);
-        animator.Play("Warrok Walk");
+        animator.Play(walkAnimation);
 
         if (Vector3.Distance(transform.position, pointA.position) < patrolThreshold && currentTarget == pointA)
         {
@@ -111,7 +121,7 @@ public class EnemyChase : MonoBehaviour
         navAgent.isStopped = false;
         navAgent.SetDestination(target.position);
 
-        animator.Play("Warrok Run");  // Play the Run animation
+        animator.Play(runAnimation);  // Play the Run animation
 
         // If the player moves to the other side, rotate to face the player
         if (Vector3.Dot(transform.forward, target.position - transform.position) < 0)
@@ -127,11 +137,10 @@ public class EnemyChase : MonoBehaviour
 
     void Attack()
     {
-        Debug.Log("IsAtacking");
         navAgent.isStopped = true;
         //hitbox.SetActive(true);
 
-        animator.Play("Warrok Attack");  // Play the Attack animation
+        animator.Play(attackAnimation);  // Play the Attack animation
     }
 
 
@@ -147,7 +156,7 @@ public class EnemyChase : MonoBehaviour
     IEnumerator DamageReaction()
     {
         navAgent.isStopped = true;
-        animator.Play("Warrok Hurt");
+        animator.Play(hurtAnimation);
         
         // Wait for a short period of time, for example 2 seconds
         yield return new WaitForSeconds(1f);
@@ -167,7 +176,7 @@ public class EnemyChase : MonoBehaviour
     public void Die()
     {
         isDead = true;
-        animator.Play("Warrok Dead");
+        animator.Play(deadAnimation);
 
         // Wait for the death animation to finish and then destroy the game object
         StartCoroutine(DestroyAfterAnimation());
@@ -175,9 +184,8 @@ public class EnemyChase : MonoBehaviour
 
     IEnumerator DestroyAfterAnimation()
     {
-        // Wait for the duration of the death animation
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-
+        // Wait for the duration of the death animation + 1 second
+        yield return new WaitForSeconds(deathAnimationDuration);
         Destroy(gameObject);
     }
 }

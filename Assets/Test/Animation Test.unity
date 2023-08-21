@@ -2088,11 +2088,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 759cc1a87e787a445a57791055d6a0f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkAnimation: Warrok Walk
+  runAnimation: Warrok Run
+  attackAnimation: Warrok Attack
+  hurtAnimation: Warrok Hurt
+  deadAnimation: Warrok Dead
+  patrolSpeed: 3
+  maxSightDistance: 5
+  attackDistance: 1
   pointA: {fileID: 36316731}
   pointB: {fileID: 697393167}
-  maxSightDistance: 5
-  attackDistance: 0
-  patrolThreshold: 1
+  deathAnimationDuration: 4.4
 --- !u!195 &1764767954
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2103,7 +2109,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -2127,7 +2133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e392fc0d02ef54d9f282799b02b5f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_health: 100
+  max_health: 10
   current_shield: 0
   OnDeath:
     m_PersistentCalls:
