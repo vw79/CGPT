@@ -761,6 +761,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1873372434}
+  smoothSpeed: 0.125
+  minBounds: {x: -14.9, y: -0.46}
+  maxBounds: {x: 8.5, y: 4.78}
 --- !u!1001 &619894143
 PrefabInstance:
   m_ObjectHideFlags: 0

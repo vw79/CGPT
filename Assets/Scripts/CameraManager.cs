@@ -5,6 +5,10 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     [SerializeField] private Transform target;
+    [SerializeField] private float smoothSpeed = 0.125f; // Speed for camera smoothing
+    [SerializeField] private Vector2 minBounds; // Minimum camera bounds (x,y)
+    [SerializeField] private Vector2 maxBounds; // Maximum camera bounds (x,y)
+
     private Vector3 _offset;
 
     private void Awake()
@@ -14,6 +18,24 @@ public class CameraManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = target.position + _offset;
+        Vector3 desiredPosition = target.position + _offset;
+
+        // Clamping the camera position within the boundaries
+        desiredPosition.x = Mathf.Clamp(desiredPosition.x, minBounds.x, maxBounds.x);
+        desiredPosition.y = Mathf.Clamp(desiredPosition.y, minBounds.y, maxBounds.y);
+
+        // Smooth camera follow
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        transform.position = smoothedPosition;
+    }
+
+    // This function will draw a rectangle in the Scene view to visualize the bounds
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(new Vector3(minBounds.x, minBounds.y, 0), new Vector3(minBounds.x, maxBounds.y, 0));
+        Gizmos.DrawLine(new Vector3(minBounds.x, maxBounds.y, 0), new Vector3(maxBounds.x, maxBounds.y, 0));
+        Gizmos.DrawLine(new Vector3(maxBounds.x, maxBounds.y, 0), new Vector3(maxBounds.x, minBounds.y, 0));
+        Gizmos.DrawLine(new Vector3(maxBounds.x, minBounds.y, 0), new Vector3(minBounds.x, minBounds.y, 0));
     }
 }
