@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a82206b15f42b459684fe2637118ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentCollider: {fileID: 2858049368276501959}
 --- !u!1001 &6551560379840599035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104,7 +105,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -334,7 +335,7 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6208978058462965418}
+      - m_Target: {fileID: 8006755705233351002}
         m_TargetAssemblyTypeName: PlayerCon, Assembly-CSharp
         m_MethodName: OnDeath
         m_Mode: 1

@@ -21,20 +21,22 @@ public class EnemyChase : MonoBehaviour
     [SerializeField] private string deadAnimation = "Warrok Dead";
 
     [Header("Enemy Parameters")]
-    [SerializeField] private float patrolSpeed = 3.0f;
     [SerializeField] private float maxSightDistance = 5.0f;
     [SerializeField] private float attackDistance = 2.0f;
     public Transform pointA, pointB;
+    private float movementSpeed;
+    private float damage;
 
     private EnemyState currentState;
 
     private float fieldOfViewAngle = 90.0f;
     private float patrolThreshold = 1f;
-    [SerializeField] private GameObject hitbox;
-    [SerializeField] private float deathAnimationDuration = 3.0f;
     private bool isDead = false;  // To track if the enemy is already dead
     private bool isAttacking = false;
 
+    [Header("")]
+    [SerializeField] private GameObject hitbox;
+    [SerializeField] private float deathAnimationDuration = 3.0f;
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private int coinAmount = 1;
 
@@ -45,10 +47,11 @@ public class EnemyChase : MonoBehaviour
 
     void Start()
     {
+        GetStat();
         target = GameObject.FindGameObjectWithTag("Player").transform;
         navAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();  // Get the Animator component
-        navAgent.speed = patrolSpeed;  // Set initial speed to patrol speed
+        navAgent.speed = movementSpeed;  // Set initial speed to patrol speed
         currentTarget = pointB;
         currentState = EnemyState.Patrol;
     }
@@ -57,6 +60,8 @@ public class EnemyChase : MonoBehaviour
     {
         if (!isDead)
         {
+            GetStat();
+
             float distanceToPlayer = Vector3.Distance(target.position, transform.position);
             float distanceToA = Vector3.Distance(target.position, pointA.position);
             float distanceToB = Vector3.Distance(target.position, pointB.position);
@@ -64,10 +69,9 @@ public class EnemyChase : MonoBehaviour
             // Check if player is out of range of both points A and B
             if ((distanceToA > maxSightDistance && distanceToB > maxSightDistance))
             {
-                Debug.Log("Player out of range");
                 currentState = EnemyState.Patrol;
             }
-            else if (distanceToPlayer > attackDistance && distanceToPlayer < maxSightDistance && IsPlayerInFieldOfView() && currentState != EnemyState.Hurt)
+            else if ((distanceToPlayer > attackDistance) && (distanceToPlayer < maxSightDistance) && IsPlayerInFieldOfView() && (currentState != EnemyState.Hurt))
             {
                 Debug.Log("Player in sight");
                 currentState = EnemyState.Chase;
@@ -95,6 +99,12 @@ public class EnemyChase : MonoBehaviour
         }
     }
 
+    private void GetStat()
+    {
+        movementSpeed = GetComponent<CharacterStat>().GetMovementSpeed();
+        damage = GetComponent<CharacterStat>().GetAttackDamage();
+        hitbox.GetComponent<HitboxManager>().SetUpDamage(damage);
+    }
 
     bool IsPlayerInFieldOfView()
     {
@@ -105,7 +115,7 @@ public class EnemyChase : MonoBehaviour
 
     void Patrol()
     {
-        navAgent.speed = patrolSpeed;  // Set speed to patrol speed
+        navAgent.speed = movementSpeed;  // Set speed to patrol speed
         navAgent.isStopped = false;
 
         // Make the enemy face the current target point before moving towards it
@@ -129,7 +139,7 @@ public class EnemyChase : MonoBehaviour
     {
         //Debug.Log("Chasing");
         //Debug.Log(Vector3.Distance(transform.position, target.position));
-        navAgent.speed = patrolSpeed * 2;  // Double the patrol speed for chasing
+        navAgent.speed = movementSpeed * 2;  // Double the patrol speed for chasing
         navAgent.isStopped = false;
         navAgent.SetDestination(target.position);
 
@@ -150,7 +160,7 @@ public class EnemyChase : MonoBehaviour
 
     void Attack()
     {
-        //Debug.Log("Attacking");
+        Debug.Log("Attacking");
         navAgent.isStopped = true;
         hitbox.SetActive(true);
 

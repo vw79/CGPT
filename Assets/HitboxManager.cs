@@ -5,6 +5,7 @@ using UnityEngine;
 public class HitboxManager : MonoBehaviour
 {
     private float damage;
+    [SerializeField] private Collider parentCollider;
 
     public void SetUpDamage(float dmg)
     {
@@ -16,7 +17,7 @@ public class HitboxManager : MonoBehaviour
     {
         //Ignore self collider
         Collider collider = GetComponent<Collider>();
-        Physics.IgnoreCollision(collider, transform.root.GetComponent<Collider>());
+        Physics.IgnoreCollision(collider, parentCollider);
     }
 
     // Update is called once per frame
@@ -35,7 +36,7 @@ public class HitboxManager : MonoBehaviour
         HealthSystem enemy;
         if(other.TryGetComponent<HealthSystem>(out enemy))
         {
-            enemy.TakeDamage(20);
+            enemy.TakeDamage(damage);
         }
     }
 
