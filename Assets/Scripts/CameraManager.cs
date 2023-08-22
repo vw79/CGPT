@@ -8,17 +8,11 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private float smoothSpeed = 0.125f; // Speed for camera smoothing
     [SerializeField] private Vector2 minBounds; // Minimum camera bounds (x,y)
     [SerializeField] private Vector2 maxBounds; // Maximum camera bounds (x,y)
-
-    private Vector3 _offset;
-
-    private void Awake()
-    {
-        _offset = transform.position - target.position;
-    }
+    [SerializeField] private float verticalOffset = 2.0f; // Vertical offset for the camera
 
     private void LateUpdate()
     {
-        Vector3 desiredPosition = target.position + _offset;
+        Vector3 desiredPosition = new Vector3(target.position.x, target.position.y + verticalOffset, transform.position.z);
 
         // Clamping the camera position within the boundaries
         desiredPosition.x = Mathf.Clamp(desiredPosition.x, minBounds.x, maxBounds.x);
