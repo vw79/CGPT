@@ -809,11 +809,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &563029732 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6088552767221124000, guid: 556e48a3e76a8424a9030f9206033e80, type: 3}
-  m_PrefabInstance: {fileID: 886854796396569765}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &563029733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2112,7 +2107,10 @@ MonoBehaviour:
   attackDistance: 1
   pointA: {fileID: 576368235}
   pointB: {fileID: 622655908}
+  hitbox: {fileID: 0}
   deathAnimationDuration: 4.4
+  coinPrefab: {fileID: 0}
+  coinAmount: 1
 --- !u!195 &1764767954
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2231,7 +2229,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 702053577}
-  backButtonPoint: {fileID: 563029732}
 --- !u!1001 &1800166930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3059,7 +3056,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6248684225360179224, guid: 93ea114b592469b47bd9155fded3f643, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.01
+      value: 6.42
       objectReference: {fileID: 0}
     - target: {fileID: 6248684225360179224, guid: 93ea114b592469b47bd9155fded3f643, type: 3}
       propertyPath: m_LocalPosition.z

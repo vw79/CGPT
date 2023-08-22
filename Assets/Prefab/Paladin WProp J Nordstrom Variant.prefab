@@ -346,6 +346,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHurt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4275629769863519991
 MonoBehaviour:
   m_ObjectHideFlags: 0

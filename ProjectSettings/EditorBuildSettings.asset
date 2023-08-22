@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Prison.unity
+    guid: 6ac7abd6f0669664abae13c5c31e3ae8
+  - enabled: 1
     path: Assets/Test/Animation Test.unity
     guid: b3f2672a315789240b03705b9c275bdf
   - enabled: 1
