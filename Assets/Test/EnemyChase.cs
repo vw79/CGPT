@@ -45,6 +45,8 @@ public class EnemyChase : MonoBehaviour
     private NavMeshAgent navAgent;
     private Animator animator;  // Reference to the Animator component
 
+    private GameObject player;
+
     void Start()
     {
         GetStat();

@@ -7,7 +7,8 @@ public class HealBuff : MonoBehaviour , IBuff
     private HealthSystem playerhealth;
     [SerializeField] private Sprite icon;
 
-    [SerializeField] private float healAmount;
+    [SerializeField] private float healAmount = 8f;
+    private float HealB = 100f;
 
     private void OnTriggerEnter(Collider other)
     {
