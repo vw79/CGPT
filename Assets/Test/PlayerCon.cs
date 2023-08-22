@@ -23,7 +23,7 @@ public class PlayerCon : MonoBehaviour
     private float firstJumpPower = 2f;
     private float secondJumpPower = 1.5f;
 
-    private float dashSpeed = 50f; // Speed of the dash
+    private float dashSpeed = 20f; // Speed of the dash
     private float dashTime = 0.2f; // Duration of the dash
     private float dashEndTime; // Time when the current dash will end
     private float dashCooldown = 2f; // Time player has to wait after a dash to dash again
