@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 218393607}
   - component: {fileID: 218393606}
   - component: {fileID: 218393605}
-  - component: {fileID: 218393604}
+  - component: {fileID: 218393608}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -164,18 +164,6 @@ RectTransform:
   m_AnchoredPosition: {x: 200, y: -300}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &218393604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218393602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8892258f4cd1b84788f0fecbad9c022, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &218393605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,8 +208,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 218393604}
-        m_TargetAssemblyTypeName: SceneSwitchButton, Assembly-CSharp
+      - m_Target: {fileID: 218393608}
+        m_TargetAssemblyTypeName: Button, Assembly-CSharp
         m_MethodName: GoToStartScene
         m_Mode: 1
         m_Arguments:
@@ -270,6 +258,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218393602}
   m_CullTransparentMesh: 1
+--- !u!114 &218393608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218393602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca75b80bcb50f3849809037a0171b271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &241326754
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,7 +688,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 685193112}
-        m_TargetAssemblyTypeName: SceneSwitchButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: Button, Assembly-CSharp
         m_MethodName: GoToFirstScene
         m_Mode: 1
         m_Arguments:
@@ -746,7 +746,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 685193107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8892258f4cd1b84788f0fecbad9c022, type: 3}
+  m_Script: {fileID: 11500000, guid: ca75b80bcb50f3849809037a0171b271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &880598260
