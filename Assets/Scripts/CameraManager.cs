@@ -32,4 +32,9 @@ public class CameraManager : MonoBehaviour
         Gizmos.DrawLine(new Vector3(maxBounds.x, maxBounds.y, 0), new Vector3(maxBounds.x, minBounds.y, 0));
         Gizmos.DrawLine(new Vector3(maxBounds.x, minBounds.y, 0), new Vector3(minBounds.x, minBounds.y, 0));
     }
+
+    public void SetMinBound(Vector2 bound)
+    {
+        minBounds = bound;
+    }
 }

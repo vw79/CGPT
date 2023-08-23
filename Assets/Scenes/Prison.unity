@@ -1514,7 +1514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1873372434}
   smoothSpeed: 0.125
-  minBounds: {x: -28.7, y: -0.46}
+  minBounds: {x: -2, y: -0.46}
   maxBounds: {x: 3.61, y: 4.78}
   verticalOffset: 2.82
 --- !u!1001 &610900377
@@ -2733,6 +2733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969fd866a3a79ea44b85781e620d476a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraManager: {fileID: 597507999}
 --- !u!4 &991163137 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 36f258ea05b6e8644ae91a5b98eba017, type: 3}
