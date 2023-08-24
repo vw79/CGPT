@@ -13,10 +13,10 @@ using UnityEngine;
 public class CharacterStat : MonoBehaviour
 {
     [SerializeField] private float base_attack;
-    private float attack_modifier = 1f;     //Buff or debuff for attack
+    public float attack_modifier = 1f;     //Buff or debuff for attack
 
     [SerializeField] private float movement_speed;
-    private float movement_modifier = 1f;   //Buff or debuff for movement
+    public float movement_modifier = 1f;   //Buff or debuff for movement
 
     public float GetAttackDamage()
     {

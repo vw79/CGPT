@@ -12,7 +12,7 @@ public class HealthSystem : MonoBehaviour
 
     [SerializeField] private float max_health = 100f;
     [SerializeField] private float current_shield = 0f;
-    private float current_health;
+    public float current_health;
 
     public UnityEvent OnDeath;
     public UnityEvent OnHurt;

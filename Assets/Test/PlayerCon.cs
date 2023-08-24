@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement; //(xiu zhen added)
 
 public class PlayerCon : MonoBehaviour
 {
+    public static PlayerCon instance; // Singleton reference
+
     private CharacterController controller;
     private PlayerStateMachine playerStateMachine;
     private HealthSystem healthSystem;
@@ -45,6 +47,18 @@ public class PlayerCon : MonoBehaviour
 
     private void Awake()
     {
+        // Implement Singleton pattern for the player
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         playerStateMachine = GetComponent<PlayerStateMachine>();
         healthSystem = GetComponent<HealthSystem>();
         controller = GetComponent<CharacterController>();
@@ -52,11 +66,13 @@ public class PlayerCon : MonoBehaviour
 
     private void Start()
     {
-        
+        Debug.Log("Player start location: " + transform.position);
     }
 
     void Update()
     {
+
+        Debug.Log("Player current location: " + transform.position);
         ApplyGravity();
         GetStat();
 

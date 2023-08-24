@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerStat : MonoBehaviour
 {
-    private bool hadClearLevel1;
-    private bool hadClearLevel2;
+    public bool hadClearLevel1;
+    public bool hadClearLevel2;
 
     private int coin;
 

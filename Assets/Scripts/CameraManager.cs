@@ -1,14 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraManager : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    private Transform target;
     [SerializeField] private float smoothSpeed = 0.125f; // Speed for camera smoothing
     [SerializeField] private Vector2 minBounds; // Minimum camera bounds (x,y)
     [SerializeField] private Vector2 maxBounds; // Maximum camera bounds (x,y)
     [SerializeField] private float verticalOffset = 2.0f; // Vertical offset for the camera
+
+    private void Awake()
+    {
+        GameObject playerObject = GameObject.FindWithTag("Player");
+        if (playerObject != null)
+        {
+            target = playerObject.transform;
+        }
+        else
+        {
+
+        }
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        GameObject playerObject = GameObject.FindWithTag("Player");
+        if (playerObject != null)
+        {
+            target = playerObject.transform;
+        }
+        else
+        {
+
+        }
+    }
+
 
     private void LateUpdate()
     {

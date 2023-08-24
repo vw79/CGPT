@@ -7,4 +7,3 @@ public static class PlayerSpawnState
     public enum SpawnType { AtSpawn }
     public static SpawnType NextSpawn = SpawnType.AtSpawn;
 }
-
