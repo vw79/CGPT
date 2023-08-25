@@ -13,13 +13,6 @@ public class TrapDoor : MonoBehaviour
         // Check if the colliding object has the tag "Player"
         if (collision.gameObject.tag == "Sword")
         {
-            // Find the GameObject named "Block" and destroy it
-            GameObject block = GameObject.Find("Block");
-            if (block)
-            {
-                Destroy(block);
-            }
-
             cameraManager.SetMinBound(new Vector2(-28.7f, -0.46f));
 
             // Destroy the trapdoor (this game object)
