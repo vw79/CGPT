@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum EnemyState
+{
+    Patrol,
+    Chase,
+    Attack,
+    Hurt,
+}
+
 public class EnemyChase : MonoBehaviour
 {
-    public enum EnemyState
-    {
-        Patrol,
-        Chase,
-        Attack,
-        Hurt,
-    }
-
     [Header("Animation State Names")]
     [SerializeField] private string walkAnimation = "Warrok Walk";
     [SerializeField] private string runAnimation = "Warrok Run";
