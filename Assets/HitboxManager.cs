@@ -15,9 +15,13 @@ public class HitboxManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Ignore self collider
+        //Ignore every collider from parent
         Collider collider = GetComponent<Collider>();
-        Physics.IgnoreCollision(collider, parentCollider);
+        Collider[] colliders = parentCollider.GetComponents<Collider>();
+        foreach(Collider col in colliders)
+        {
+            Physics.IgnoreCollision(collider, col);
+        }
     }
 
     // Update is called once per frame

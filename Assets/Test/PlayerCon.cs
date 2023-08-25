@@ -72,7 +72,7 @@ public class PlayerCon : MonoBehaviour
     void Update()
     {
 
-        Debug.Log("Player current location: " + transform.position);
+        //Debug.Log("Player current location: " + transform.position);
         ApplyGravity();
         GetStat();
 
