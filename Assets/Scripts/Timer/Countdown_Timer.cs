@@ -47,6 +47,8 @@ public class Countdown_Timer : MonoBehaviour
             {
                 currentTime = 0;
                 isEnded = true;     // here as i meantioned above
+                // (code show game over)
+                // (code show replay)
             }
         }
     }
