@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6633401848840657622}
   - component: {fileID: 6677363732945495192}
   - component: {fileID: 8761301098347211677}
-  - component: {fileID: 4521384204316955147}
+  - component: {fileID: 77389213618332873}
   m_Layer: 0
   m_Name: Regen Orb
   m_TagString: Untagged
@@ -156,7 +156,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4521384204316955147
+--- !u!114 &77389213618332873
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,9 +165,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4805268581038080695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb0c7d650213e5a44b0b8543e7c9d6c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f86c2ec3adb6984da7c8d70f078bbca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  RegenAmount: 100
-  RegenTime: 10
+  buff: {fileID: 11400000, guid: ed219dfef96ddd549b0b65348587edc5, type: 2}

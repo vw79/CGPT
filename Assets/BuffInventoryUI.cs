@@ -19,7 +19,7 @@ public class BuffInventoryUI : MonoBehaviour
 
     public void UpdateInventoryUI()
     {
-        IBuff[] buffs = inventory.inventory;
+        SO_Buff[] buffs = inventory.inventory;
         for (int i = 0; i < buffs.Length; i++)
         {
             if (buffs[i] != null)

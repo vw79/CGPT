@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     private float storedAttackModifier = 1f;
     private float storedMovementSpeedModifier = 1f;
     private int storedCoins;
-    private IBuff[] storedInventory = new IBuff[2];
+    private SO_Buff[] storedInventory = new SO_Buff[2];
     private bool storedHadClearLevel1;
     private bool storedHadClearLevel2;
 

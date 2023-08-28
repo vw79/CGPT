@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 585278106296974386}
   - component: {fileID: 6349330511084521376}
   - component: {fileID: 2031661985333253958}
-  - component: {fileID: 6840716231440427491}
+  - component: {fileID: 1430824508030064993}
   m_Layer: 0
   m_Name: Heal Orb
   m_TagString: Untagged
@@ -156,7 +156,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6840716231440427491
+--- !u!114 &1430824508030064993
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,8 +165,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 170008310647992030}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a051f1812fc91e46908355316a95e9b, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f86c2ec3adb6984da7c8d70f078bbca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: a510ca617b42e154f92322247d638ac0, type: 3}
-  healAmount: 50
+  buff: {fileID: 11400000, guid: c66e79d66338c50428dd556215217721, type: 2}

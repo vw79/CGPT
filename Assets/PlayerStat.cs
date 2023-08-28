@@ -11,7 +11,7 @@ public class PlayerStat : MonoBehaviour
 
     private int coin;
 
-    [SerializeField] public IBuff[] inventory = new IBuff[2];
+    [SerializeField] public SO_Buff[] inventory = new SO_Buff[2];
 
     #region Buff Inventory
     private void Update()
@@ -20,7 +20,11 @@ public class PlayerStat : MonoBehaviour
         {
             if (inventory[0] != null)
             {
-                inventory[0].UseBuff();
+                inventory[0].UseBuff(gameObject);
+                if (!inventory[0].isOneTimeUse)
+                {
+                    StartCoroutine(inventory[0].ResetBuff());
+                }
                 inventory[0] = null;
             }
         }
@@ -29,13 +33,17 @@ public class PlayerStat : MonoBehaviour
         {
             if (inventory[1] != null)
             {
-                inventory[1].UseBuff();
+                inventory[1].UseBuff(gameObject);
+                if (!inventory[1].isOneTimeUse)
+                {
+                    StartCoroutine(inventory[1].ResetBuff());
+                }
                 inventory[1] = null;
             }
         }
     }
 
-    public bool AddBuff(IBuff buff)
+    public bool AddBuffIntoInventory(SO_Buff buff)
     {
         for(int i = 0; i < inventory.Length; i++)
         {

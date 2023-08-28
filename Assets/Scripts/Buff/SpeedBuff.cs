@@ -2,62 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedBuff : MonoBehaviour , IBuff
+[CreateAssetMenu(menuName = "Buffs/SpeedBuff")]
+public class SpeedBuff : SO_Buff
 {
     private CharacterStat playerstat;
-    [SerializeField] private Sprite icon;
 
     [SerializeField] private float speedMultiplier;
     [SerializeField] private float speedBuffDuration;
 
-
-    private void OnTriggerEnter(Collider other)
+    public override void UseBuff(GameObject player)
     {
-        if (other.CompareTag("Player"))
-        {
-            playerstat = other.GetComponent<CharacterStat>();
-            PlayerStat playerInventory = other.GetComponent<PlayerStat>();
-            if (playerInventory.AddBuff(this))
-            {
-                DisableExistance();
-            }
-            else
-            {
-                UseBuff();
-            }
-        }
-        else if (other.CompareTag("Enemy"))
-        {
-            playerstat = other.GetComponent<CharacterStat>();
-            UseBuff();
-        }
-    }
-
-    public void UseBuff()
-    {
+        playerstat = player.GetComponent<CharacterStat>();
         playerstat.SetMovementSpeed(speedMultiplier);
-        StartCoroutine(ResetSpeed());
-
-        //Disable every components that let the ball visible
-        DisableExistance();
     }
 
-    private IEnumerator ResetSpeed()
+    public override IEnumerator ResetBuff()
     {
         yield return new WaitForSeconds(speedBuffDuration);
         playerstat.SetMovementSpeed(1/speedMultiplier);
-        Destroy(gameObject);
-    }
-
-    private void DisableExistance()
-    {
-        this.GetComponent<Collider>().enabled = false;
-        this.GetComponent<Collider>().enabled = false;
-        this.GetComponent<MeshRenderer>().enabled = false;
-    }
-
-    public Sprite GetIcon()
-    {
-        return icon;
     }
 }

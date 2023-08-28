@@ -14,7 +14,8 @@ public class PlayerCon : MonoBehaviour
     public GameObject hitbox;
 
     private float lastDirection = 1f; // 1 for right, -1 for left
-    private float speed;
+    [SerializeField] private float speed;
+
 
     private float gravity = -30f;
     private float verticalVelocity;
@@ -72,7 +73,7 @@ public class PlayerCon : MonoBehaviour
     void Update()
     {
 
-        Debug.Log("Player current location: " + transform.position);
+        //Debug.Log("Player current location: " + transform.position);
         ApplyGravity();
         GetStat();
 

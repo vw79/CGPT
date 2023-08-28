@@ -2,50 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealBuff : MonoBehaviour , IBuff
+[CreateAssetMenu(menuName = "Buffs/HealBuff")]
+public class HealBuff : SO_Buff
 {
-    private HealthSystem playerhealth;
-    [SerializeField] private Sprite icon;
+    [SerializeField] private float healAmount = 40f;
 
-    [SerializeField] private float healAmount;
-
-    private void OnTriggerEnter(Collider other)
+    public override void UseBuff(GameObject player)
     {
-        if (other.CompareTag("Player"))
-        {
-            playerhealth = other.GetComponent<HealthSystem>();
-            PlayerStat playerInventory = other.GetComponent<PlayerStat>();
-            if (playerInventory.AddBuff(this))
-            {
-                DisableExistance();
-            }
-            else
-            {
-                UseBuff();
-            }
-        }
-        else if (other.CompareTag("Enemy"))
-        {
-            playerhealth = other.GetComponent<HealthSystem>();
-            UseBuff();
-        }
-    }
-
-    public void UseBuff()
-    {
-        playerhealth.Heal(healAmount);
-        Destroy(gameObject);
-    }
-
-    private void DisableExistance()
-    {
-        this.GetComponent<Collider>().enabled = false;
-        this.GetComponent<Collider>().enabled = false;
-        this.GetComponent<MeshRenderer>().enabled = false;
-    }
-
-    public Sprite GetIcon()
-    {
-        return icon;
+        player.GetComponent<HealthSystem>().Heal(healAmount);
     }
 }
