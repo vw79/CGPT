@@ -9,6 +9,7 @@ public enum EnemyState
     Chase,
     Attack,
     Hurt,
+    Dead,
 }
 
 public class EnemyChase : MonoBehaviour
