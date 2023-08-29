@@ -1680,8 +1680,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9958ffa0479e4074d85b3cf68b8fb7ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScene: 12
-  spawnPosition: {x: 46.5, y: 14.5, z: 0}
 --- !u!65 &551010448
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4416,7 +4414,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8dbece02a317a4eba7aedbf1b05027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1979748644}
+  smoothSpeed: 0.125
+  minBounds: {x: -225, y: 0}
+  maxBounds: {x: 50, y: 57.64}
+  verticalOffset: 2
 --- !u!1 &1434643850 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000010564498848, guid: c9a1d73a420e7e14daf6d9bb2a2708fb, type: 3}
@@ -6120,11 +6121,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.99999994, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1979748644 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6728773707513295888, guid: 83cde4bab40de3e40808964a659c2218, type: 3}
-  m_PrefabInstance: {fileID: 12827278}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1979748655
 MonoBehaviour:
   m_ObjectHideFlags: 0
