@@ -127,6 +127,11 @@ public class EnemyController : MonoBehaviour
         navMesh.SetDestination(currentTarget.position);
         animator.Play(walkAnimation);
 
+        if(currentTarget == player)
+        {
+            currentTarget = waypoints[0];
+        }
+
         // Change waypoint if enemy has reached current waypoint
         if(Vector3.Distance(transform.position, currentTarget.position) < 1f)
         {
@@ -162,5 +167,14 @@ public class EnemyController : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
         Destroy(enemy);
+    }
+
+    public float[] GetWaypointPosition()
+    {
+        float[] waypointPosition = new float[2];
+        waypointPosition[0] = waypoints[0].position.x;
+        waypointPosition[1] = waypoints[1].position.x;
+
+        return waypointPosition;
     }
 }
