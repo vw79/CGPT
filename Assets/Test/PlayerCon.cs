@@ -14,7 +14,14 @@ public class PlayerCon : MonoBehaviour
     public GameObject hitbox;
 
     private float lastDirection = 1f; // 1 for right, -1 for left
-    [SerializeField] private float speed;
+    private float speed;
+
+    [SerializeField] private float firstComboActiveTime = 0.33f;
+    [SerializeField] private float firstComboHitboxDuration = 0.33f;
+    [SerializeField] private float secondComboActiveTime = 0.4f;
+    [SerializeField] private float secondComboHitboxDuration = 0.2f;
+    [SerializeField] private float thirdComboActiveTime = 0.5f;
+    [SerializeField] private float thirdComboHitboxDuration = 0.8f;
 
 
     private float gravity = -30f;
@@ -90,7 +97,6 @@ public class PlayerCon : MonoBehaviour
     {
         speed = GetComponent<CharacterStat>().GetMovementSpeed();
         damage = GetComponent<CharacterStat>().GetAttackDamage();
-        hitbox.GetComponent<HitboxManager>().SetUpDamage(damage);
         //Debug.Log(speed);
     }
 
@@ -269,19 +275,24 @@ public class PlayerCon : MonoBehaviour
     {
         if (attackQueue.Count > 0)
         {
-            hitbox.SetActive(true);
             int nextAttack = attackQueue.Dequeue();
 
             switch (nextAttack)
             {
                 case 1:
                     playerStateMachine.Attack1();
+                    hitbox.GetComponent<HitboxManager>().SetUpDamage(damage,firstComboHitboxDuration);
+                    StartCoroutine(AttackActivate(firstComboActiveTime));
                     break;
                 case 2:
                     playerStateMachine.Attack2();
+                    hitbox.GetComponent<HitboxManager>().SetUpDamage(damage,secondComboHitboxDuration);
+                    StartCoroutine(AttackActivate(secondComboActiveTime));
                     break;
                 case 3:
                     playerStateMachine.Attack3();
+                    hitbox.GetComponent<HitboxManager>().SetUpDamage(damage,thirdComboHitboxDuration);
+                    StartCoroutine(AttackActivate(thirdComboActiveTime));
                     break;
             }
 
@@ -291,5 +302,11 @@ public class PlayerCon : MonoBehaviour
         {
 
         }
+    }
+
+    private IEnumerator AttackActivate(float attackActiveTime)
+    {
+        yield return new WaitForSeconds(attackActiveTime);
+        hitbox.SetActive(true);
     }
 }

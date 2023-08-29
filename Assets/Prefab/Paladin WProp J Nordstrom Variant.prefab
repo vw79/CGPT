@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7574823448376293843
 Transform:
   m_ObjectHideFlags: 0
@@ -80,7 +80,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.2, z: 0.88}
+  m_Size: {x: 2.35, y: 0.11, z: 0.9}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1429817093392024754
 MonoBehaviour:
@@ -105,19 +105,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.31
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.1400001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.42
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -418,6 +418,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitbox: {fileID: 416160243062786550}
+  speed: 0
+  firstComboActiveTime: 0.33
+  firstComboHitboxDuration: 0.33
+  secondComboActiveTime: 0.4
+  secondComboHitboxDuration: 0.2
+  thirdComboActiveTime: 0.5
+  thirdComboHitboxDuration: 0.8
 --- !u!114 &2957521995142397470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,7 +494,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   base_attack: 20
+  attack_modifier: 1
   movement_speed: 12
+  movement_modifier: 1
 --- !u!114 &8936435139470382503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,6 +509,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6baa37d47ec177d4492a5676265b973d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hadClearLevel1: 0
+  hadClearLevel2: 0
+  inventory:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &6728773707513295888 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cc27166c177066b4faa6d9b9f41c350f, type: 3}

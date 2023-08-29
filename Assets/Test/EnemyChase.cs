@@ -104,7 +104,7 @@ public class EnemyChase : MonoBehaviour
     {
         movementSpeed = GetComponent<CharacterStat>().GetMovementSpeed();
         damage = GetComponent<CharacterStat>().GetAttackDamage();
-        hitbox.GetComponent<HitboxManager>().SetUpDamage(damage);
+        hitbox.GetComponent<HitboxManager>().SetUpDamage(damage,0.5f);
     }
 
     bool IsPlayerInFieldOfView()

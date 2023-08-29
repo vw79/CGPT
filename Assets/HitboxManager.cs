@@ -5,11 +5,13 @@ using UnityEngine;
 public class HitboxManager : MonoBehaviour
 {
     private float damage;
+    private float hitboxDuration;
     [SerializeField] private Collider parentCollider;
 
-    public void SetUpDamage(float dmg)
+    public void SetUpDamage(float dmg, float duration)
     {
         damage = dmg;
+        hitboxDuration = duration;
     }
 
     // Start is called before the first frame update
@@ -46,7 +48,7 @@ public class HitboxManager : MonoBehaviour
 
     private IEnumerator ResetHitbox()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(hitboxDuration);
         gameObject.SetActive(false);
     }
 }
