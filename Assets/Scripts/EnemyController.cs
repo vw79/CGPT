@@ -8,6 +8,13 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+    [Header("Animation State Names")]
+    [SerializeField] private string walkAnimation = "Warrok Walk";
+    [SerializeField] private string runAnimation = "Warrok Run";
+    [SerializeField] private string attackAnimation = "Warrok Attack";
+    [SerializeField] private string hurtAnimation = "Warrok Hurt";
+    [SerializeField] private string deadAnimation = "Warrok Dead";
+
     [SerializeField] private Transform[] waypoints = new Transform[2];
     [SerializeField] private float attackActiveTime;
     [SerializeField] private float hitboxDuration;
@@ -28,6 +35,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private GameObject hitbox;
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private int coinAmount = 1;
+    [SerializeField] private GameObject enemy;
 
     private void Start()
     {
@@ -76,14 +84,14 @@ public class EnemyController : MonoBehaviour
 
     private void Hurt()
     {
-        animator.Play("Warrok Hurt");
+        animator.Play(hurtAnimation);
     }
 
     private void Attack()
     {
         navMesh.speed = 0;
         transform.LookAt(new Vector3(currentTarget.position.x, transform.position.y, currentTarget.position.z));
-        animator.Play("Warrok Attack");
+        animator.Play(attackAnimation);
         if (!isAttacking)
         {
             StartCoroutine(AttackActivate());
@@ -110,14 +118,14 @@ public class EnemyController : MonoBehaviour
         navMesh.speed = movementSpeed * 2;
         currentTarget = player;
         transform.LookAt(new Vector3(currentTarget.position.x,transform.position.y,currentTarget.position.z));
-        animator.Play("Warrok Run");
+        animator.Play(runAnimation);
     }
 
     private void Patrol()
     {
         navMesh.speed = movementSpeed;
         navMesh.SetDestination(currentTarget.position);
-        animator.Play("Warrok Walk");
+        animator.Play(walkAnimation);
 
         // Change waypoint if enemy has reached current waypoint
         if(Vector3.Distance(transform.position, currentTarget.position) < 1f)
@@ -137,7 +145,7 @@ public class EnemyController : MonoBehaviour
     {
         isDead = true;
         BlowCoin();
-        animator.Play("Warrok Dead");
+        animator.Play(deadAnimation);
         GetComponent<Collider>().excludeLayers += LayerMask.GetMask("Player");
 
         StartCoroutine(DestroyAfterAnimation());
@@ -153,6 +161,6 @@ public class EnemyController : MonoBehaviour
     private IEnumerator DestroyAfterAnimation()
     {
         yield return new WaitForSeconds(4f);
-        Destroy(gameObject);
+        Destroy(enemy);
     }
 }
