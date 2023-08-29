@@ -11,17 +11,19 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private Vector2 maxBounds; // Maximum camera bounds (x,y)
     [SerializeField] private float verticalOffset = 2.0f; // Vertical offset for the camera
 
+    public List<SceneBounds> sceneBoundsList;
+    [System.Serializable]
+    public struct SceneBounds
+    {
+        public int sceneIndex; // Use this for the scene's build index
+        public Vector2 defaultMinBounds;
+        public Vector2 defaultMaxBounds;
+    }
+
+
     private void Awake()
     {
-        GameObject playerObject = GameObject.FindWithTag("Player");
-        if (playerObject != null)
-        {
-            target = playerObject.transform;
-        }
-        else
-        {
-
-        }
+        target = GameObject.FindWithTag("Player")?.transform;
     }
 
     private void OnEnable()
@@ -36,27 +38,27 @@ public class CameraManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        GameObject playerObject = GameObject.FindWithTag("Player");
-        if (playerObject != null)
-        {
-            target = playerObject.transform;
-        }
-        else
-        {
+        target = GameObject.FindWithTag("Player")?.transform;
 
+        foreach (var bounds in sceneBoundsList)
+        {
+            if (scene.buildIndex == bounds.sceneIndex)
+            {
+                minBounds = bounds.defaultMinBounds;
+                maxBounds = bounds.defaultMaxBounds;
+                break;
+            }
         }
     }
 
-
     private void LateUpdate()
     {
-        Vector3 desiredPosition = new Vector3(target.position.x, target.position.y + verticalOffset, transform.position.z);
+        if (!target) return;
 
-        // Clamping the camera position within the boundaries
+        Vector3 desiredPosition = new Vector3(target.position.x, target.position.y + verticalOffset, transform.position.z);
         desiredPosition.x = Mathf.Clamp(desiredPosition.x, minBounds.x, maxBounds.x);
         desiredPosition.y = Mathf.Clamp(desiredPosition.y, minBounds.y, maxBounds.y);
 
-        // Smooth camera follow
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
     }

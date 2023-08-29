@@ -7,15 +7,23 @@ public class TrapDoor : MonoBehaviour
 {
     [SerializeField] private CameraManager cameraManager;
 
-    // This script will be attached to the Trapdoor object
+    private void Start()
+    {
+        if (cameraManager)
+        {
+            cameraManager.SetMinBound(new Vector2(-2f, -0.46f));
+        }
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
-        // Check if the colliding object has the tag "Player"
-        if (collision.gameObject.tag == "Sword")
+        if (collision.CompareTag("Sword"))
         {
-            cameraManager.SetMinBound(new Vector2(-28.7f, -0.46f));
-
-            // Destroy the trapdoor (this game object)
+            GameManager.instance.isTrapDoorDestroyed = true;
+            if (cameraManager)
+            {
+                cameraManager.SetMinBound(new Vector2(-28.7f, -0.46f));
+            }
             Destroy(gameObject);
         }
     }

@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     private SO_Buff[] storedInventory = new SO_Buff[2];
     private bool storedHadClearLevel1;
     private bool storedHadClearLevel2;
+    public bool isTrapDoorDestroyed = false;
+
 
     private void Awake()
     {
@@ -56,6 +58,16 @@ public class GameManager : MonoBehaviour
             playerHealthScript = player.GetComponent<HealthSystem>();
             playerCharacterStatScript = player.GetComponent<CharacterStat>();
             playerStatScript = player.GetComponent<PlayerStat>();
+        }
+
+        // Check if we're in scene 1
+        if (scene.buildIndex == 0 && GameManager.instance.isTrapDoorDestroyed)
+        {
+            GameObject trapDoor = GameObject.FindWithTag("TrapDoor");
+            if (trapDoor != null)
+            {
+                Destroy(trapDoor);
+            }
         }
     }
 
