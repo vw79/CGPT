@@ -4175,6 +4175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Speed Orb
       objectReference: {fileID: 0}
+    - target: {fileID: 1123881558746940397, guid: 79ef5fe47cd90cf4c85143a5876c4c8c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6820587911998498802, guid: 79ef5fe47cd90cf4c85143a5876c4c8c, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -4219,6 +4223,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7684174052330308802, guid: 79ef5fe47cd90cf4c85143a5876c4c8c, type: 3}
+      propertyPath: buff
+      value: 
+      objectReference: {fileID: 11400000, guid: 123f9a2530020144fb63a4d57c025c9d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4881,11 +4889,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2f96746c6005c64888263f64272a556, type: 3}
---- !u!1 &1768036040 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6208978058462965418, guid: 83cde4bab40de3e40808964a659c2218, type: 3}
-  m_PrefabInstance: {fileID: 1035105399}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1789312288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5415,6 +5418,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 77389213618332873, guid: bdfaf54c80eb31b489112fd74d73033c, type: 3}
+      propertyPath: buff
+      value: 
+      objectReference: {fileID: 11400000, guid: e1b8bb73d3ab67549944d22c09851194, type: 2}
     - target: {fileID: 4805268581038080695, guid: bdfaf54c80eb31b489112fd74d73033c, type: 3}
       propertyPath: m_Name
       value: Regen Orb
@@ -6041,17 +6048,9 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3369862331641994629, guid: 8455153350adf3f4894733d3df34b7b3, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1768036040}
     - target: {fileID: 3946898214752066466, guid: 8455153350adf3f4894733d3df34b7b3, type: 3}
       propertyPath: m_Name
       value: HUD
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946898214752066466, guid: 8455153350adf3f4894733d3df34b7b3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4987281559956940391, guid: 8455153350adf3f4894733d3df34b7b3, type: 3}
       propertyPath: m_AnchorMax.y

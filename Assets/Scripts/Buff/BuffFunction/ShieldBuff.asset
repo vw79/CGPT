@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb0c7d650213e5a44b0b8543e7c9d6c9, type: 3}
-  m_Name: Regen Buff
+  m_Script: {fileID: 11500000, guid: 8ea80bac7e0c91943ae257b91c99d4d7, type: 3}
+  m_Name: ShieldBuff
   m_EditorClassIdentifier: 
-  buffName: Regen
-  buffDescription: Heal Over Time
-  buffIcon: {fileID: 21300000, guid: 1fc84199f1555614284e83a3585f1d13, type: 3}
+  buffIcon: {fileID: 21300000, guid: 6e39464a770a66b41ba04aae0659fb7e, type: 3}
   isOneTimeUse: 1
-  RegenAmount: 40
-  RegenTime: 4
+  shieldAmount: 40

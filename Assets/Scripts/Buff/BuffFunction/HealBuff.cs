@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Buffs/RegenBuff")]
+[CreateAssetMenu(menuName = "Buffs/HealBuff")]
 public class RegenBuff : SO_Buff
 {
     [SerializeField] private float RegenAmount;

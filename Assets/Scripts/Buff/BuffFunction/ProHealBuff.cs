@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Buffs/HealBuff")]
-public class HealBuff : SO_Buff
+[CreateAssetMenu(menuName = "Buffs/ProHealBuff")]
+public class ProHealBuff : SO_Buff
 {
     [SerializeField] private float healAmount = 40f;
 

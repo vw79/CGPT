@@ -168,4 +168,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f86c2ec3adb6984da7c8d70f078bbca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 11400000, guid: c66e79d66338c50428dd556215217721, type: 2}
+  buff: {fileID: 11400000, guid: d0f5c25790eb7654e9780f4daf3a0e3f, type: 2}
