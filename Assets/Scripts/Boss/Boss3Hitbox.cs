@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HitboxManager : MonoBehaviour
+public class Boss3Hitbox : MonoBehaviour, IHitbox
 {
     private float damage;
     private float hitboxDuration;
@@ -14,22 +14,15 @@ public class HitboxManager : MonoBehaviour
         hitboxDuration = duration;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         //Ignore every collider from parent
         Collider collider = GetComponent<Collider>();
         Collider[] colliders = parentCollider.GetComponents<Collider>();
-        foreach(Collider col in colliders)
+        foreach (Collider col in colliders)
         {
             Physics.IgnoreCollision(collider, col);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnEnable()
@@ -40,9 +33,9 @@ public class HitboxManager : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         HealthSystem enemy;
-        if(other.TryGetComponent<HealthSystem>(out enemy))
+        if (other.TryGetComponent<HealthSystem>(out enemy))
         {
-            enemy.TakeDamage(damage);
+            enemy.TakeDamage(damage + enemy.GetShield());
         }
     }
 

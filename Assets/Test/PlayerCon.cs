@@ -281,17 +281,17 @@ public class PlayerCon : MonoBehaviour
             {
                 case 1:
                     playerStateMachine.Attack1();
-                    hitbox.GetComponent<HitboxManager>().SetUpDamage(damage,firstComboHitboxDuration);
+                    hitbox.GetComponent<IHitbox>().SetUpDamage(damage,firstComboHitboxDuration);
                     StartCoroutine(AttackActivate(firstComboActiveTime));
                     break;
                 case 2:
                     playerStateMachine.Attack2();
-                    hitbox.GetComponent<HitboxManager>().SetUpDamage(damage,secondComboHitboxDuration);
+                    hitbox.GetComponent<IHitbox>().SetUpDamage(damage,secondComboHitboxDuration);
                     StartCoroutine(AttackActivate(secondComboActiveTime));
                     break;
                 case 3:
                     playerStateMachine.Attack3();
-                    hitbox.GetComponent<HitboxManager>().SetUpDamage(damage,thirdComboHitboxDuration);
+                    hitbox.GetComponent<IHitbox>().SetUpDamage(damage,thirdComboHitboxDuration);
                     StartCoroutine(AttackActivate(thirdComboActiveTime));
                     break;
             }

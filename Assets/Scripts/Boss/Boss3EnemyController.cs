@@ -1,12 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Dynamic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+public class Boss3EnemyController : MonoBehaviour
 {
     [Header("Animation State Names")]
     [SerializeField] private string walkAnimation = "Warrok Walk";
@@ -49,14 +46,14 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if(isDead)
+        if (isDead)
         {
             return;
         }
 
         GetStat();
 
-        switch (GetComponent<EnemyStateController>().GetEnemyState())
+        switch (GetComponent<Boss3EnemyStateController>().GetEnemyState())
         {
             case EnemyState.Patrol:
                 Patrol();
@@ -102,7 +99,7 @@ public class EnemyController : MonoBehaviour
     {
         isAttacking = true;
         yield return new WaitForSeconds(attackActiveTime);
-        hitbox.GetComponent<IHitbox>().SetUpDamage(attackPower,hitboxDuration);
+        hitbox.GetComponent<IHitbox>().SetUpDamage(attackPower, hitboxDuration);
         hitbox.SetActive(true);
         StartCoroutine(ResetAttack());
     }
@@ -117,7 +114,7 @@ public class EnemyController : MonoBehaviour
     {
         navMesh.speed = movementSpeed * 2;
         currentTarget = player;
-        transform.LookAt(new Vector3(currentTarget.position.x,transform.position.y,currentTarget.position.z));
+        transform.LookAt(new Vector3(currentTarget.position.x, transform.position.y, currentTarget.position.z));
         animator.Play(runAnimation);
     }
 
@@ -127,15 +124,15 @@ public class EnemyController : MonoBehaviour
         navMesh.SetDestination(currentTarget.position);
         animator.Play(walkAnimation);
 
-        if(currentTarget == player)
+        if (currentTarget == player)
         {
             currentTarget = waypoints[0];
         }
 
         // Change waypoint if enemy has reached current waypoint
-        if(Vector3.Distance(transform.position, currentTarget.position) < 1f)
+        if (Vector3.Distance(transform.position, currentTarget.position) < 1f)
         {
-            if(currentTarget == waypoints[0])
+            if (currentTarget == waypoints[0])
             {
                 currentTarget = waypoints[1];
             }
@@ -149,12 +146,25 @@ public class EnemyController : MonoBehaviour
     private void Dead()
     {
         isDead = true;
-        BlowCoin();
         navMesh.speed = 0;
+        KillOtherEnemy();
+        BlowCoin();
+        DisableMobSpawner();
         animator.Play(deadAnimation);
         GetComponent<Collider>().excludeLayers += LayerMask.GetMask("Player");
 
         StartCoroutine(DestroyAfterAnimation());
+    }
+
+    private void KillOtherEnemy()
+    {
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject enemy in enemies)
+        {
+            HealthSystem enemyHealth = enemy.GetComponent<HealthSystem>();
+            enemyHealth.TakeDamage(enemyHealth.GetHealth() + enemyHealth.GetShield());
+        }
     }
 
     private void BlowCoin()
@@ -162,6 +172,11 @@ public class EnemyController : MonoBehaviour
         GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
         coin.GetComponent<Coin>().SetCoinAmount(coinAmount);
         coin.transform.position += Vector3.up;
+    }
+
+    private void DisableMobSpawner()
+    {
+        GetComponent<Boss3MobSpawner>().StopSpawning();
     }
 
     private IEnumerator DestroyAfterAnimation()
