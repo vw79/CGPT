@@ -11,8 +11,9 @@ public class HealthSystem : MonoBehaviour
     //Give health system for the entity which is damagable
 
     [SerializeField] private float max_health = 100f;
-    [SerializeField] private float current_shield = 0f;
+    [SerializeField] private float max_shield = 100f;
     private float current_health;
+    private float current_shield;
 
     public UnityEvent OnDeath;
     public UnityEvent OnHurt;
@@ -20,6 +21,7 @@ public class HealthSystem : MonoBehaviour
     private void Awake()
     {
         current_health = max_health;
+        current_shield = 0f;
     }
 
     private void Update()
@@ -42,6 +44,16 @@ public class HealthSystem : MonoBehaviour
     public float GetShield()
     {
         return current_shield;
+    }
+
+    public float GetMaxHealth()
+    {
+        return max_health;
+    }
+
+    public float GetMaxShield()
+    {
+          return max_shield;
     }
 
     public void TakeDamage(float damage)
@@ -100,5 +112,15 @@ public class HealthSystem : MonoBehaviour
             yield return new WaitForSeconds(1);
             Heal(hps);
         }
+    }
+
+    public void AddMaxHealth(float amount)
+    {
+        max_health += amount;
+    }
+
+    public void AddMaxShield(float amount)
+    {
+        max_shield += amount;
     }
 }

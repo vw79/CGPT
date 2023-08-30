@@ -19,7 +19,7 @@ public class HealthUI : MonoBehaviour
 
     public void UpdateHealthUI()
     {
-        healthBar.value = playerHealth.GetHealth() / 100f;
+        healthBar.value = playerHealth.GetHealth() / playerHealth.GetMaxHealth();
         fill.color = gradient.Evaluate(healthBar.value);
     }
 }

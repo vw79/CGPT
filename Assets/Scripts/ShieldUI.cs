@@ -16,6 +16,6 @@ public class ShieldUI : MonoBehaviour
 
     public void UpdateShieldUI()
     {
-        shieldBar.value = playerShield.GetShield() / 100f;
+        shieldBar.value = playerShield.GetShield() / playerShield.GetMaxShield();
     }
 }

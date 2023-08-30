@@ -418,7 +418,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitbox: {fileID: 416160243062786550}
-  speed: 0
   firstComboActiveTime: 0.33
   firstComboHitboxDuration: 0.33
   secondComboActiveTime: 0.4
@@ -462,7 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   max_health: 100
-  current_shield: 0
+  max_shield: 100
   OnDeath:
     m_PersistentCalls:
       m_Calls:

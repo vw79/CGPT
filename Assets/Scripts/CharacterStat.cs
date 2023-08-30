@@ -28,6 +28,11 @@ public class CharacterStat : MonoBehaviour
         movement_modifier *= modifier;
     }
 
+    public void AddBaseAttack(float amount)
+    {
+        base_attack += amount;
+    }
+
     public float GetMovementSpeed()
     {
         return movement_speed * movement_modifier;
@@ -36,5 +41,10 @@ public class CharacterStat : MonoBehaviour
     public void SetMovementSpeed(float modifier)
     {
         movement_speed *= modifier;
+    }
+
+    public void AddMovementSpeed(float amount)
+    {
+        movement_speed += amount;
     }
 }
