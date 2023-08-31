@@ -94,9 +94,8 @@ Transform:
   - {fileID: 1985347815829471847}
   - {fileID: 3361477832288609402}
   - {fileID: 2169605612576369909}
-  - {fileID: 7677669773012673924}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &271361961082878418
 GameObject:
@@ -1940,10 +1939,11 @@ GameObject:
   - component: {fileID: 1911617865546770738}
   - component: {fileID: 6377874575399283068}
   - component: {fileID: 1631576825665981937}
-  - component: {fileID: 7829297834901421397}
-  - component: {fileID: 4242134852725202113}
+  - component: {fileID: 1187025206608022935}
+  - component: {fileID: 946438616450624436}
   - component: {fileID: 6420378090375569193}
   - component: {fileID: 6193084595122995386}
+  - component: {fileID: 7361526425684983520}
   m_Layer: 0
   m_Name: Warrok W Kurniawan Variant
   m_TagString: Enemy
@@ -2035,7 +2035,7 @@ CapsuleCollider:
   m_Height: 2.303402
   m_Direction: 1
   m_Center: {x: 0, y: 1.1645101, z: 0}
---- !u!114 &7829297834901421397
+--- !u!114 &1187025206608022935
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2044,7 +2044,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5861060714681933444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95c39f7bd14daf846b0041991e8a7d10, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ab739926c53b6246b44b39631440c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walkAnimation: Warrok Walk
@@ -2060,9 +2060,9 @@ MonoBehaviour:
   attackInterval: 1.267
   hitbox: {fileID: 3045057103306591829}
   coinPrefab: {fileID: 8201319594375689949, guid: 188d9219a567bdc4dab1926ea95d98c4, type: 3}
-  coinAmount: 1
+  coinAmount: 200
   enemy: {fileID: 239516554421540343}
---- !u!114 &4242134852725202113
+--- !u!114 &946438616450624436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2071,7 +2071,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5861060714681933444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ab3723c15720b04aad6cc9c06694b08, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f93e2a767bedce47967ef8419f49220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: 0
@@ -2089,13 +2089,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e392fc0d02ef54d9f282799b02b5f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_health: 20000
-  current_shield: 0
+  max_health: 1
+  max_shield: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4242134852725202113}
-        m_TargetAssemblyTypeName: EnemyStateController, Assembly-CSharp
+      - m_Target: {fileID: 946438616450624436}
+        m_TargetAssemblyTypeName: Boss3EnemyStateController, Assembly-CSharp
         m_MethodName: OnDeath
         m_Mode: 1
         m_Arguments:
@@ -2109,8 +2109,8 @@ MonoBehaviour:
   OnHurt:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4242134852725202113}
-        m_TargetAssemblyTypeName: EnemyStateController, Assembly-CSharp
+      - m_Target: {fileID: 946438616450624436}
+        m_TargetAssemblyTypeName: Boss3EnemyStateController, Assembly-CSharp
         m_MethodName: OnHurt
         m_Mode: 1
         m_Arguments:
@@ -2137,6 +2137,24 @@ MonoBehaviour:
   attack_modifier: 1
   movement_speed: 3
   movement_modifier: 1
+--- !u!114 &7361526425684983520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5861060714681933444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59e54b652e68264db8dd944dd52674e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  mobPrefab: {fileID: 4950427912153921736, guid: 06f686aeb6577af41ba96160fc1f67f5, type: 3}
+  spawnInterval: 1
 --- !u!1 &6247855087188606719
 GameObject:
   m_ObjectHideFlags: 0
@@ -3031,56 +3049,6 @@ Transform:
   m_Father: {fileID: 6482486986164579128}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8587796961562586676
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7677669773012673924}
-  - component: {fileID: 1965572182224743534}
-  m_Layer: 0
-  m_Name: MobSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7677669773012673924
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8587796961562586676}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3814329617230720450}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1965572182224743534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8587796961562586676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f59e54b652e68264db8dd944dd52674e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  mobPrefab: {fileID: 4950427912153921736, guid: 06f686aeb6577af41ba96160fc1f67f5, type: 3}
-  spawnInterval: 20
 --- !u!1 &8797510565644700200
 GameObject:
   m_ObjectHideFlags: 0
