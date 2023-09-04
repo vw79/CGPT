@@ -332,7 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 0
+  trap_DamageMade: 100
   groundDestroy: 1
 --- !u!1 &68347782
 GameObject:
@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 0
+  trap_DamageMade: 100
   groundDestroy: 1
 --- !u!1 &157374242 stripped
 GameObject:
@@ -663,7 +663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 0
+  trap_DamageMade: 100
   groundDestroy: 1
 --- !u!1 &171465553 stripped
 GameObject:
@@ -879,7 +879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 0
+  trap_DamageMade: 100
   groundDestroy: 1
 --- !u!1001 &231844632
 PrefabInstance:
@@ -1585,7 +1585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 0
+  trap_DamageMade: 100
   groundDestroy: 1
 --- !u!1001 &494914523
 PrefabInstance:
@@ -1778,7 +1778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 0
+  trap_DamageMade: 100
   groundDestroy: 1
 --- !u!1 &579187102 stripped
 GameObject:
@@ -1895,7 +1895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 0
+  trap_DamageMade: 100
   groundDestroy: 1
 --- !u!1001 &594453270
 PrefabInstance:
@@ -2388,8 +2388,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9958ffa0479e4074d85b3cf68b8fb7ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScene: 13
-  spawnPosition: {x: 46.5, y: 14.5, z: 0}
 --- !u!1001 &689999356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3074,7 +3072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 0
+  trap_DamageMade: 100
   groundDestroy: 1
 --- !u!1001 &926051417
 PrefabInstance:
@@ -3561,7 +3559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 0
+  trap_DamageMade: 100
   groundDestroy: 1
 --- !u!1 &1128467139 stripped
 GameObject:
@@ -3678,7 +3676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 0
+  trap_DamageMade: 100
   groundDestroy: 1
 --- !u!1 &1164845550 stripped
 GameObject:
@@ -3985,7 +3983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 0
+  trap_DamageMade: 100
   groundDestroy: 1
 --- !u!1001 &1328380607
 PrefabInstance:
@@ -4357,7 +4355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 0
+  trap_DamageMade: 100
   groundDestroy: 1
 --- !u!1 &1461308181 stripped
 GameObject:
@@ -4474,7 +4472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 0
+  trap_DamageMade: 100
   groundDestroy: 1
 --- !u!1 &1529715591 stripped
 GameObject:
@@ -4579,7 +4577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51558a4d9cf390043be17845faae8bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_DamageMade: 0
+  trap_DamageMade: 100
   groundDestroy: 1
 --- !u!1001 &1545221878
 PrefabInstance:
@@ -4874,6 +4872,7 @@ GameObject:
   - component: {fileID: 1763522997}
   - component: {fileID: 1763522996}
   - component: {fileID: 1763522999}
+  - component: {fileID: 1763523000}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4967,7 +4966,107 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8dbece02a317a4eba7aedbf1b05027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2052776815}
+  smoothSpeed: 0.125
+  minBounds: {x: -75, y: 0}
+  maxBounds: {x: 75, y: 25}
+  verticalOffset: 2
+  sceneBoundsList: []
+--- !u!82 &1763523000
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763522995}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2b5249e2ab28d4c4a99ca2b037e9cc65, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1806002760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5365,11 +5464,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.22812498, z: 0.5}
   m_Center: {x: 0, y: 0.1140625, z: 1.01307854e-16}
---- !u!4 &2052776815 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6728773707513295888, guid: 83cde4bab40de3e40808964a659c2218, type: 3}
-  m_PrefabInstance: {fileID: 1063172405}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2052776825
 MonoBehaviour:
   m_ObjectHideFlags: 0
