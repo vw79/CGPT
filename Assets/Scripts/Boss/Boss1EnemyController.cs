@@ -6,12 +6,10 @@ using UnityEngine.AI;
 public class Boss1EnemyController : MonoBehaviour
 {
     [Header("Animation State Names")]
-    [SerializeField] private string walkAnimation = "Boss 1 Walk";
     [SerializeField] private string runAnimation = "Boss 1 Run";
     [SerializeField] private string attackAnimation = "Boss 1 Attack";
     [SerializeField] private string deadAnimation = "Boss 1 Dead";
 
-    [SerializeField] private Transform[] waypoints = new Transform[2];
     [SerializeField] private float attackActiveTime;
     [SerializeField] private float hitboxDuration;
     [SerializeField] private float attackInterval;
@@ -36,11 +34,12 @@ public class Boss1EnemyController : MonoBehaviour
     private void Start()
     {
         navMesh = GetComponent<NavMeshAgent>();
-        currentTarget = waypoints[0];
 
         animator = GetComponent<Animator>();
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        currentTarget = player;
     }
 
     private void Update()
@@ -54,9 +53,6 @@ public class Boss1EnemyController : MonoBehaviour
 
         switch (GetComponent<Boss1EnemyStateController>().GetEnemyState())
         {
-            case EnemyState.Patrol:
-                Patrol();
-                break;
             case EnemyState.Chase:
                 Chase();
                 break;
@@ -65,6 +61,8 @@ public class Boss1EnemyController : MonoBehaviour
                 break;
             case EnemyState.Dead:
                 Dead();
+                break;
+            default:
                 break;
         }
     }
@@ -105,33 +103,9 @@ public class Boss1EnemyController : MonoBehaviour
     {
         navMesh.speed = movementSpeed * 3;
         currentTarget = player;
+        navMesh.SetDestination(currentTarget.position);
         transform.LookAt(new Vector3(currentTarget.position.x, transform.position.y, currentTarget.position.z));
         animator.Play(runAnimation);
-    }
-
-    private void Patrol()
-    {
-        navMesh.speed = movementSpeed;
-        navMesh.SetDestination(currentTarget.position);
-        animator.Play(walkAnimation);
-
-        if (currentTarget == player)
-        {
-            currentTarget = waypoints[0];
-        }
-
-        // Change waypoint if enemy has reached current waypoint
-        if (Vector3.Distance(transform.position, currentTarget.position) < 1f)
-        {
-            if (currentTarget == waypoints[0])
-            {
-                currentTarget = waypoints[1];
-            }
-            else
-            {
-                currentTarget = waypoints[0];
-            }
-        }
     }
 
     private void Dead()
@@ -168,14 +142,5 @@ public class Boss1EnemyController : MonoBehaviour
     {
         yield return new WaitForSeconds(2.9f);
         Destroy(enemy);
-    }
-
-    public float[] GetWaypointPosition()
-    {
-        float[] waypointPosition = new float[2];
-        waypointPosition[0] = waypoints[0].position.x;
-        waypointPosition[1] = waypoints[1].position.x;
-
-        return waypointPosition;
     }
 }

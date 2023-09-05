@@ -8,23 +8,16 @@ public class Boss1EnemyStateController : MonoBehaviour
 
     private Transform player;
 
-    [SerializeField] private float seekRadius;
     [SerializeField] private float attackRadius;
 
     private bool IsAttacking = false;
     private bool IsDead = false;
 
-    private float minLimitX;
-    private float maxLimitX;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        enemyState = EnemyState.Patrol;
-        float[] waypointPosition = GetComponent<Boss1EnemyController>().GetWaypointPosition();
-
-        minLimitX = Mathf.Min(waypointPosition);
-        maxLimitX = Mathf.Max(waypointPosition);
+        enemyState = EnemyState.Chase;
     }
 
     private void Update()
@@ -33,9 +26,6 @@ public class Boss1EnemyStateController : MonoBehaviour
         {
             switch (enemyState)
             {
-                case EnemyState.Patrol:
-                    Patrol();
-                    break;
                 case EnemyState.Chase:
                     Chase();
                     break;
@@ -44,6 +34,8 @@ public class Boss1EnemyStateController : MonoBehaviour
                     break;
                 case EnemyState.Dead:
                     Dead();
+                    break;
+                default:
                     break;
             }
         }
@@ -59,23 +51,9 @@ public class Boss1EnemyStateController : MonoBehaviour
         return enemyState;
     }
 
-    private void Patrol()
-    {
-        Debug.Log("Patrol");
-        if (Vector3.Distance(transform.position, player.position) < seekRadius && player.position.x >= minLimitX && player.position.x <= maxLimitX)
-        {
-            enemyState = EnemyState.Chase;
-        }
-    }
-
     private void Chase()
     {
-        Debug.Log("Chase");
-        if (Vector3.Distance(transform.position, player.position) >= seekRadius || player.position.x < minLimitX || player.position.x > maxLimitX)
-        {
-            enemyState = EnemyState.Patrol;
-        }
-        else if (Vector3.Distance(transform.position, player.position) < attackRadius)
+        if (Vector3.Distance(transform.position, player.position) < attackRadius)
         {
             enemyState = EnemyState.Attack;
         }
@@ -108,10 +86,6 @@ public class Boss1EnemyStateController : MonoBehaviour
         if (Vector3.Distance(transform.position, player.position) > attackRadius)
         {
             enemyState = EnemyState.Chase;
-        }
-        else if (Vector3.Distance(transform.position, player.position) > seekRadius)
-        {
-            enemyState = EnemyState.Patrol;
         }
     }
 

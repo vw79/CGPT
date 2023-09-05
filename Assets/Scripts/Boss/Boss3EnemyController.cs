@@ -6,13 +6,10 @@ using UnityEngine.AI;
 public class Boss3EnemyController : MonoBehaviour
 {
     [Header("Animation State Names")]
-    [SerializeField] private string walkAnimation = "Warrok Walk";
     [SerializeField] private string runAnimation = "Warrok Run";
     [SerializeField] private string attackAnimation = "Warrok Attack";
-    [SerializeField] private string hurtAnimation = "Warrok Hurt";
     [SerializeField] private string deadAnimation = "Warrok Dead";
 
-    [SerializeField] private Transform[] waypoints = new Transform[2];
     [SerializeField] private float attackActiveTime;
     [SerializeField] private float hitboxDuration;
     [SerializeField] private float attackInterval;
@@ -37,11 +34,11 @@ public class Boss3EnemyController : MonoBehaviour
     private void Start()
     {
         navMesh = GetComponent<NavMeshAgent>();
-        currentTarget = waypoints[0];
 
         animator = GetComponent<Animator>();
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        currentTarget = player;
     }
 
     private void Update()
@@ -55,20 +52,16 @@ public class Boss3EnemyController : MonoBehaviour
 
         switch (GetComponent<Boss3EnemyStateController>().GetEnemyState())
         {
-            case EnemyState.Patrol:
-                Patrol();
-                break;
             case EnemyState.Chase:
                 Chase();
                 break;
             case EnemyState.Attack:
                 Attack();
                 break;
-            case EnemyState.Hurt:
-                Hurt();
-                break;
             case EnemyState.Dead:
                 Dead();
+                break;
+            default:
                 break;
         }
     }
@@ -77,11 +70,6 @@ public class Boss3EnemyController : MonoBehaviour
     {
         movementSpeed = GetComponent<CharacterStat>().GetMovementSpeed();
         attackPower = GetComponent<CharacterStat>().GetAttackDamage();
-    }
-
-    private void Hurt()
-    {
-        animator.Play(hurtAnimation);
     }
 
     private void Attack()
@@ -114,33 +102,9 @@ public class Boss3EnemyController : MonoBehaviour
     {
         navMesh.speed = movementSpeed * 2;
         currentTarget = player;
+        navMesh.SetDestination(currentTarget.position);
         transform.LookAt(new Vector3(currentTarget.position.x, transform.position.y, currentTarget.position.z));
         animator.Play(runAnimation);
-    }
-
-    private void Patrol()
-    {
-        navMesh.speed = movementSpeed;
-        navMesh.SetDestination(currentTarget.position);
-        animator.Play(walkAnimation);
-
-        if (currentTarget == player)
-        {
-            currentTarget = waypoints[0];
-        }
-
-        // Change waypoint if enemy has reached current waypoint
-        if (Vector3.Distance(transform.position, currentTarget.position) < 1f)
-        {
-            if (currentTarget == waypoints[0])
-            {
-                currentTarget = waypoints[1];
-            }
-            else
-            {
-                currentTarget = waypoints[0];
-            }
-        }
     }
 
     private void Dead()
@@ -183,14 +147,5 @@ public class Boss3EnemyController : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
         Destroy(enemy);
-    }
-
-    public float[] GetWaypointPosition()
-    {
-        float[] waypointPosition = new float[2];
-        waypointPosition[0] = waypoints[0].position.x;
-        waypointPosition[1] = waypoints[1].position.x;
-
-        return waypointPosition;
     }
 }

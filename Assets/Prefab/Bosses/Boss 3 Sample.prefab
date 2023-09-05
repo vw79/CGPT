@@ -92,8 +92,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1985347815829471847}
-  - {fileID: 3361477832288609402}
-  - {fileID: 2169605612576369909}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -734,37 +732,6 @@ Transform:
   m_Children:
   - {fileID: 1691106835622472997}
   m_Father: {fileID: 3507252664140620676}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2144367919746762076
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2169605612576369909}
-  m_Layer: 0
-  m_Name: B
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2169605612576369909
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2144367919746762076}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3814329617230720450}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2565569353961577129
@@ -1577,37 +1544,6 @@ Transform:
   m_Father: {fileID: 2499725157741683054}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4998916363355636349
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3361477832288609402}
-  m_Layer: 0
-  m_Name: A
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3361477832288609402
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4998916363355636349}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3814329617230720450}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5153620202900954726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2047,14 +1983,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ab739926c53b6246b44b39631440c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkAnimation: Warrok Walk
   runAnimation: Warrok Run
   attackAnimation: Warrok Attack
-  hurtAnimation: Warrok Hurt
   deadAnimation: Warrok Dead
-  waypoints:
-  - {fileID: 3361477832288609402}
-  - {fileID: 2169605612576369909}
   attackActiveTime: 1.2
   hitboxDuration: 0.4
   attackInterval: 1.267
@@ -2108,19 +2039,7 @@ MonoBehaviour:
         m_CallState: 2
   OnHurt:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 946438616450624436}
-        m_TargetAssemblyTypeName: Boss3EnemyStateController, Assembly-CSharp
-        m_MethodName: OnHurt
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &6193084595122995386
 MonoBehaviour:
   m_ObjectHideFlags: 0
