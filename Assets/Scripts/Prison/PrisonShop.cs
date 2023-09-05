@@ -56,6 +56,7 @@ public class PrisonShop : MonoBehaviour
 
     public void QuitShop()
     {
+        Debug.Log("Quit");
         ShopUI.SetActive(false);
         HUD.SetActive(true);
     }
