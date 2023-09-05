@@ -374,17 +374,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 910e02ad8b3350f488630beffe6dee93, type: 3}
---- !u!114 &722150533 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5038029408947367229, guid: 3341096131db93945b17f1c8fe492540, type: 3}
-  m_PrefabInstance: {fileID: 4892313245671786943}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 320c0a90fc000244ead6348f5719327a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &793990893
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,7 +515,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 889463039}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.3858373, y: 0.72, z: -9.222351}
+  m_LocalPosition: {x: 82.44, y: 0.72, z: -9.222351}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -678,6 +667,73 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1003923915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1003923916}
+  - component: {fileID: 1003923917}
+  - component: {fileID: 1003923918}
+  m_Layer: 0
+  m_Name: Hitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1003923916
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003923915}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1762074852}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1003923917
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003923915}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 1.02, z: 0.91}
+--- !u!114 &1003923918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003923915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb6e65c28e55bc48912e0fc30d6e986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentCollider: {fileID: 1762074855}
 --- !u!1 &1068862531
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,9 +1368,24 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 4e3f9bbe484a4fd428ec76aa943933f8, type: 2}
+    - target: {fileID: 7811215406665973230, guid: 9966da82f4cf1c84abd6ead1cc053b0e, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+        'mixamorig:LeftHandThumb2'\n\tTransform 'mixamorig:LeftHandIndex1'\n\tTransform
+        'mixamorig:LeftHandPinky2'\n\tTransform 'mixamorig:RightHandRing2'\n\tTransform
+        'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform 'mixamorig:LeftHandThumb3'\n\tTransform
+        'mixamorig:RightArm'\n\tand more ...\n\tFrom animation clip 'Walking'\n\tFrom
+        animation clip 'Standing React Death Backward'\n\tFrom animation clip 'Mutant
+        Swiping'\n\tFrom animation clip 'Fast Run'"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4217392156641322900, guid: 9966da82f4cf1c84abd6ead1cc053b0e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1003923916}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3588523923055033646, guid: 9966da82f4cf1c84abd6ead1cc053b0e, type: 3}
       insertIndex: -1
@@ -1324,10 +1395,16 @@ PrefabInstance:
       addedObject: {fileID: 1762074855}
     - targetCorrespondingSourceObject: {fileID: 3588523923055033646, guid: 9966da82f4cf1c84abd6ead1cc053b0e, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1762074859}
+    - targetCorrespondingSourceObject: {fileID: 3588523923055033646, guid: 9966da82f4cf1c84abd6ead1cc053b0e, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1762074854}
     - targetCorrespondingSourceObject: {fileID: 3588523923055033646, guid: 9966da82f4cf1c84abd6ead1cc053b0e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1762074853}
+    - targetCorrespondingSourceObject: {fileID: 3588523923055033646, guid: 9966da82f4cf1c84abd6ead1cc053b0e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1762074858}
   m_SourcePrefab: {fileID: 100100000, guid: 9966da82f4cf1c84abd6ead1cc053b0e, type: 3}
 --- !u!1 &1639294799
 GameObject:
@@ -1574,8 +1651,8 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 722150533}
-        m_TargetAssemblyTypeName: Boss2EnemyStateController, Assembly-CSharp
+      - m_Target: {fileID: 1762074858}
+        m_TargetAssemblyTypeName: Boss1EnemyStateController, Assembly-CSharp
         m_MethodName: OnDeath
         m_Mode: 1
         m_Arguments:
@@ -1634,6 +1711,47 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1762074858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762074851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b3ea5ba552e2f449586d72610ddf17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyState: 0
+  seekRadius: 4
+  attackRadius: 2
+--- !u!114 &1762074859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762074851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08975e7e5662de34bb830b95c7dd6043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkAnimation: Boss 1 Walk
+  runAnimation: Boss 1 Run
+  attackAnimation: Boss 1 Attack
+  deadAnimation: Boss 1 Dead
+  waypoints:
+  - {fileID: 2067402592}
+  - {fileID: 2068074842}
+  attackActiveTime: 0.2
+  hitboxDuration: 0.4
+  attackInterval: 0.8
+  hitbox: {fileID: 1003923915}
+  coinPrefab: {fileID: 8201319594375689949, guid: 188d9219a567bdc4dab1926ea95d98c4, type: 3}
+  coinAmount: 1
+  enemy: {fileID: 969580258}
 --- !u!1001 &1915225652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1819,7 +1937,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067402591}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.790337, y: -3.7594342, z: -2.6272967}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1850,7 +1968,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068074841}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.7903404, y: -3.7594342, z: -2.6272967}
+  m_LocalPosition: {x: 5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2017,6 +2135,10 @@ PrefabInstance:
     - target: {fileID: 1871434547095751354, guid: 3341096131db93945b17f1c8fe492540, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219499129636354315, guid: 3341096131db93945b17f1c8fe492540, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6459892722368790079, guid: 3341096131db93945b17f1c8fe492540, type: 3}
       propertyPath: m_RootOrder
