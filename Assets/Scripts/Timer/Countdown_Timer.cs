@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Countdown_Timer : MonoBehaviour
 {
@@ -49,6 +50,7 @@ public class Countdown_Timer : MonoBehaviour
                 isEnded = true;     // here as i meantioned above
                 // (code show game over)
                 // (code show replay)
+                SceneManager.LoadScene("22");
             }
         }
     }
