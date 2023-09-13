@@ -72,6 +72,15 @@ public class GameManager : MonoBehaviour
                 Destroy(trapDoor);
             }
         }
+
+        // Check if we're in scene 1
+        if (scene.buildIndex == 2 && storedHadClearLevel2 == false)
+        {
+            GameObject boss3Enterance = GameObject.FindWithTag("Boss3Entrance");
+
+            boss3Enterance.SetActive(false);
+      
+        }
     }
 
     private void Update()

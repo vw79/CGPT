@@ -11,7 +11,7 @@ TagManager:
   - groundDestroy
   - TeleportationObject
   - Spawn
-  - Boss3 Enterance
+  - Boss3Entrance
   layers:
   - Default
   - TransparentFX

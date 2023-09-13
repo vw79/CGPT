@@ -35,4 +35,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Black Market/Boss 2.unity
     guid: 8baf57767b4eff74ea334522bf97b933
+  - enabled: 1
+    path: Assets/Scenes/Colosseum/31.unity
+    guid: ae51bea9f6593fd42b613988d829f93b
+  - enabled: 1
+    path: Assets/Scenes/Colosseum/Boss 3.unity
+    guid: f7282fa152eb6c441b8eeada316197c7
   m_configObjects: {}
