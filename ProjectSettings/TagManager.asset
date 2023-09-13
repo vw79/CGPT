@@ -12,6 +12,8 @@ TagManager:
   - TeleportationObject
   - Spawn
   - Boss3Entrance
+  - Boss3Return
+  - PointLight
   layers:
   - Default
   - TransparentFX

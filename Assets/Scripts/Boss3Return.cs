@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.HID;
 using UnityEngine.SceneManagement;
 
-public class Boss3Entrance : MonoBehaviour
+public class Boss3Return : MonoBehaviour
 {
     private GameObject player;
 
@@ -16,8 +16,8 @@ public class Boss3Entrance : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && playerInTrigger)
         {
-            SceneManager.LoadScene(10);
-        }     
+            SceneManager.LoadScene(2);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

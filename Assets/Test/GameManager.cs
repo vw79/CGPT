@@ -73,13 +73,48 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        if (scene.buildIndex == 10)
+        {
+            GameObject player = GameObject.Find("Player");
+
+            GameObject pointLightObject = GameObject.FindWithTag("PointLight");
+            if (pointLightObject != null)
+            {
+                Light lightComponent = pointLightObject.GetComponent<Light>();
+                if (lightComponent != null)
+                {
+                    lightComponent.intensity = 2.4f;
+                    lightComponent.range = 6.3f;
+                }
+            }
+            
+        }
+        else
+        {
+            GameObject pointLightObject = GameObject.FindWithTag("PointLight");
+            if (pointLightObject != null)
+            {
+                Light lightComponent = pointLightObject.GetComponent<Light>();
+                if (lightComponent != null)
+                {
+                    lightComponent.intensity = 13f;
+                    lightComponent.range = 1.02f;
+                }
+            }
+        }
+
         // Check if we're in scene 1
         if (scene.buildIndex == 2 && storedHadClearLevel2 == false)
         {
             GameObject boss3Enterance = GameObject.FindWithTag("Boss3Entrance");
 
-            boss3Enterance.SetActive(false);
-      
+            boss3Enterance.SetActive(false);      
+        }
+        else if (scene.buildIndex == 2 && storedHadClearLevel2 == true)
+        {
+            GameObject boss3Enterance = GameObject.FindWithTag("Boss3Entrance");
+
+            boss3Enterance.SetActive(true);
         }
     }
 
