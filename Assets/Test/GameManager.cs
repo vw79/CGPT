@@ -112,7 +112,6 @@ public class GameManager : MonoBehaviour
 
         // Wait for 3 seconds before loading the death scene.
         yield return new WaitForSeconds(3f);
-        Debug.Log("Loading death scene...");
         Destroy(player);
         SceneManager.LoadScene(deathSceneIndex);
     }

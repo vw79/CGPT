@@ -14,8 +14,6 @@ public class SpawnManager : MonoBehaviour
     private void Start()
     {
         InvokeRepeating("spawning", spawnTime, spawnDelay);
-
-        Debug.Log($"{ spawnObject}");
     }
 
     private void spawning()

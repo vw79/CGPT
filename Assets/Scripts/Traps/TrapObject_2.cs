@@ -42,7 +42,6 @@ private void OnTriggerEnter(Collider other)
     // if player touched the trap object, ...
     if (other.tag == "Player")
     {
-        Debug.Log($"{name} Triggered");
 
         playerHealth = other.GetComponent<HealthSystem>();
         playerHealth.TakeDamage(trap_DamageMade);
