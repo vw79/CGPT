@@ -2490,6 +2490,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8717213092065788336, guid: 3341096131db93945b17f1c8fe492540, type: 3}
+      propertyPath: DeathAudio
+      value: 
+      objectReference: {fileID: 2130276961}
+    - target: {fileID: 8717213092065788336, guid: 3341096131db93945b17f1c8fe492540, type: 3}
+      propertyPath: AttackAudio
+      value: 
+      objectReference: {fileID: 2130276962}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 272011535338535169, guid: 3341096131db93945b17f1c8fe492540, type: 3}

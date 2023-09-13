@@ -30,6 +30,8 @@ public class Boss3EnemyController : MonoBehaviour
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private int coinAmount = 1;
     [SerializeField] private GameObject enemy;
+    [SerializeField] private AudioSource AttackAudio;
+    [SerializeField] private AudioSource DeathAudio;
 
     private void Start()
     {
@@ -89,6 +91,7 @@ public class Boss3EnemyController : MonoBehaviour
         yield return new WaitForSeconds(attackActiveTime);
         hitbox.GetComponent<IHitbox>().SetUpDamage(attackPower, hitboxDuration);
         hitbox.SetActive(true);
+        AttackAudio.Play();
         StartCoroutine(ResetAttack());
     }
 
@@ -113,6 +116,7 @@ public class Boss3EnemyController : MonoBehaviour
         navMesh.speed = 0;
         KillOtherEnemy();
         BlowCoin();
+        DeathAudio.Play();
         DisableMobSpawner();
         animator.Play(deadAnimation);
         GetComponent<Collider>().excludeLayers += LayerMask.GetMask("Player");
@@ -126,6 +130,10 @@ public class Boss3EnemyController : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach(GameObject enemy in enemies)
         {
+            if(enemy.GetComponent<Boss3EnemyController>() != null)
+            {
+                continue;
+            }
             HealthSystem enemyHealth = enemy.GetComponent<HealthSystem>();
             enemyHealth.TakeDamage(enemyHealth.GetHealth() + enemyHealth.GetShield());
         }
