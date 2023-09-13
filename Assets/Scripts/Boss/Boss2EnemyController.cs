@@ -111,23 +111,11 @@ public class Boss2EnemyController : MonoBehaviour
     {
         isDead = true;
         navMesh.speed = 0;
-        KillOtherEnemy();
         BlowCoin();
         animator.Play(deadAnimation);
         GetComponent<Collider>().excludeLayers += LayerMask.GetMask("Player");
 
         StartCoroutine(DestroyAfterAnimation());
-    }
-
-    private void KillOtherEnemy()
-    {
-
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
-        {
-            HealthSystem enemyHealth = enemy.GetComponent<HealthSystem>();
-            enemyHealth.TakeDamage(enemyHealth.GetHealth() + enemyHealth.GetShield());
-        }
     }
 
     private void BlowCoin()
