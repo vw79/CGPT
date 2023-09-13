@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffIcon: {fileID: 21300000, guid: 740a586863b9d96429cb9b1e8942be0f, type: 3}
   isOneTimeUse: 1
-  shieldAmount: 40
+  shieldAmount: 80
