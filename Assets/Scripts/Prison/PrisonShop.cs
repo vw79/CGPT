@@ -8,6 +8,7 @@ public class PrisonShop : MonoBehaviour
 
     [SerializeField] private GameObject ShopUI;
     [SerializeField] private GameObject HUD;
+    [SerializeField] private GameObject PopUpUI;
 
     [Header("Shop Items")]
     [Header("Add Max Health")]
@@ -43,6 +44,7 @@ public class PrisonShop : MonoBehaviour
         {
             player = other.gameObject;
             playerInTrigger = true;
+            PopUpUI.SetActive(true);
         }
     }
 
@@ -51,6 +53,7 @@ public class PrisonShop : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInTrigger = false;
+            PopUpUI.SetActive(false);
         }
     }
 
