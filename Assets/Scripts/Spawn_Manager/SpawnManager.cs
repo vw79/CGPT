@@ -9,7 +9,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float spawnTime;
     [SerializeField] private float spawnDelay;
 
-    [SerializeField] bool stopSpawning = true;
+    [SerializeField] bool stopSpawning = false;
 
     private void Start()
     {
