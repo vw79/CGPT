@@ -14,7 +14,7 @@ public class PlayerCon : MonoBehaviour
     public GameObject hitbox;
 
     private float lastDirection = 1f; // 1 for right, -1 for left
-    public float speed;
+    private float speed;
 
     [SerializeField] private float firstComboActiveTime = 0.33f;
     [SerializeField] private float firstComboHitboxDuration = 0.33f;
@@ -23,6 +23,8 @@ public class PlayerCon : MonoBehaviour
     [SerializeField] private float thirdComboActiveTime = 0.5f;
     [SerializeField] private float thirdComboHitboxDuration = 0.8f;
 
+    [SerializeField] private AudioSource AttackAudio;
+    [SerializeField] private AudioSource DeathAudio;
 
     private float gravity = -30f;
     private float verticalVelocity;
@@ -50,7 +52,7 @@ public class PlayerCon : MonoBehaviour
 
     private bool isDead = false;
     
-    public float damage;
+    private float damage;
 
     private void Awake()
     {
@@ -215,6 +217,7 @@ public class PlayerCon : MonoBehaviour
     public void OnDeath()
     {
         isDead = true;
+        DeathAudio.Play();
         playerStateMachine.Death();
     }
 
@@ -305,6 +308,7 @@ public class PlayerCon : MonoBehaviour
     private IEnumerator AttackActivate(float attackActiveTime)
     {
         yield return new WaitForSeconds(attackActiveTime);
+        AttackAudio.Play();
         hitbox.SetActive(true);
     }
 }

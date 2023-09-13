@@ -36,6 +36,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private int coinAmount = 1;
     [SerializeField] private GameObject enemy;
+    [SerializeField] private AudioSource attackAudio;
+    [SerializeField] private AudioSource deathAudio;
 
     private void Start()
     {
@@ -92,6 +94,7 @@ public class EnemyController : MonoBehaviour
         navMesh.speed = 0;
         transform.LookAt(new Vector3(currentTarget.position.x, transform.position.y, currentTarget.position.z));
         animator.Play(attackAnimation);
+        attackAudio.Play();
         if (!isAttacking)
         {
             StartCoroutine(AttackActivate());
@@ -150,6 +153,7 @@ public class EnemyController : MonoBehaviour
     {
         isDead = true;
         BlowCoin();
+        deathAudio.Play();
         navMesh.speed = 0;
         animator.Play(deadAnimation);
         GetComponent<Collider>().excludeLayers += LayerMask.GetMask("Player");

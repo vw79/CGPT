@@ -30,6 +30,8 @@ public class Boss1EnemyController : MonoBehaviour
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private int coinAmount = 1;
     [SerializeField] private GameObject enemy;
+    [SerializeField] private AudioSource AttackAudio;
+    [SerializeField] private AudioSource DeathAudio;
 
     private void Start()
     {
@@ -89,6 +91,7 @@ public class Boss1EnemyController : MonoBehaviour
         isAttacking = true;
         yield return new WaitForSeconds(attackActiveTime);
         hitbox.GetComponent<IHitbox>().SetUpDamage(attackPower, hitboxDuration);
+        AttackAudio.Play();
         hitbox.SetActive(true);
         StartCoroutine(ResetAttack());
     }
@@ -113,6 +116,7 @@ public class Boss1EnemyController : MonoBehaviour
         isDead = true;
         navMesh.speed = 0;
         BlowCoin();
+        DeathAudio.Play();
         animator.Play(deadAnimation);
         GetComponent<Collider>().excludeLayers += LayerMask.GetMask("Player");
 
