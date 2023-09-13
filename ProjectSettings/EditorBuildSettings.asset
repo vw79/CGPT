@@ -27,6 +27,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Underground/Boss 1.unity
     guid: 266c06a49f2519d408f179a5aac21e35
   - enabled: 1
+    path: Assets/Scenes/Black Market/21.unity
+    guid: de72fe3d1a04346418465ad079b304e4
+  - enabled: 1
+    path: Assets/Scenes/Black Market/22.unity
+    guid: a0ff4fea4e19ed44398a18ff4e9e62e3
+  - enabled: 1
     path: Assets/Scenes/Black Market/Boss 2.unity
     guid: 8baf57767b4eff74ea334522bf97b933
   m_configObjects: {}
