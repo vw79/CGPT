@@ -30,6 +30,8 @@ public class Boss2EnemyController : MonoBehaviour
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private int coinAmount = 1;
     [SerializeField] private GameObject enemy;
+    [SerializeField] private AudioSource AttackAudio;
+    [SerializeField] private AudioSource DeathAudio;
 
     private void Start()
     {
@@ -89,6 +91,7 @@ public class Boss2EnemyController : MonoBehaviour
         yield return new WaitForSeconds(attackActiveTime);
         hitbox.GetComponent<IHitbox>().SetUpDamage(attackPower, hitboxDuration);
         hitbox.SetActive(true);
+        AttackAudio.Play();
         StartCoroutine(ResetAttack());
     }
 

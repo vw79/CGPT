@@ -24,6 +24,7 @@ public class PlayerCon : MonoBehaviour
     [SerializeField] private float thirdComboHitboxDuration = 0.8f;
 
     [SerializeField] private AudioSource AttackAudio;
+    [SerializeField] private AudioSource DashAudio;
     [SerializeField] private AudioSource DeathAudio;
 
     private float gravity = -30f;
@@ -200,6 +201,7 @@ public class PlayerCon : MonoBehaviour
         isDashing = true;
         dashEndTime = Time.time + dashTime;
         nextDashTime = Time.time + dashCooldown;
+        DashAudio.Play();
     }
 
     private void DashMovement()
