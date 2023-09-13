@@ -290,7 +290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2812144867052830782, guid: 910e02ad8b3350f488630beffe6dee93, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5165557582369696802, guid: 910e02ad8b3350f488630beffe6dee93, type: 3}
       propertyPath: m_RootOrder
@@ -369,6 +369,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 910e02ad8b3350f488630beffe6dee93, type: 3}
+--- !u!1 &355238200 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2812144867052830782, guid: 910e02ad8b3350f488630beffe6dee93, type: 3}
+  m_PrefabInstance: {fileID: 355238199}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &793990893
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +642,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 969580259}
+  - component: {fileID: 969580260}
   m_Layer: 0
   m_Name: Boss 1
   m_TagString: Untagged
@@ -660,6 +666,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &969580260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969580258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a7c3a781c5bc3b44b6b9f7b808cc26e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gate: {fileID: 355238200}
 --- !u!1 &1003923915
 GameObject:
   m_ObjectHideFlags: 0
@@ -1671,7 +1690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e392fc0d02ef54d9f282799b02b5f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_health: 100
+  max_health: 300
   max_shield: 100
   OnDeath:
     m_PersistentCalls:
@@ -1679,6 +1698,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1762074858}
         m_TargetAssemblyTypeName: Boss1EnemyStateController, Assembly-CSharp
         m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 969580260}
+        m_TargetAssemblyTypeName: Boss1OpenBack, Assembly-CSharp
+        m_MethodName: OpenGate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1749,7 +1780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: 0
-  attackRadius: 2
+  attackRadius: 3
 --- !u!114 &1762074859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1765,9 +1796,9 @@ MonoBehaviour:
   runAnimation: Boss 1 Run
   attackAnimation: Boss 1 Attack
   deadAnimation: Boss 1 Dead
-  attackActiveTime: 0.2
-  hitboxDuration: 0.4
-  attackInterval: 0.8
+  attackActiveTime: 1.2
+  hitboxDuration: 0.6
+  attackInterval: 1.467
   hitbox: {fileID: 1003923915}
   coinPrefab: {fileID: 8201319594375689949, guid: 188d9219a567bdc4dab1926ea95d98c4, type: 3}
   coinAmount: 1
