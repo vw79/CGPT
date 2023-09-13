@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Check if we're in scene 1
-        if (scene.buildIndex == 0 && GameManager.instance.isTrapDoorDestroyed)
+        if (scene.buildIndex == 2 && GameManager.instance.isTrapDoorDestroyed)
         {
             GameObject trapDoor = GameObject.FindWithTag("TrapDoor");
             if (trapDoor != null)

@@ -1795,7 +1795,7 @@ MonoBehaviour:
   maxBounds: {x: 3.61, y: 4.78}
   verticalOffset: 2.82
   sceneBoundsList:
-  - sceneIndex: 0
+  - sceneIndex: 2
     defaultMinBounds: {x: -28.7, y: -0.46}
     defaultMaxBounds: {x: 3.61, y: 4.78}
 --- !u!1001 &610900377
@@ -6311,12 +6311,20 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5154737589949951922, guid: 8455153350adf3f4894733d3df34b7b3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7341773837782576988, guid: 8455153350adf3f4894733d3df34b7b3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7341773837782576988, guid: 8455153350adf3f4894733d3df34b7b3, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975959351330623186, guid: 8455153350adf3f4894733d3df34b7b3, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
