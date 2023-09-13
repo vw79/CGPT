@@ -15,4 +15,4 @@ MonoBehaviour:
   buffIcon: {fileID: 21300000, guid: 878efcb2562f13546998ede5053b825c, type: 3}
   isOneTimeUse: 0
   attackMultiplier: 1.5
-  attackBuffDuration: 5
+  attackBuffDuration: 3
