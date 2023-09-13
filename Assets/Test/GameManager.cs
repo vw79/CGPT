@@ -105,7 +105,19 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // Check if we're in scene 1
+        if (scene.buildIndex == 7 && storedHadClearLevel1 == true)
+        {
+            GameObject ballSpawn = GameObject.FindWithTag("groundDestroy");
+
+            ballSpawn.SetActive(false);
+        }
+        else if (scene.buildIndex == 7 && storedHadClearLevel1 == false)
+        {
+            GameObject ballSpawn = GameObject.FindWithTag("groundDestroy");
+
+            ballSpawn.SetActive(true);
+        }
+
         if (scene.buildIndex == 2 && storedHadClearLevel2 == false)
         {
             GameObject boss3Enterance = GameObject.FindWithTag("Boss3Entrance");

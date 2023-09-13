@@ -1709,6 +1709,37 @@ Transform:
   m_Father: {fileID: 1657102030}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1742067552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1742067553}
+  m_Layer: 0
+  m_Name: WinLoad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1742067553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742067552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 41.230003, y: 13.89, z: 0.13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1991531899
 GameObject:
   m_ObjectHideFlags: 0
@@ -2066,6 +2097,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 239516554421540343, guid: 4b7d4762f99909a41b5a8bc8ee295874, type: 3}
+      propertyPath: m_TagString
+      value: Boss3
+      objectReference: {fileID: 0}
     - target: {fileID: 1187025206608022935, guid: 4b7d4762f99909a41b5a8bc8ee295874, type: 3}
       propertyPath: DeathAudio
       value: 
@@ -2122,6 +2157,34 @@ PrefabInstance:
       propertyPath: max_health
       value: 2000
       objectReference: {fileID: 0}
+    - target: {fileID: 6420378090375569193, guid: 4b7d4762f99909a41b5a8bc8ee295874, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420378090375569193, guid: 4b7d4762f99909a41b5a8bc8ee295874, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420378090375569193, guid: 4b7d4762f99909a41b5a8bc8ee295874, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 6407804220467403175}
+    - target: {fileID: 6420378090375569193, guid: 4b7d4762f99909a41b5a8bc8ee295874, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420378090375569193, guid: 4b7d4762f99909a41b5a8bc8ee295874, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420378090375569193, guid: 4b7d4762f99909a41b5a8bc8ee295874, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Boss3EnemyStateController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420378090375569193, guid: 4b7d4762f99909a41b5a8bc8ee295874, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7361526425684983520, guid: 4b7d4762f99909a41b5a8bc8ee295874, type: 3}
       propertyPath: spawnPoints.Array.data[0]
       value: 
@@ -2145,3 +2208,14 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 910500012}
   m_SourcePrefab: {fileID: 100100000, guid: 4b7d4762f99909a41b5a8bc8ee295874, type: 3}
+--- !u!114 &6407804220467403175 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 946438616450624436, guid: 4b7d4762f99909a41b5a8bc8ee295874, type: 3}
+  m_PrefabInstance: {fileID: 6407804220467403174}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910500011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f93e2a767bedce47967ef8419f49220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

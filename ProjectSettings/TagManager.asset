@@ -14,6 +14,7 @@ TagManager:
   - Boss3Entrance
   - Boss3Return
   - PointLight
+  - Boss3
   layers:
   - Default
   - TransparentFX
