@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance; // Singleton reference
     public int deathSceneIndex;  // The scene index you load when the player dies.
+    [SerializeField] Animator transitionAnim;
 
     private GameObject player;
     private bool playerIsDead = false;
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        transitionAnim.SetTrigger("Start");
         PlayerIsDead = false;
         // Fetch references to the player's scripts after scene load
         player = GameObject.FindWithTag("Player");
@@ -145,6 +147,7 @@ public class GameManager : MonoBehaviour
             storedHadClearLevel2 = playerStatScript.hadClearLevel2;
         }
 
+        transitionAnim.SetTrigger("End");
         SceneManager.LoadScene(sceneIndex);
     }
 
