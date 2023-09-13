@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int deathSceneIndex;  // The scene index you load when the player dies.
 
     private GameObject player;
+    private bool playerIsDead = false;
     private HealthSystem playerHealthScript;
     private CharacterStat playerCharacterStatScript;
     private PlayerStat playerStatScript;
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     private bool storedHadClearLevel2;
     public bool isTrapDoorDestroyed = false;
 
+    public bool PlayerIsDead { get => playerIsDead; set => playerIsDead = value; }
 
     private void Awake()
     {
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        PlayerIsDead = false;
         // Fetch references to the player's scripts after scene load
         player = GameObject.FindWithTag("Player");
         if (player != null)
@@ -74,8 +77,9 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         // Check if the player's health is below or equal to 0
-        if (playerHealthScript != null && playerHealthScript.GetHealth() <= 0)
+        if (playerHealthScript != null && playerHealthScript.GetHealth() <= 0 && !PlayerIsDead)
         {
+            PlayerIsDead = true;
             StartCoroutine(EndGameSequence());
         }
     }
@@ -108,7 +112,7 @@ public class GameManager : MonoBehaviour
 
         // Wait for 3 seconds before loading the death scene.
         yield return new WaitForSeconds(3f);
-
+        Debug.Log("Loading death scene...");
         Destroy(player);
         SceneManager.LoadScene(deathSceneIndex);
     }

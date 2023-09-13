@@ -52,7 +52,6 @@ public class PlayerCon : MonoBehaviour
     
     private float damage;
 
-
     private void Awake()
     {
         // Implement Singleton pattern for the player
@@ -215,7 +214,6 @@ public class PlayerCon : MonoBehaviour
 
     public void OnDeath()
     {
-        Debug.Log("You Dead");
         isDead = true;
         playerStateMachine.Death();
     }
