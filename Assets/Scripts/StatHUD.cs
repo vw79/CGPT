@@ -35,11 +35,6 @@ public class StatHUD : MonoBehaviour
 
     private void Update()
     {
-        healthText.text = player.GetComponent<HealthSystem>().GetHealth() + " / " + player.GetComponent<HealthSystem>().GetMaxHealth();
-        shieldText.text = player.GetComponent<HealthSystem>().GetShield() + " / " + player.GetComponent<HealthSystem>().GetMaxShield();
-        attackText.text = player.GetComponent<CharacterStat>().GetAttackDamage().ToString();
-        speedText.text = player.GetComponent<CharacterStat>().GetMovementSpeed().ToString();
-
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             HUD.SetActive(true);
@@ -49,5 +44,13 @@ public class StatHUD : MonoBehaviour
         {
             HUD.SetActive(false);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        healthText.text = player.GetComponent<HealthSystem>().GetHealth() + " / " + player.GetComponent<HealthSystem>().GetMaxHealth();
+        shieldText.text = player.GetComponent<HealthSystem>().GetShield() + " / " + player.GetComponent<HealthSystem>().GetMaxShield();
+        attackText.text = player.GetComponent<CharacterStat>().GetAttackDamage().ToString();
+        speedText.text = player.GetComponent<CharacterStat>().GetMovementSpeed().ToString();
     }
 }
