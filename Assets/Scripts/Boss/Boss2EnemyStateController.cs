@@ -8,7 +8,6 @@ public class Boss2EnemyStateController : MonoBehaviour
 
     private Transform player;
 
-    [SerializeField] private float seekRadius;
     [SerializeField] private float attackRadius;
 
     private bool IsAttacking = false;

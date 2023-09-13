@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Countdown_Timer : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class Countdown_Timer : MonoBehaviour
     float currentTime = 0f;
     [SerializeField] float startingTime = 10f;
 
-    [SerializeField] Text text_countdownTimer;
+    [SerializeField] TextMeshProUGUI text_countdownTimer;
 
     private bool isStart = false;
 
@@ -25,8 +26,6 @@ public class Countdown_Timer : MonoBehaviour
         text_countdownTimer.enabled = false;
 
         currentTime = startingTime;
-
-        text_countdownTimer.color = Color.white;
     }
 
 
@@ -50,7 +49,8 @@ public class Countdown_Timer : MonoBehaviour
                 isEnded = true;     // here as i meantioned above
                 // (code show game over)
                 // (code show replay)
-                SceneManager.LoadScene("22");
+                HealthSystem player = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthSystem>();
+                player.TakeDamage(player.GetMaxHealth());
             }
         }
     }

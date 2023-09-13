@@ -14,7 +14,7 @@ public class PlayerCon : MonoBehaviour
     public GameObject hitbox;
 
     private float lastDirection = 1f; // 1 for right, -1 for left
-    private float speed;
+    public float speed;
 
     [SerializeField] private float firstComboActiveTime = 0.33f;
     [SerializeField] private float firstComboHitboxDuration = 0.33f;
@@ -50,7 +50,7 @@ public class PlayerCon : MonoBehaviour
 
     private bool isDead = false;
     
-    private float damage;
+    public float damage;
 
     private void Awake()
     {

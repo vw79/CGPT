@@ -25,7 +25,7 @@ public class CharacterStat : MonoBehaviour
 
     public void SetAttackModifier(float modifier)
     {
-        movement_modifier *= modifier;
+        attack_modifier *= modifier;
     }
 
     public void AddBaseAttack(float amount)

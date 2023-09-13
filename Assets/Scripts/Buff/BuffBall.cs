@@ -13,13 +13,17 @@ public class BuffBall : MonoBehaviour
             PlayerStat playerInventory = other.GetComponent<PlayerStat>();
             if (!playerInventory.AddBuffIntoInventory(buff))
             {
-                buff.UseBuff(other.gameObject);
+                
             }
             Destroy(gameObject);
         }
         else if(other.CompareTag("Enemy"))
         {
             buff.UseBuff(other.gameObject);
+            if (!buff.isOneTimeUse)
+            {
+                StartCoroutine(buff.ResetBuff());
+            }
             Destroy(gameObject);
         }
     }
