@@ -4290,7 +4290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7480192531434751941, guid: 83cde4bab40de3e40808964a659c2218, type: 3}
       propertyPath: max_health
-      value: 6000000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8006755705233351002, guid: 83cde4bab40de3e40808964a659c2218, type: 3}
       propertyPath: DashAudio

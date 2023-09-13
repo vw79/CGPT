@@ -29,7 +29,7 @@ public class PlayerStat : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (inventory[1] != null)
             {
