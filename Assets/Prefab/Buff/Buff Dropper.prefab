@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5545967931741627189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8794538397283867457}
+  - component: {fileID: 2519354906263964808}
+  m_Layer: 0
+  m_Name: Buff Dropper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8794538397283867457
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5545967931741627189}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -470.5, y: -13.84, z: -0.27}
+  m_LocalScale: {x: 0.69, y: 1, z: 0.09}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2519354906263964808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5545967931741627189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1aab55c6897abe45850cc388839f6be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minX: -470
+  maxX: -405
+  minRefreshTime: 10
+  maxRefreshTime: 15
+  buffs:
+  - weight: 30
+    buff: {fileID: 169657776805598304, guid: e71a90ec6179fbc478db37f1c815c03d, type: 3}
+  - weight: 50
+    buff: {fileID: 5269941052078669650, guid: 3ec32489193613c45aab0818d45f773c, type: 3}
+  - weight: 70
+    buff: {fileID: 7519807589918145164, guid: 507ad583e43a52c4b92a1a1522edb0f8, type: 3}
+  - weight: 10
+    buff: {fileID: 5278996320649097608, guid: 8cb8d1c0a437b1943b4ddf6ff0790434, type: 3}
+  - weight: 3
+    buff: {fileID: 4067721019775991784, guid: 56688200c7d80cf4f86ba4c14c905388, type: 3}
+  - weight: 7
+    buff: {fileID: 3530607963893019159, guid: a276c4983affc604198cec7f1ed7325a, type: 3}
+  - weight: 10
+    buff: {fileID: 1574877565857856150, guid: d2c1a42681cbc644b944491fe238e32d, type: 3}
+  - weight: 1
+    buff: {fileID: 172335329435802583, guid: 605250c88591f5546b910cd042914f71, type: 3}
