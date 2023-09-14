@@ -16,7 +16,7 @@ public class Boss3Entrance : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && playerInTrigger)
         {
-            SceneManager.LoadScene(10);
+            GameManager.instance.LoadScene(10);
         }     
     }
 
