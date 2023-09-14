@@ -20,16 +20,17 @@ public class HealthSystem : MonoBehaviour
 
     private void Awake()
     {
-        current_health = max_health;
         current_shield = 0f;
+    }
+
+    private void Start()
+    {
+        current_health = max_health;
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            TakeDamage(40f);
-        }
+
     }
 
     public float GetHealth()
