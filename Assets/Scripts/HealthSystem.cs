@@ -26,7 +26,10 @@ public class HealthSystem : MonoBehaviour
 
     private void Update()
     {
-
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            TakeDamage(40f);
+        }
     }
 
     public float GetHealth()
