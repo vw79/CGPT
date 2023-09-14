@@ -31830,6 +31830,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Improved Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4950427912153921736, guid: 06f686aeb6577af41ba96160fc1f67f5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5172673486598455538, guid: 06f686aeb6577af41ba96160fc1f67f5, type: 3}
       propertyPath: coinAmount
       value: 5
@@ -44119,6 +44123,10 @@ PrefabInstance:
     - target: {fileID: 3946898214752066466, guid: 8455153350adf3f4894733d3df34b7b3, type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946898214752066466, guid: 8455153350adf3f4894733d3df34b7b3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4987281559956940391, guid: 8455153350adf3f4894733d3df34b7b3, type: 3}
       propertyPath: m_AnchorMax.y
@@ -59169,6 +59177,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Improved Enemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4950427912153921736, guid: 06f686aeb6577af41ba96160fc1f67f5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5172673486598455538, guid: 06f686aeb6577af41ba96160fc1f67f5, type: 3}
       propertyPath: coinAmount
       value: 5
@@ -61526,6 +61538,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Improved Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4950427912153921736, guid: 06f686aeb6577af41ba96160fc1f67f5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5172673486598455538, guid: 06f686aeb6577af41ba96160fc1f67f5, type: 3}
       propertyPath: coinAmount
       value: 5
@@ -62350,6 +62366,10 @@ PrefabInstance:
     - target: {fileID: 4950427912153921736, guid: 06f686aeb6577af41ba96160fc1f67f5, type: 3}
       propertyPath: m_Name
       value: Improved Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4950427912153921736, guid: 06f686aeb6577af41ba96160fc1f67f5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5172673486598455538, guid: 06f686aeb6577af41ba96160fc1f67f5, type: 3}
       propertyPath: coinAmount
