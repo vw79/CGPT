@@ -7666,11 +7666,11 @@ MonoBehaviour:
   ShopUI: {fileID: 90123109}
   HUD: {fileID: 1413648970}
   PopUpUI: {fileID: 1092990380}
-  healthPrice: 1
+  healthPrice: 5
   healthIncrease: 20
-  attackPrice: 1
+  attackPrice: 5
   attackIncrease: 5
-  shieldPrice: 1
+  shieldPrice: 5
   shieldIncrease: 20
 --- !u!4 &2032770493 stripped
 Transform:
