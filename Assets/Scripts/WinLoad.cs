@@ -16,6 +16,6 @@ public class WinLoad : MonoBehaviour
 
     public void LoadWin()
     {
-        SceneManager.LoadScene(1);
+        GameManager.instance.LoadScene(12);
     }
 }

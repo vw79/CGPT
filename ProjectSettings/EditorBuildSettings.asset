@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Colosseum/Boss 3.unity
     guid: f7282fa152eb6c441b8eeada316197c7
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: 5cd0d56f00f749045865ed010d1c8788
   m_configObjects: {}
