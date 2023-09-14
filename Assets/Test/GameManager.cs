@@ -187,6 +187,11 @@ public class GameManager : MonoBehaviour
     {
         StorePlayerData();
 
+        if(sceneIndex == 12)
+        {
+            Destroy(player);
+        }
+
         transitionAnim.SetTrigger("End");
         SceneManager.LoadScene(sceneIndex);
     }
