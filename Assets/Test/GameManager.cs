@@ -109,6 +109,28 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        if (scene.buildIndex == 5 && storedHadClearLevel1 == true)
+        {
+            GameObject[] boss1backs = GameObject.FindGameObjectsWithTag("Boss1Back");
+            foreach(GameObject boss1back in boss1backs)
+            {
+                boss1back.SetActive(true);
+            }
+            GameObject boss1Next = GameObject.FindWithTag("Boss1Next");
+            boss1Next.SetActive(false);
+        }
+        else if (scene.buildIndex == 5 && storedHadClearLevel1 == false)
+        {
+            GameObject[] boss1backs = GameObject.FindGameObjectsWithTag("Boss1Back");
+            foreach (GameObject boss1back in boss1backs)
+            {
+                boss1back.SetActive(false);
+            }
+            GameObject boss1Next = GameObject.FindWithTag("Boss1Next");
+            boss1Next.SetActive(true);
+        }
+
+
         if (scene.buildIndex == 7 && storedHadClearLevel1 == true)
         {
             GameObject ballSpawn = GameObject.FindWithTag("groundDestroy");
