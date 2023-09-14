@@ -80,6 +80,10 @@ public class HealthSystem : MonoBehaviour
     public void AddShield(float shieldPoint)
     {
         current_shield += shieldPoint;
+        if(current_shield > max_shield)
+        {
+            current_shield = max_shield;
+        }
     }
 
     public void Heal(float damage)
@@ -112,8 +116,18 @@ public class HealthSystem : MonoBehaviour
         max_health += amount;
     }
 
+    public void SetMaxHealth(float amount)
+    {
+        max_health = amount;
+    }
+
     public void AddMaxShield(float amount)
     {
         max_shield += amount;
+    }
+
+    public void SetMaxShield(float amount)
+    {
+        max_shield = amount;
     }
 }

@@ -18,6 +18,17 @@ public class CharacterStat : MonoBehaviour
     [SerializeField] private float movement_speed;
     public float movement_modifier = 1f;   //Buff or debuff for movement
 
+    public void SetPlayerStat(float storedAttack, float storedSpeed)
+    {
+        base_attack = storedAttack;
+        movement_speed = storedSpeed;
+    }
+
+    public float GetBaseAttack()
+    {
+        return base_attack;
+    }
+
     public float GetAttackDamage()
     {
         return base_attack * attack_modifier;
@@ -28,9 +39,15 @@ public class CharacterStat : MonoBehaviour
         attack_modifier *= modifier;
     }
 
+
     public void AddBaseAttack(float amount)
     {
         base_attack += amount;
+    }
+
+    public float GetBaseSpeed()
+    {
+        return movement_speed;
     }
 
     public float GetMovementSpeed()
@@ -40,7 +57,7 @@ public class CharacterStat : MonoBehaviour
 
     public void SetMovementSpeed(float modifier)
     {
-        movement_speed *= modifier;
+        movement_modifier *= modifier;
     }
 
     public void AddMovementSpeed(float amount)

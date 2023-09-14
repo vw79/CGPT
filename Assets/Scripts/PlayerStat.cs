@@ -63,6 +63,11 @@ public class PlayerStat : MonoBehaviour
         return coin;
     }
 
+    public void SetCoin(int amount)
+    {
+        coin = amount;
+    }
+
     public void AddCoin(int amount)
     {
         coin += amount;

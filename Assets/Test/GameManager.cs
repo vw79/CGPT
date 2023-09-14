@@ -17,8 +17,10 @@ public class GameManager : MonoBehaviour
     private PlayerStat playerStatScript;
 
     // Variables to store player stats
-    private float storedAttackModifier = 1f;
-    private float storedMovementSpeedModifier = 1f;
+    private float storedAttackDamage = 20f;
+    private float storedMovementSpeed = 12f;
+    private float storedMaxHealth = 100f;
+    private float storedMaxShield = 100f;
     private int storedCoins;
     private SO_Buff[] storedInventory = new SO_Buff[2];
     private bool storedHadClearLevel1;
@@ -64,6 +66,8 @@ public class GameManager : MonoBehaviour
             playerCharacterStatScript = player.GetComponent<CharacterStat>();
             playerStatScript = player.GetComponent<PlayerStat>();
         }
+
+        LoadPlayerData();
 
         // Check if we're in scene 1
         if (scene.buildIndex == 2 && GameManager.instance.isTrapDoorDestroyed)
@@ -144,20 +148,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene(int sceneIndex)
     {
-        // Store player stats before transitioning
-        if (playerCharacterStatScript != null)
-        {
-            storedAttackModifier = playerCharacterStatScript.attack_modifier;
-            storedMovementSpeedModifier = playerCharacterStatScript.movement_modifier;
-        }
-
-        if (playerStatScript != null)
-        {
-            storedCoins = playerStatScript.GetCoin();
-            storedInventory = playerStatScript.inventory;
-            storedHadClearLevel1 = playerStatScript.hadClearLevel1;
-            storedHadClearLevel2 = playerStatScript.hadClearLevel2;
-        }
+        StorePlayerData();
 
         transitionAnim.SetTrigger("End");
         SceneManager.LoadScene(sceneIndex);
@@ -171,7 +162,55 @@ public class GameManager : MonoBehaviour
 
         // Wait for 3 seconds before loading the death scene.
         yield return new WaitForSeconds(3f);
+        StorePlayerData();
         Destroy(player);
         SceneManager.LoadScene(deathSceneIndex);
+    }
+
+    private void StorePlayerData()
+    {
+        // Store player stats before transitioning
+        if (playerCharacterStatScript != null)
+        {
+            storedAttackDamage = playerCharacterStatScript.GetBaseAttack();
+            storedMovementSpeed = playerCharacterStatScript.GetBaseSpeed();
+        }
+
+        if (playerStatScript != null)
+        {
+            storedCoins = playerStatScript.GetCoin();
+            storedInventory = playerStatScript.inventory;
+            storedHadClearLevel1 = playerStatScript.hadClearLevel1;
+            storedHadClearLevel2 = playerStatScript.hadClearLevel2;
+        }
+
+        if (playerHealthScript != null)
+        {
+            storedMaxHealth = playerHealthScript.GetMaxHealth();
+            storedMaxShield = playerHealthScript.GetMaxShield();
+        }
+    }
+
+    private void LoadPlayerData()
+    {
+          // Load player stats after transitioning
+        if (playerCharacterStatScript != null)
+        {
+            playerCharacterStatScript.SetPlayerStat(storedAttackDamage, storedMovementSpeed);
+        }
+
+        if (playerStatScript != null)
+        {
+            playerStatScript.SetCoin(storedCoins);
+            playerStatScript.inventory = storedInventory;
+            playerStatScript.hadClearLevel1 = storedHadClearLevel1;
+            playerStatScript.hadClearLevel2 = storedHadClearLevel2;
+        }
+
+        if (playerHealthScript != null)
+        {
+            playerHealthScript.SetMaxHealth(storedMaxHealth);
+            playerHealthScript.SetMaxShield(storedMaxShield);
+        }
     }
 }

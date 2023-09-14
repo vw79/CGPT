@@ -69,6 +69,7 @@ public class PrisonShop : MonoBehaviour
         {
             player.GetComponent<PlayerStat>().LoseCoin(healthPrice);
             player.GetComponent<HealthSystem>().AddMaxHealth(healthIncrease);
+            player.GetComponent<HealthSystem>().Heal(healthIncrease);
         }
     }
 
