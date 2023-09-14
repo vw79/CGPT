@@ -133,15 +133,30 @@ public class GameManager : MonoBehaviour
 
         if (scene.buildIndex == 7 && storedHadClearLevel1 == true)
         {
-            GameObject ballSpawn = GameObject.FindWithTag("groundDestroy");
+            GameObject ballSpawn = GameObject.FindWithTag("Trap21");
 
             ballSpawn.SetActive(false);
         }
         else if (scene.buildIndex == 7 && storedHadClearLevel1 == false)
         {
-            GameObject ballSpawn = GameObject.FindWithTag("groundDestroy");
+            GameObject ballSpawn = GameObject.FindWithTag("Trap21");
 
             ballSpawn.SetActive(true);
+        }
+
+        if (scene.buildIndex == 8 && storedHadClearLevel2 == true)
+        {
+            GameObject boss2Back = GameObject.FindWithTag("Boss2Back");
+            boss2Back.SetActive(true);
+            GameObject boss2Next = GameObject.FindWithTag("Boss2Next");
+            boss2Next.SetActive(false);
+        }
+        else if (scene.buildIndex == 8 && storedHadClearLevel2 == false)
+        {
+            GameObject boss2Back = GameObject.FindWithTag("Boss2Back");
+            boss2Back.SetActive(false);
+            GameObject boss2Next = GameObject.FindWithTag("Boss2Next");
+            boss2Next.SetActive(true);
         }
 
         if (scene.buildIndex == 2 && storedHadClearLevel2 == false)

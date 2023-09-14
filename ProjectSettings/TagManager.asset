@@ -17,6 +17,9 @@ TagManager:
   - Boss3
   - Boss1Back
   - Boss1Next
+  - Boss2Back
+  - Boss2Next
+  - Trap21
   layers:
   - Default
   - TransparentFX
