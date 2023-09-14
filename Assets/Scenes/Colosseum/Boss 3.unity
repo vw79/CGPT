@@ -1189,7 +1189,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 21.21, z: 1}
+  m_Size: {x: 1, y: 36.86, z: 16.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1079076087
 MeshRenderer:
@@ -1628,7 +1628,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 21.99, z: 1}
+  m_Size: {x: 1, y: 36.86, z: 16.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1201004539
 MeshRenderer:
