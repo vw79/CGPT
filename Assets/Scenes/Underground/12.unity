@@ -4862,12 +4862,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1647528828999376961, guid: 556e48a3e76a8424a9030f9206033e80, type: 3}
+      propertyPath: m_Size.x
+      value: 3.0525055
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647528828999376961, guid: 556e48a3e76a8424a9030f9206033e80, type: 3}
       propertyPath: m_Size.y
       value: 2.8989592
       objectReference: {fileID: 0}
     - target: {fileID: 1647528828999376961, guid: 556e48a3e76a8424a9030f9206033e80, type: 3}
       propertyPath: m_Size.z
       value: 1.7182884
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647528828999376961, guid: 556e48a3e76a8424a9030f9206033e80, type: 3}
+      propertyPath: m_Center.x
+      value: 0.08257294
       objectReference: {fileID: 0}
     - target: {fileID: 1647528828999376961, guid: 556e48a3e76a8424a9030f9206033e80, type: 3}
       propertyPath: m_Center.y

@@ -3486,7 +3486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6420378090375569193, guid: 4b7d4762f99909a41b5a8bc8ee295874, type: 3}
       propertyPath: max_health
-      value: 500
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6420378090375569193, guid: 4b7d4762f99909a41b5a8bc8ee295874, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
