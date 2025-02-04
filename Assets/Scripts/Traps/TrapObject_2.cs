@@ -35,7 +35,7 @@ private void OnTriggerEnter(Collider other)
         Rigidbody rb = other.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.velocity = Vector3.zero;
+            rb.linearVelocity = Vector3.zero;
         }
     }
 
